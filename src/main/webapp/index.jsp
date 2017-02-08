@@ -16,19 +16,19 @@
 <head>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
-<title>Spring 4 MVC - HelloWorld Index Page</title>
+<title>stan the man</title>
 </head>
 <body>
 
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
  
 	<center>
-		<h2>Hello World</h2>
+		<h2>BRUHHHJSDFHJSDHFJS index</h2>
 		<h3>
-			<a href="hello?name=Eric">Click Here</a>
+			<a href="hello?name=Eric">Y BOYYYYYYYYYY index</a>
 		</h3>
 	</center>
 
-  <h2>YOOOOO</h2>
+  <h2>YOOOOO index</h2>
 </body>
 </html>
