@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
 </head>
 <body>
 	<center>
@@ -20,7 +22,7 @@
 	<!-- Sign in/out -->
 	<div class="g-signin2" data-onsuccess="onSignIn"></div>
 	<a href="#" onclick="signOut();">Sign out</a>
-	<script>
+	<script type="text/javascript">
 		//Sign out function
 		function signOut() {
 		    var auth2 = gapi.auth2.getAuthInstance();
@@ -41,8 +43,8 @@
 	<!--To Do List Name Text Field -->
 	<form action="#">
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<input class="mdl-textfield__input" type="text" id="sample3">
-			<label class="mdl-textfield__label" for="sample3">To Do List Name</label>
+			<input class="mdl-textfield__input" type="text" id="listName">
+			<label class="mdl-textfield__label" for="listName">To Do List Name</label>
 		</div>
 	</form>
 
@@ -76,48 +78,14 @@
 		<thead>
 		<tr>
 			<th class="mdl-data-table__cell--non-numeric">Category</th>
-			<th>Description</th>
-			<th>Start Date</th>
-			<th>End Date</th>
-			<th>Completed</th>
+			<th class="mdl-data-table__cell--non-numeric">Description</th>
+			<th class="mdl-data-table__cell--non-numeric">Start Date</th>
+			<th class="mdl-data-table__cell--non-numeric">End Date</th>
+			<th class="mdl-data-table__cell--non-numeric">Completed</th>
 		</tr>
 		</thead>
-		<tbody>
-		<tr>
-			<td class="mdl-data-table__cell--non-numeric">Kitchen</td>
-			<td>Repair leaky sink</td>
-			<td>2016-06-10</td>
-			<td>2016-06-11</td>
-			<td>False</td>
-		</tr>
-		<tr>
-			<td class="mdl-data-table__cell--non-numeric">Attic</td>
-			<td>Fix leak in roofk</td>
-			<td>2016-06-07</td>
-			<td>2016-06-17</td>
-			<td>False</td>
-		</tr>
-		<tr>
-			<td class="mdl-data-table__cell--non-numeric">Garage</td>
-			<td>Paint interior</td>
-			<td>2016-06-10</td>
-			<td>2016-06-11</td>
-			<td>False</td>
-		</tr>
-		<tr>
-			<td class="mdl-data-table__cell--non-numeric">Garden</td>
-			<td>Paint flowers</td>
-			<td>2016-06-04</td>
-			<td>2016-06-04</td>
-			<td>True</td>
-		</tr>
-		<tr>
-			<td class="mdl-data-table__cell--non-numeric">Garage</td>
-			<td>Repair door</td>
-			<td>2016-06-10</td>
-			<td>2016-06-14</td>
-			<td>True</td>
-		</tr>
+		<tbody id="tableBody">
+
 		</tbody>
 	</table>
 
@@ -125,8 +93,58 @@
 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
 		Save
 	</button>
-
-
-
 </body>
+<script>
+    var testData = [
+        {
+            category: "Kitchen",
+            description: "Repair leaky sink",
+            startDate: "2016-06-10",
+            endDate: "2016-06-11",
+            completed: "False"
+        },
+        {
+            category: "Attic",
+            description: "Fix leak in roof",
+            startDate: "2016-06-07",
+            endDate: "2016-06-17",
+            completed: "False"
+        },
+        {
+            category: "Garage",
+            description: "Paint interior",
+            startDate: "2016-06-10",
+            endDate: "2016-06-11",
+            completed: "False"
+        },
+        {
+            category: "Garden",
+            description: "Paint flowers",
+            startDate: "2016-06-04",
+            endDate: "2016-06-04",
+            completed: "True"
+        },
+        {
+            category: "Garage",
+            description: "Repair door",
+            startDate: "2016-06-10",
+            endDate: "2016-06-14",
+            completed: "False"
+        }
+    ]
+
+    for(i = 0; i < testData.length; i++) {
+        //Create the row element for each object in array
+        var tableRow = document.createElement("tr");
+        //Create the data elements for a given row
+        for(key in testData[i]) {
+            var tableData = document.createElement("td");
+            tableData.innerHTML = testData[i][key];
+			tableData.className = "mdl-data-table__cell--non-numeric";
+            tableRow.appendChild(tableData);
+        }
+        //Append the row to the table
+        document.getElementById("tableBody").appendChild(tableRow);
+    }
+</script>
 </html>
