@@ -100,6 +100,10 @@
 
 		</tbody>
 	</table>
+  <!-- Save Button -->
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+    Save
+  </button>
 
   <script src="../../script.js"></script>
   <script>
