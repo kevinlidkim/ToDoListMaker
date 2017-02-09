@@ -1,4 +1,1 @@
-com\blurple\controller\HelloWorldController.class
-com\blurple\models\OfyHelper.class
-com\blurple\models\ListItem.class
-com\blurple\models\ToDoList.class
+com/blurple/controller/ToDoListMakerController.class
