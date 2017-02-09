@@ -33,9 +33,14 @@
 	</script>
 
 	<!-- Create/Load Buttons -->
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+	<button id="createBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
 		Create
 	</button>
+	<script type="text/javascript">
+    document.getElementById("createBtn").onclick = function () {
+        window.location = "/new";
+    };
+	</script>
 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
 		Load
 	</button>
@@ -60,8 +65,8 @@
 	</label>
 
 	<!-- Add/Delete/Move Up/Move Down Buttons -->
-	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"
-			onclick="add()">
+	<br>
+	<button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">add</i>
 	</button>
 	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -73,6 +78,25 @@
 	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">arrow_downward</i>
 	</button>
+
+	<!-- New ToDo Item to be added-->
+	<br><br>
+	<label for="">Category</label>
+	<input type="text" name="catagory" value="" id="catagory">
+
+	<label for="">Description</label>
+	<input type="text" name="desc" value="" id="desc">
+
+	<label for="">Start Date</label>
+	<input type="text" name="start_Date" value="" id="start_Date">
+
+	<label for="">End Date</label>
+	<input type="text" name="end_Date" value="" id="end_Date">
+
+	<label for="">Completed</label>
+	<input type="checkbox" name="completed" value="" id="completed">
+
+	<br><br>
 
 	<!-- Table -->
 	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
@@ -101,6 +125,52 @@
 	</button>
 
 	<script src="../../script.js"></script>
-</body>
+	<script>
+		//Dummy to-do list as an array of objects
+		var testData = [
+		    {
+		        category: "Kitchen",
+		        description: "Repair leaky sink",
+		        startDate: "2016-06-10",
+		        endDate: "2016-06-11",
+		        completed: "False"
+		    },
+		    {
+		        category: "Attic",
+		        description: "Fix leak in roof",
+		        startDate: "2016-06-07",
+		        endDate: "2016-06-17",
+		        completed: "False"
+		    },
+		    {
+		        category: "Garage",
+		        description: "Paint interior",
+		        startDate: "2016-06-10",
+		        endDate: "2016-06-11",
+		        completed: "False"
+		    },
+		    {
+		        category: "Garden",
+		        description: "Paint flowers",
+		        startDate: "2016-06-04",
+		        endDate: "2016-06-04",
+		        completed: "True"
+		    },
+		    {
+		        category: "Garage",
+		        description: "Repair door",
+		        startDate: "2016-06-10",
+		        endDate: "2016-06-14",
+		        completed: "False"
+		    }
+		];
 
+		//Load the dummy to-do list by loading each object as a row item
+		for(var i = 0; i < testData.length; i++) {
+		    loadTableRow(testData);
+		}
+
+	</script>
+
+</body>
 </html>
