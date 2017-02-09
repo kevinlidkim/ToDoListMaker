@@ -1,4 +1,6 @@
 package com.blurple.controller;
+
+import com.blurple.models.ToDoList;
  
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,5 +28,12 @@ public class ToDoListMakerController {
 		mv.addObject("message", "DUHH");
 		mv.addObject("name", "YOOOO");
 		return mv;
+	}
+
+	@RequestMapping("/save")
+	public String saveList(ToDoList toDoList) {
+		System.out.println("the list");
+		System.out.println(toDoList);
+		return "success";
 	}
 }
