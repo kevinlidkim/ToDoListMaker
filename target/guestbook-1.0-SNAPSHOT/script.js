@@ -1,57 +1,13 @@
-//Dummy to-do list as an array of objects
-var testData = [
-    {
-        category: "Kitchen",
-        description: "Repair leaky sink",
-        startDate: "2016-06-10",
-        endDate: "2016-06-11",
-        completed: "False"
-    },
-    {
-        category: "Attic",
-        description: "Fix leak in roof",
-        startDate: "2016-06-07",
-        endDate: "2016-06-17",
-        completed: "False"
-    },
-    {
-        category: "Garage",
-        description: "Paint interior",
-        startDate: "2016-06-10",
-        endDate: "2016-06-11",
-        completed: "False"
-    },
-    {
-        category: "Garden",
-        description: "Paint flowers",
-        startDate: "2016-06-04",
-        endDate: "2016-06-04",
-        completed: "True"
-    },
-    {
-        category: "Garage",
-        description: "Repair door",
-        startDate: "2016-06-10",
-        endDate: "2016-06-14",
-        completed: "False"
-    }
-];
-
-//Load the dummy to-do list by loading each object as a row item
-for(var i = 0; i < testData.length; i++) {
-    loadTableRow();
-}
-
 /* Helper function which creates and adds a row item to the table */
-function loadTableRow() {
+function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
     var tableRow = document.createElement("tr");
     addCheckBox(tableRow);
 
     //Create the data elements for a given row
-    for(key in testData[i]) {
+    for(key in data[i]) {
         var tableData = document.createElement("td");
-        tableData.innerHTML = testData[i][key];
+        tableData.innerHTML = data[i][key];
         tableData.className = "mdl-data-table__cell--non-numeric";
         tableRow.appendChild(tableData);
     }
@@ -100,27 +56,60 @@ var headerCheckHandler = function(event) {
 };
 headerCheckbox.addEventListener('change', headerCheckHandler);
 
-/* Dummy add function */
-function add() {
-    var object = {
-        category: "a",
-        description: "a",
-        startDate: "a",
-        endDate: "a",
-        completed: "a"
-    };
+/* Add function */
+function add(new_Item) {
 
     var newTableRow = document.createElement("tr");
     var newCheckBox = addCheckBox(newTableRow);
     //Update checkBox
     componentHandler.upgradeElement(newCheckBox);
 
-    for(key in object) {
+    for(key in new_Item) {
         var rowData = document.createElement("td");
-        rowData.innerHTML = object[key];
+        rowData.innerHTML = new_Item[key];
         rowData.className = "mdl-data-table__cell--non-numeric";
         newTableRow.appendChild(rowData);
     }
 
     document.getElementById("tableBody").appendChild(newTableRow);
+}
+
+//resets the input boxes to empty
+function reset_Input() {
+  document.getElementById("catagory").value = "";
+  document.getElementById("desc").value = "";
+  document.getElementById("start_Date").value = "";
+  document.getElementById("end_Date").value = "";
+  document.getElementById("completed").value = "";
+}
+
+/* Triggering Add button function */
+document.getElementById("addBtn").onclick = function () {
+
+  // Get the new item info
+  var new_catagory = document.getElementById("catagory").value;
+  var new_desc = document.getElementById("desc").value;
+  var new_start_Date = document.getElementById("start_Date").value;
+  var new_end_Date = document.getElementById("end_Date").value;
+  var new_completed;
+
+  //Capitalize the boolean.
+  if(document.getElementById("completed").checked) {
+    new_completed = "True";
+  } else {
+    new_completed = "False";
+  }
+
+  // make the new item to be added
+  var new_Item = {
+    category: new_catagory,
+    description: new_desc,
+    startDate: new_start_Date,
+    endDate: new_end_Date,
+    completed: new_completed
+  }
+
+  //add new item and reset the inputs
+  add(new_Item);
+  reset_Input();
 }
