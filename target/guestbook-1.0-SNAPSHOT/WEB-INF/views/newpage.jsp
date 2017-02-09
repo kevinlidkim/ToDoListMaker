@@ -12,7 +12,7 @@
   <center>
     <h2>THIS IS A NEW PAGE</h2>
     <h2>
-      ${message} guestbook
+      ${message} ${name}
     </h2>
   </center>
 

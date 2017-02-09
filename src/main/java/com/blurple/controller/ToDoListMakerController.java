@@ -15,7 +15,7 @@ public class ToDoListMakerController {
 	public ModelAndView showMessage(
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
-		ModelAndView mv = new ModelAndView("helloworld");
+		ModelAndView mv = new ModelAndView("tdlm");
 		mv.addObject("message", message);
 		mv.addObject("name", name);
 		return mv;
