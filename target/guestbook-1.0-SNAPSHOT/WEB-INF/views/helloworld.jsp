@@ -15,7 +15,7 @@
 	<center>
 		<h2>Hello World</h2>
 		<h2>
-			${message} guestbook
+			${message} ${name}
 		</h2>
 	</center>
 
@@ -60,7 +60,8 @@
 	</label>
 
 	<!-- Add/Delete/Move Up/Move Down Buttons -->
-	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"
+			onclick="add()">
 		<i class="material-icons">add</i>
 	</button>
 	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -74,9 +75,14 @@
 	</button>
 
 	<!-- Table -->
-	<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+	<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 		<thead>
 		<tr>
+			<th>
+				<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
+					<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
+				</label>
+			</th>
 			<th class="mdl-data-table__cell--non-numeric">Category</th>
 			<th class="mdl-data-table__cell--non-numeric">Description</th>
 			<th class="mdl-data-table__cell--non-numeric">Start Date</th>
@@ -93,58 +99,8 @@
 	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
 		Save
 	</button>
-</body>
-<script>
-    var testData = [
-        {
-            category: "Kitchen",
-            description: "Repair leaky sink",
-            startDate: "2016-06-10",
-            endDate: "2016-06-11",
-            completed: "False"
-        },
-        {
-            category: "Attic",
-            description: "Fix leak in roof",
-            startDate: "2016-06-07",
-            endDate: "2016-06-17",
-            completed: "False"
-        },
-        {
-            category: "Garage",
-            description: "Paint interior",
-            startDate: "2016-06-10",
-            endDate: "2016-06-11",
-            completed: "False"
-        },
-        {
-            category: "Garden",
-            description: "Paint flowers",
-            startDate: "2016-06-04",
-            endDate: "2016-06-04",
-            completed: "True"
-        },
-        {
-            category: "Garage",
-            description: "Repair door",
-            startDate: "2016-06-10",
-            endDate: "2016-06-14",
-            completed: "False"
-        }
-    ]
 
-    for(i = 0; i < testData.length; i++) {
-        //Create the row element for each object in array
-        var tableRow = document.createElement("tr");
-        //Create the data elements for a given row
-        for(key in testData[i]) {
-            var tableData = document.createElement("td");
-            tableData.innerHTML = testData[i][key];
-			tableData.className = "mdl-data-table__cell--non-numeric";
-            tableRow.appendChild(tableData);
-        }
-        //Append the row to the table
-        document.getElementById("tableBody").appendChild(tableRow);
-    }
-</script>
+	<script src="../../script.js"></script>
+</body>
+
 </html>
