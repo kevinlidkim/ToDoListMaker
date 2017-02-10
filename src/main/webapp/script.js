@@ -1,3 +1,5 @@
+currentListData = [];
+
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -70,7 +72,7 @@ function add(new_Item) {
         rowData.className = "mdl-data-table__cell--non-numeric";
         newTableRow.appendChild(rowData);
     }
-
+    currentListData.push(new_Item);
     document.getElementById("tableBody").appendChild(newTableRow);
 }
 
@@ -95,7 +97,7 @@ document.getElementById("addBtn").onclick = function () {
 
   //Capitalize the boolean.
   if(document.getElementById("completed").checked) {
-    new_completed = "True";
+    new_completed = "True"; 
   } else {
     new_completed = "False";
   }
@@ -113,3 +115,27 @@ document.getElementById("addBtn").onclick = function () {
   add(new_Item);
   reset_Input();
 }
+
+/* Add event handler to save button */
+document.getElementById("saveBtn").onclick = function () {
+  var dataObj = {
+    list: currentListData,
+    name: "LIST NAME"
+  }
+  $.ajax({
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' 
+    },
+    type: "POST",
+    url: "/createList",
+    data: JSON.stringify(dataObj),
+    success: function(response) {
+      // console.log(response);
+    },
+    error: function(err) {
+      // console.log(err);
+    }
+  });
+
+};

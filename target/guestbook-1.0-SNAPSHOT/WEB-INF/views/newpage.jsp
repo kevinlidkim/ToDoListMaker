@@ -7,12 +7,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
   <center>
     <h2>THIS IS A NEW PAGE</h2>
     <h2>
-      ${message} ${name}
+      ${message} guestbook
     </h2>
   </center>
 
@@ -101,7 +102,7 @@
 		</tbody>
 	</table>
   <!-- Save Button -->
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="saveBtn">
     Save
   </button>
 
