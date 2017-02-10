@@ -1,5 +1,3 @@
-currentListData = [];
-
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -78,15 +76,19 @@ function add(item) {
 
 /* Remove function*/
 function remove() {
+  //get all checkedboxes
   var c_boxes = document.getElementsByClassName(
       "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
   );
   for (var i = 0, length = c_boxes.length; i < length; i++) {
+    // check if box is checked
     if(c_boxes[i] != null && c_boxes[i].classList.contains('is-checked')) {
-      console.log(c_boxes[i]);
+      // Deletes the checked box row from html
+      // buggy with multiple items selected.
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
     }
   }
+}
 
 //resets the input boxes to empty
 function reset_Input() {
@@ -132,27 +134,3 @@ document.getElementById("addBtn").onclick = function () {
 document.getElementById("removeBtn").onclick = function () {
   remove();
 }
-
-/* Add event handler to save button */
-document.getElementById("saveBtn").onclick = function () {
-  var dataObj = {
-    list: currentListData,
-    name: "LIST NAME"
-  }
-  $.ajax({
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    type: "POST",
-    url: "/createList",
-    data: JSON.stringify(dataObj),
-    success: function(response) {
-      // console.log(response);
-    },
-    error: function(err) {
-      // console.log(err);
-    }
-  });
-
-};

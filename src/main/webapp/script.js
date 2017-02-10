@@ -119,7 +119,7 @@ document.getElementById("addBtn").onclick = function () {
   // make the new item to be added
   var new_Item = {
     category: new_catagory,
-    description: new_desc,c
+    description: new_desc,
     startDate: new_start_Date,
     endDate: new_end_Date,
     completed: new_completed

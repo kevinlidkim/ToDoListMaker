@@ -94,7 +94,7 @@
 				</button>
 			</div>
 			<div style="margin-bottom:25px;">
-				<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+				<button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 					<i class="material-icons">remove</i>
 				</button>
 			</div>
@@ -112,24 +112,6 @@
 		</div>
 
 	</form>
-
-	<!-- New ToDo Item to be added-->
-	<br><br>
-	<label for="">Category</label>
-	<input type="text" name="catagory" value="" id="catagory">
-
-	<label for="">Description</label>
-	<input type="text" name="desc" value="" id="desc">
-
-	<label for="">Start Date</label>
-	<input type="text" name="start_Date" value="" id="start_Date">
-
-	<label for="">End Date</label>
-	<input type="text" name="end_Date" value="" id="end_Date">
-
-	<label for="">Completed</label>
-	<input type="checkbox" name="completed" value="" id="completed">
-	<br><br>
 
 		<!-- Table -->
 		<div style="display:inline-block;vertical-align:top;">
@@ -200,49 +182,49 @@
 
 	<script src="../../script.js"></script>
 	<script>
-        //Dummy to-do list as an array of objects
-        var testData = [
-            {
-                category: "Kitchen",
-                description: "Repair leaky sink",
-                startDate: "2016-06-10",
-                endDate: "2016-06-11",
-                completed: "False"
-            },
-            {
-                category: "Attic",
-                description: "Fix leak in roof",
-                startDate: "2016-06-07",
-                endDate: "2016-06-17",
-                completed: "False"
-            },
-            {
-                category: "Garage",
-                description: "Paint interior",
-                startDate: "2016-06-10",
-                endDate: "2016-06-11",
-                completed: "False"
-            },
-            {
-                category: "Garden",
-                description: "Paint flowers",
-                startDate: "2016-06-04",
-                endDate: "2016-06-04",
-                completed: "True"
-            },
-            {
-                category: "Garage",
-                description: "Repair door",
-                startDate: "2016-06-10",
-                endDate: "2016-06-14",
-                completed: "False"
-            }
-        ];
+	  //Dummy to-do list as an array of objects
+	  var testData = [
+	      {
+	          category: "Kitchen",
+	          description: "Repair leaky sink",
+	          startDate: "2016-06-10",
+	          endDate: "2016-06-11",
+	          completed: "False"
+	      },
+	      {
+	          category: "Attic",
+	          description: "Fix leak in roof",
+	          startDate: "2016-06-07",
+	          endDate: "2016-06-17",
+	          completed: "False"
+	      },
+	      {
+	          category: "Garage",
+	          description: "Paint interior",
+	          startDate: "2016-06-10",
+	          endDate: "2016-06-11",
+	          completed: "False"
+	      },
+	      {
+	          category: "Garden",
+	          description: "Paint flowers",
+	          startDate: "2016-06-04",
+	          endDate: "2016-06-04",
+	          completed: "True"
+	      },
+	      {
+	          category: "Garage",
+	          description: "Repair door",
+	          startDate: "2016-06-10",
+	          endDate: "2016-06-14",
+	          completed: "False"
+	      }
+	  ];
 
-        //Load the dummy to-do list by loading each object as a row item
-        for(var i = 0; i < testData.length; i++) {
-            loadTableRow(testData);
-        }
+	  //Load the dummy to-do list by loading each object as a row item
+	  for(var i = 0; i < testData.length; i++) {
+	      loadTableRow(testData);
+	  }
 
 	</script>
 </div>
