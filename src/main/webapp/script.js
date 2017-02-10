@@ -130,6 +130,30 @@ document.getElementById("addBtn").onclick = function () {
   reset_Input();
 }
 
+/* Add event handler to save button */
+document.getElementById("saveBtn").onclick = function () {
+  var dataObj = {
+    list: currentListData,
+    name: "LIST NAME"
+  }
+  $.ajax({
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' 
+    },
+    type: "POST",
+    url: "/createList",
+    data: JSON.stringify(dataObj),
+    success: function(response) {
+      // console.log(response);
+    },
+    error: function(err) {
+      // console.log(err);
+    }
+  });
+
+};
+
 /* Triggering remove button function*/
 document.getElementById("removeBtn").onclick = function () {
   remove();

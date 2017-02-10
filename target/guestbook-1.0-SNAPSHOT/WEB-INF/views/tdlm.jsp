@@ -94,7 +94,6 @@
 				</button>
 			</div>
 			<div style="margin-bottom:25px;">
-				<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 				<button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 					<i class="material-icons">remove</i>
 				</button>
@@ -109,7 +108,10 @@
 					<i class="material-icons">arrow_downward</i>
 				</button>
 			</div>
+
 		</div>
+
+	</form>
 
 		<!-- Table -->
 		<div style="display:inline-block;vertical-align:top;">
@@ -180,7 +182,6 @@
 
 	<script src="../../script.js"></script>
 	<script>
-
 	  //Dummy to-do list as an array of objects
 	  var testData = [
 	      {
