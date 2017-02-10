@@ -13,7 +13,7 @@
   <center>
     <h2>THIS IS A NEW PAGE</h2>
     <h2>
-      ${message} todolist
+      ${message} ${name}
     </h2>
   </center>
 

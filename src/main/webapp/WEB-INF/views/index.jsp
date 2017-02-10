@@ -5,6 +5,7 @@
     <title>To Do List Maker</title>
 </head>
 <body>
+<div>To Do List Maker</div>
 <div id="my-signin2"></div>
 <script>
     function onSuccess(googleUser) {
