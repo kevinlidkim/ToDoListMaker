@@ -1,5 +1,3 @@
-currentListData = [];
-
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -46,34 +44,50 @@ var boxes = document.getElementsByClassName(
     "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
 );
 var headerCheckHandler = function(event) {
-    if (event.target.checked) {
-        for (var i = 0, length = boxes.length; i < length; i++) {
-            boxes[i].MaterialCheckbox.check();
-        }
-    } else {
-        for (var i = 0, length = boxes.length; i < length; i++) {
-            boxes[i].MaterialCheckbox.uncheck();
-        }
-    }
+  if (event.target.checked) {
+      for (var i = 0, length = boxes.length; i < length; i++) {
+          boxes[i].MaterialCheckbox.check();
+      }
+  } else {
+      for (var i = 0, length = boxes.length; i < length; i++) {
+          boxes[i].MaterialCheckbox.uncheck();
+      }
+  }
 };
 headerCheckbox.addEventListener('change', headerCheckHandler);
 
 /* Add function */
-function add(new_Item) {
+function add(item) {
 
-    var newTableRow = document.createElement("tr");
-    var newCheckBox = addCheckBox(newTableRow);
-    //Update checkBox
-    componentHandler.upgradeElement(newCheckBox);
+  var newTableRow = document.createElement("tr");
+  var newCheckBox = addCheckBox(newTableRow);
+  //Update checkBox
+  componentHandler.upgradeElement(newCheckBox);
 
-    for(key in new_Item) {
-        var rowData = document.createElement("td");
-        rowData.innerHTML = new_Item[key];
-        rowData.className = "mdl-data-table__cell--non-numeric";
-        newTableRow.appendChild(rowData);
+  for(key in item) {
+      var rowData = document.createElement("td");
+      rowData.innerHTML = item[key];
+      rowData.className = "mdl-data-table__cell--non-numeric";
+      newTableRow.appendChild(rowData);
+  }
+
+  document.getElementById("tableBody").appendChild(newTableRow);
+}
+
+/* Remove function*/
+function remove() {
+  //get all checkedboxes
+  var c_boxes = document.getElementsByClassName(
+      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
+  );
+  for (var i = 0, length = c_boxes.length; i < length; i++) {
+    // check if box is checked
+    if(c_boxes[i] != null && c_boxes[i].classList.contains('is-checked')) {
+      // Deletes the checked box row from html
+      // buggy with multiple items selected.
+      c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
     }
-    currentListData.push(new_Item);
-    document.getElementById("tableBody").appendChild(newTableRow);
+  }
 }
 
 //resets the input boxes to empty
@@ -93,11 +107,11 @@ document.getElementById("addBtn").onclick = function () {
   var new_desc = document.getElementById("desc").value;
   var new_start_Date = document.getElementById("start_Date").value;
   var new_end_Date = document.getElementById("end_Date").value;
-  var new_completed;
 
   //Capitalize the boolean.
+  var new_completed;
   if(document.getElementById("completed").checked) {
-    new_completed = "True"; 
+    new_completed = "True";
   } else {
     new_completed = "False";
   }
@@ -116,26 +130,7 @@ document.getElementById("addBtn").onclick = function () {
   reset_Input();
 }
 
-/* Add event handler to save button */
-document.getElementById("saveBtn").onclick = function () {
-  var dataObj = {
-    list: currentListData,
-    name: "LIST NAME"
-  }
-  $.ajax({
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json' 
-    },
-    type: "POST",
-    url: "/createList",
-    data: JSON.stringify(dataObj),
-    success: function(response) {
-      // console.log(response);
-    },
-    error: function(err) {
-      // console.log(err);
-    }
-  });
-
-};
+/* Triggering remove button function*/
+document.getElementById("removeBtn").onclick = function () {
+  remove();
+}
