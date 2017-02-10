@@ -32,32 +32,49 @@ public class ListItem {
   public Date endDate;
   public boolean completed;
 
-  public ListItem() {
-    
-  }
-
-  /**
-   * A convenience constructor
-   **/
-  public ListItem(String list, String category) {
-    this();
-    if( list != null ) {
-      theList = Key.create(ToDoList.class, list);  // Creating the Ancestor key
+  public ListItem(String list, String category, String description, Date startDate, Date endDate, boolean completed) {
+    if (list != null) {
+      theList = Key.create(ToDoList.class, list);
     } else {
-      theList = Key.create(ToDoList.class, "default");
+      theList.create(ToDoList.class, "default");
     }
     this.category = category;
-  }
-
-  /**
-   * Takes all important fields
-   **/
-  public ListItem(String list, String category, String description, Date startDate, Date endDate, boolean completed) {
-    this(list, category);
     this.description = description;
     this.startDate = startDate;
     this.endDate = endDate;
     this.completed = completed;
   }
+
+  public Long getId() {
+    return id;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  // /**
+  //  * A convenience constructor
+  //  **/
+  // public ListItem(String list, String category) {
+  //   this();
+  //   if( list != null ) {
+  //     theList = Key.create(ToDoList.class, list);  // Creating the Ancestor key
+  //   } else {
+  //     theList = Key.create(ToDoList.class, "default");
+  //   }
+  //   this.category = category;
+  // }
+
+  // /**
+  //  * Takes all important fields
+  //  **/
+  // public ListItem(String list, String category, String description, Date startDate, Date endDate, boolean completed) {
+  //   this(list, category);
+  //   this.description = description;
+  //   this.startDate = startDate;
+  //   this.endDate = endDate;
+  //   this.completed = completed;
+  // }
 
 }

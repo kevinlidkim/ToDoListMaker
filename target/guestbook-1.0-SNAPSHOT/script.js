@@ -1,3 +1,6 @@
+var currentListData = [];
+var currentUser = "kev";
+
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -70,7 +73,7 @@ function add(item) {
       rowData.className = "mdl-data-table__cell--non-numeric";
       newTableRow.appendChild(rowData);
   }
-
+  currentListData.push(item);
   document.getElementById("tableBody").appendChild(newTableRow);
 }
 
@@ -129,6 +132,48 @@ document.getElementById("addBtn").onclick = function () {
   add(new_Item);
   reset_Input();
 }
+
+/* Check to see whether list to be saved is private or public */
+function privateOrPublic() {
+  if (document.getElementById('private').checked) {
+    return false;
+  } else if (document.getElementById('public').checked) {
+    return true;
+  } else {
+    // ??? when would it reach here
+    return false;
+  }
+}
+
+/* Add event handler to save button */
+document.getElementById("saveBtn").onclick = function () {
+
+  console.log(currentUser);
+
+  var isPublic = privateOrPublic();
+  var dataObj = {
+    list: currentListData,
+    name: "LIST NAME",
+    owner: currentUser,
+    isPublic: isPublic
+  };
+  $.ajax({
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' 
+    },
+    type: "POST",
+    url: "/createList",
+    data: JSON.stringify(dataObj),
+    success: function(response) {
+      // console.log(response);
+    },
+    error: function(err) {
+      // console.log(err);
+    }
+  });
+
+};
 
 /* Triggering remove button function*/
 document.getElementById("removeBtn").onclick = function () {

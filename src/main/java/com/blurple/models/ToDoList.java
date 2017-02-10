@@ -1,7 +1,12 @@
 package com.blurple.models;
 
+import com.blurple.models.ListItem;
+
+import java.util.*;
+
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+
 
 /**
  * The @Entity tells Objectify about our entity.  We also register it in
@@ -11,18 +16,32 @@ import com.googlecode.objectify.annotation.Id;
  */
 @Entity
 public class ToDoList {
-  @Id public String id;
+  @Id public Long id;
 
   public String name;
   public boolean isPublic;
+  public String owner;
 
-  public ToDoList() {
-    
-  }
+  public List<ListItem> list;
 
-  public ToDoList(String name, boolean isPublic) {
+  public ToDoList(String name, boolean isPublic, String owner) {
     this.name = name;
     this.isPublic = isPublic;
+    this.owner = owner;
+    this.list = new ArrayList<ListItem>();
   }
+
+  public void addItem(ListItem li) {
+    this.list.add(li);
+  }
+
+  public void removeItem(ListItem li) {
+    this.list.remove(li);
+  }
+
+  // public ToDoList(String name, boolean isPublic) {
+  //   this.name = name;
+  //   this.isPublic = isPublic;
+  // }
 
 }

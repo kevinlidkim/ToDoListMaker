@@ -53,7 +53,7 @@
 	<button id="addBtn" formnovalidate=""class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">add</i>
 	</button>
-	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+	<button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">remove</i>
 	</button>
 	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -72,10 +72,10 @@
   <input type="text" name="desc" value="" id="desc">
 
   <label for="">Start Date</label>
-  <input type="text" name="start_Date" value="" id="start_Date">
+  <input type="date" name="start_Date" value="" id="start_Date">
 
   <label for="">End Date</label>
-  <input type="text" name="end_Date" value="" id="end_Date">
+  <input type="date" name="end_Date" value="" id="end_Date">
 
   <label for="">Completed</label>
   <input type="checkbox" name="completed" value="" id="completed">
