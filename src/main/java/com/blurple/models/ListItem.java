@@ -36,7 +36,7 @@ public class ListItem {
     if (list != null) {
       theList = Key.create(ToDoList.class, list);
     } else {
-      theList.create(ToDoList.class, "default");
+      theList = Key.create(ToDoList.class, "default");
     }
     this.category = category;
     this.description = description;
