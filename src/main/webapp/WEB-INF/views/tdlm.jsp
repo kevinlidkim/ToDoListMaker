@@ -59,6 +59,7 @@
 		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;">ToDo List</div>
 	</div>
 	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${message} ${name}</div>
+	<div id="user" style="font-size:4em;"></div>
 </div>
 
 <div style="margin: 0 auto;display:inline-block;padding-top:25px;">
@@ -179,54 +180,58 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="../../script.js"></script>
-	<script>
-	  //Dummy to-do list as an array of objects
-	  var testData = [
-	      {
-	          category: "Kitchen",
-	          description: "Repair leaky sink",
-	          startDate: "2016-06-10",
-	          endDate: "2016-06-11",
-	          completed: "False"
-	      },
-	      {
-	          category: "Attic",
-	          description: "Fix leak in roof",
-	          startDate: "2016-06-07",
-	          endDate: "2016-06-17",
-	          completed: "False"
-	      },
-	      {
-	          category: "Garage",
-	          description: "Paint interior",
-	          startDate: "2016-06-10",
-	          endDate: "2016-06-11",
-	          completed: "False"
-	      },
-	      {
-	          category: "Garden",
-	          description: "Paint flowers",
-	          startDate: "2016-06-04",
-	          endDate: "2016-06-04",
-	          completed: "True"
-	      },
-	      {
-	          category: "Garage",
-	          description: "Repair door",
-	          startDate: "2016-06-10",
-	          endDate: "2016-06-14",
-	          completed: "False"
-	      }
-	  ];
-
-	  //Load the dummy to-do list by loading each object as a row item
-	  for(var i = 0; i < testData.length; i++) {
-	      loadTableRow(testData);
-	  }
-
-	</script>
 </div>
+<script>
+    var user = document.getElementById("user");
+    user.innerHTML = sessionStorage.getItem("user");
+    console.log(sessionStorage.getItem("user") + " hi");
+</script>
+<script src="../../script.js"></script>
+<script>
+    //Dummy to-do list as an array of objects
+    var testData = [
+        {
+            category: "Kitchen",
+            description: "Repair leaky sink",
+            startDate: "2016-06-10",
+            endDate: "2016-06-11",
+            completed: "False"
+        },
+        {
+            category: "Attic",
+            description: "Fix leak in roof",
+            startDate: "2016-06-07",
+            endDate: "2016-06-17",
+            completed: "False"
+        },
+        {
+            category: "Garage",
+            description: "Paint interior",
+            startDate: "2016-06-10",
+            endDate: "2016-06-11",
+            completed: "False"
+        },
+        {
+            category: "Garden",
+            description: "Paint flowers",
+            startDate: "2016-06-04",
+            endDate: "2016-06-04",
+            completed: "True"
+        },
+        {
+            category: "Garage",
+            description: "Repair door",
+            startDate: "2016-06-10",
+            endDate: "2016-06-14",
+            completed: "False"
+        }
+    ];
+
+    //Load the dummy to-do list by loading each object as a row item
+    for(var i = 0; i < testData.length; i++) {
+        loadTableRow(testData);
+    }
+
+</script>
 </body>
 </html>

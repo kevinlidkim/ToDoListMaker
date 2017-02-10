@@ -17,6 +17,9 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/guestbook-1.0-SNAPSHOT/WEB-INF/classes" />
@@ -43,5 +46,8 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.0.1.RELEASE" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.google.appengine:appengine-testing:1.9.48" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: com.google.appengine:appengine-api-stubs:1.9.48" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.4.2" level="project" />
+    <orderEntry type="library" name="Maven: org.json:json:20090211" level="project" />
   </component>
 </module>
