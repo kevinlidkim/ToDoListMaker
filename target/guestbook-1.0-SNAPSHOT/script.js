@@ -1,3 +1,5 @@
+currentListData = [];
+
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -85,7 +87,6 @@ function remove() {
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
     }
   }
-}
 
 //resets the input boxes to empty
 function reset_Input() {
@@ -131,3 +132,27 @@ document.getElementById("addBtn").onclick = function () {
 document.getElementById("removeBtn").onclick = function () {
   remove();
 }
+
+/* Add event handler to save button */
+document.getElementById("saveBtn").onclick = function () {
+  var dataObj = {
+    list: currentListData,
+    name: "LIST NAME"
+  }
+  $.ajax({
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    type: "POST",
+    url: "/createList",
+    data: JSON.stringify(dataObj),
+    success: function(response) {
+      // console.log(response);
+    },
+    error: function(err) {
+      // console.log(err);
+    }
+  });
+
+};

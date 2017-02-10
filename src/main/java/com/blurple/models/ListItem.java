@@ -26,9 +26,11 @@ public class ListItem {
   @Parent Key<ToDoList> theList;
   @Id public Long id;
 
-  @Index public String itemName;
+  public String category;
+  public String description;
   public Date startDate;
   public Date endDate;
+  public boolean completed;
 
   public ListItem() {
     
@@ -37,23 +39,25 @@ public class ListItem {
   /**
    * A convenience constructor
    **/
-  public ListItem(String list, String itemName) {
+  public ListItem(String list, String category) {
     this();
     if( list != null ) {
       theList = Key.create(ToDoList.class, list);  // Creating the Ancestor key
     } else {
       theList = Key.create(ToDoList.class, "default");
     }
-    this.itemName = itemName;
+    this.category = category;
   }
 
   /**
    * Takes all important fields
    **/
-  public ListItem(String list, String itemName, Date startDate, Date endDate) {
-    this(list, itemName);
+  public ListItem(String list, String category, String description, Date startDate, Date endDate, boolean completed) {
+    this(list, category);
+    this.description = description;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.completed = completed;
   }
 
 }
