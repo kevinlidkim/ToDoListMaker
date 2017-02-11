@@ -27,7 +27,7 @@ import com.googlecode.objectify.ObjectifyService;
 
 @Controller
 public class ToDoListMakerController {
-	String message = "Welcome to Springaaa MVC!";
+	String message = "Welcome to ToDoList Maker! ";
 
 	@RequestMapping("/")
 	public ModelAndView landingPage() {
