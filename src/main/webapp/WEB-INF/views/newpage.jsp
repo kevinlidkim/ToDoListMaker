@@ -14,6 +14,7 @@
     <h2>THIS IS A NEW PAGE</h2>
     <h2>
       ${message} ${name}
+      ${viewableLists}
     </h2>
   </center>
 

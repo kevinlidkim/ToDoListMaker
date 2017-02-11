@@ -24,19 +24,31 @@ public class ToDoList {
 
   public List<ListItem> list;
 
+  public ToDoList() {
+    list = new ArrayList<ListItem>();
+  }
+
   public ToDoList(String name, boolean isPublic, String owner) {
     this.name = name;
     this.isPublic = isPublic;
     this.owner = owner;
-    this.list = new ArrayList<ListItem>();
+    list = new ArrayList<ListItem>();
   }
 
   public void addItem(ListItem li) {
-    this.list.add(li);
+    list.add(li);
   }
 
   public void removeItem(ListItem li) {
-    this.list.remove(li);
+    list.remove(li);
+  }
+
+  public String getOwner() {
+    return owner;
+  }
+
+  public boolean isPublic() {
+    return isPublic;
   }
 
   // public ToDoList(String name, boolean isPublic) {

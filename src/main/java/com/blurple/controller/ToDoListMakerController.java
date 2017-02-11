@@ -51,12 +51,6 @@ public class ToDoListMakerController {
 	@RequestMapping("/createList")
 	public ModelAndView createList(@RequestBody String input) throws Exception {
 
-		// UserService userService = UserServiceFactory.getUserService();
-		// User user = userService.getCurrentUser();
-		// System.out.println("CURRENT USER");
-		// System.out.println(user);
-		// System.out.println("");
-
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
 		// parse the request and get the fields
@@ -89,10 +83,33 @@ public class ToDoListMakerController {
 		return mv;
 	}
 
-	// @RequestMapping("/createList")
-	// public void createList(@RequestParam(value = "currentListData[]") String currentListData) {
-	// 	System.out.println("the list");
-	// 	System.out.println(currentListData);
-	// 	System.out.println("create");
-	// }
+	@RequestMapping("/loadViewableLists")
+	public ModelAndView loadViewableLists() {
+
+		System.out.println("LOADING IN BACKEND");
+
+		String ownerEmail = "kev";
+
+		// filters not working... why???
+
+		// List<ToDoList> publicLists = ObjectifyService.ofy().load().type(ToDoList.class).filter("isPublic ==", true).list();
+		// List<ToDoList> ownerLists = ObjectifyService.ofy().load().type(ToDoList.class).filter("owner ==", ownerEmail).list();
+
+		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
+
+		// only get the lists that are public or by owner
+		List<ToDoList> viewableLists = new ArrayList<ToDoList>();
+
+		for (ToDoList list : allLists) {
+			if (list.isPublic()) {
+				viewableLists.add(list);
+			} else if (list.getOwner().equals(ownerEmail)) {
+				viewableLists.add(list);
+			}
+		}
+
+		ModelAndView mv = new ModelAndView("newpage");
+		mv.addObject("viewableLists", viewableLists);
+		return mv;
+	}
 }
