@@ -88,6 +88,7 @@ function remove() {
     if(c_boxes[i] != null && c_boxes[i].classList.contains('is-checked')) {
       // Deletes the checked box row from html
       // buggy with multiple items selected.
+      console.log("number: " + i);
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
     }
   }
@@ -160,7 +161,7 @@ document.getElementById("saveBtn").onclick = function () {
   $.ajax({
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json' 
+      'Content-Type': 'application/json'
     },
     type: "POST",
     url: "/createList",

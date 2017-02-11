@@ -102,12 +102,12 @@
 				</button>
 			</div>
 			<div style="margin-bottom:25px;">
-				<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+				<button id="upBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 					<i class="material-icons">arrow_upward</i>
 				</button>
 			</div>
 			<div style="margin-bottom:25px;">
-				<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+				<button id="downBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 					<i class="material-icons">arrow_downward</i>
 				</button>
 			</div>
@@ -139,7 +139,7 @@
 			</table>
 
 			<!-- Save Button -->
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
+			<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
 				Save
 			</button>
 		</div>

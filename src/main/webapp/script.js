@@ -88,12 +88,23 @@ function remove() {
     if(c_boxes[i] != null && c_boxes[i].classList.contains('is-checked')) {
       // Deletes the checked box row from html
       // buggy with multiple items selected.
+      console.log("number: " + i);
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
     }
   }
 }
 
-//resets the input boxes to empty
+/* Move up function */
+function moveUp() {
+
+}
+
+/* Move up function */
+function moveDown() {
+
+}
+
+/* Resets the input boxes to empty */
 function reset_Input() {
   document.getElementById("catagory").value = "";
   document.getElementById("desc").value = "";
@@ -160,7 +171,7 @@ document.getElementById("saveBtn").onclick = function () {
   $.ajax({
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json' 
+      'Content-Type': 'application/json'
     },
     type: "POST",
     url: "/createList",

@@ -4,7 +4,7 @@
 <head>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
-	<title>Spring 4 MVC -HelloWorld</title>
+	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -58,7 +58,8 @@
 		</div>
 		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;">ToDo List</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${message} ${name}</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${message} todolist</div>
+
 	<br>
 	<div id="user" style="font-size:4em;"></div>
 </div>
@@ -138,7 +139,7 @@
 			</table>
 
 			<!-- Save Button -->
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
+			<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
 				Save
 			</button>
 		</div>
