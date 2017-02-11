@@ -87,7 +87,6 @@ function remove() {
     // check if box is checked
     if(c_boxes[i] != null && c_boxes[i].classList.contains('is-checked')) {
       // Deletes the checked box row from html
-      // buggy with multiple items selected.
       console.log("number: " + i);
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
       // Move counter back so the next box can be removed properly.
@@ -179,10 +178,10 @@ document.getElementById("saveBtn").onclick = function () {
     url: "/createList",
     data: JSON.stringify(dataObj),
     success: function(response) {
-      // console.log(response);
+       console.log(response);
     },
     error: function(err) {
-      // console.log(err);
+       console.log(err);
     }
   });
 
