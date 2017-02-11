@@ -51,6 +51,10 @@ public class ToDoList {
     return isPublic;
   }
 
+  public Long getId() {
+    return id;
+  }
+
   // public ToDoList(String name, boolean isPublic) {
   //   this.name = name;
   //   this.isPublic = isPublic;
