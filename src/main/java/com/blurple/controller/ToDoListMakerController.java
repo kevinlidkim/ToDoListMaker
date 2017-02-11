@@ -27,7 +27,7 @@ import com.googlecode.objectify.ObjectifyService;
 
 @Controller
 public class ToDoListMakerController {
-	String message = "Welcome to Springaaa MVC!";
+	String message = "Welcome to ToDoList Maker! ";
 
 	@RequestMapping("/")
 	public ModelAndView landingPage() {
@@ -62,7 +62,7 @@ public class ToDoListMakerController {
 		JSONObject request = new JSONObject(input);
 		JSONArray jArr = request.getJSONArray("list");
 		String listName = request.getString("name");
-		boolean isPublic = "True".equals(request.getString("isPublic"));
+		boolean isPublic = "true".equals(request.getString("isPublic"));
 		String owner = request.getString("owner");
 
 		// build the list
@@ -75,7 +75,7 @@ public class ToDoListMakerController {
 			String description = jObj.getString("description");
 			Date startDate = df.parse(jObj.getString("startDate"));
 			Date endDate = df.parse(jObj.getString("endDate"));
-			boolean completed = "True".equals(jObj.getString("completed"));
+			boolean completed = "true".equals(jObj.getString("completed"));
 			ListItem listItem = new ListItem(null, category, description, startDate, endDate, completed);
 			toDoList.addItem(listItem);
 			ObjectifyService.ofy().save().entity(listItem).now();
@@ -90,8 +90,7 @@ public class ToDoListMakerController {
 
 	@RequestMapping("/loadViewableLists")
 	public ModelAndView loadViewableLists() {
-
-		System.out.println("LOADING IN BACKEND");
+		// edit this. it should take in owner email as a parameter from frontend
 
 		String ownerEmail = "kev";
 
@@ -117,4 +116,22 @@ public class ToDoListMakerController {
 		mv.addObject("viewableLists", viewableLists);
 		return mv;
 	}
+
+	@RequestMapping("/loadSelectedList")
+	public ModelAndView loadSelectedList() {
+		// edit this. it should take in the selected list id as a parameter from frontend
+
+		/* need to retrieve id as a string because it is too long to be an integer. */
+		String idString = "4644337115725824";
+		Long listId = Long.parseLong(idString);
+
+		ToDoList selectedList = ObjectifyService.ofy().load().type(ToDoList.class).id(listId).now();
+
+		ModelAndView mv = new ModelAndView("newpage");
+		mv.addObject("selectedList", selectedList);
+		return mv;
+
+	}
+
 }
+

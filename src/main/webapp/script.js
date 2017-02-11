@@ -90,6 +90,8 @@ function remove() {
       // buggy with multiple items selected.
       console.log("number: " + i);
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
+      // Move counter back so the next box can be removed properly.
+      i--;
     }
   }
 }

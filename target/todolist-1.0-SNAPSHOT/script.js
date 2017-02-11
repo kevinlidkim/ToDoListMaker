@@ -90,11 +90,22 @@ function remove() {
       // buggy with multiple items selected.
       console.log("number: " + i);
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
+      i--;
     }
   }
 }
 
-//resets the input boxes to empty
+/* Move up function */
+function moveUp() {
+
+}
+
+/* Move up function */
+function moveDown() {
+
+}
+
+/* Resets the input boxes to empty */
 function reset_Input() {
   document.getElementById("catagory").value = "";
   document.getElementById("desc").value = "";
