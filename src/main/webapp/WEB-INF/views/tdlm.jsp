@@ -4,7 +4,7 @@
 <head>
 	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
-	<title>Spring 4 MVC -HelloWorld</title>
+	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -43,7 +43,7 @@
 			</button>
 
 			<!-- Sign in/out -->
-			<a href="#" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
+			<a href="http://localhost:8080" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--colored" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
 			<script type="text/javascript">
                 //Sign out function
                 function signOut() {
@@ -59,6 +59,9 @@
 		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;">ToDo List</div>
 	</div>
 	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${message} ${name}</div>
+
+	<br>
+	<div id="user" style="font-size:4em;"></div>
 </div>
 
 <div style="margin: 0 auto;display:inline-block;padding-top:25px;">
@@ -179,54 +182,58 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="../../script.js"></script>
-	<script>
-	  //Dummy to-do list as an array of objects
-	  var testData = [
-	      {
-	          category: "Kitchen",
-	          description: "Repair leaky sink",
-	          startDate: "2016-06-10",
-	          endDate: "2016-06-11",
-	          completed: "False"
-	      },
-	      {
-	          category: "Attic",
-	          description: "Fix leak in roof",
-	          startDate: "2016-06-07",
-	          endDate: "2016-06-17",
-	          completed: "False"
-	      },
-	      {
-	          category: "Garage",
-	          description: "Paint interior",
-	          startDate: "2016-06-10",
-	          endDate: "2016-06-11",
-	          completed: "False"
-	      },
-	      {
-	          category: "Garden",
-	          description: "Paint flowers",
-	          startDate: "2016-06-04",
-	          endDate: "2016-06-04",
-	          completed: "True"
-	      },
-	      {
-	          category: "Garage",
-	          description: "Repair door",
-	          startDate: "2016-06-10",
-	          endDate: "2016-06-14",
-	          completed: "False"
-	      }
-	  ];
-
-	  //Load the dummy to-do list by loading each object as a row item
-	  for(var i = 0; i < testData.length; i++) {
-	      loadTableRow(testData);
-	  }
-
-	</script>
 </div>
+<script>
+    var user = document.getElementById("user");
+    user.innerHTML = sessionStorage.getItem("user");
+    console.log(sessionStorage.getItem("user") + " hi");
+</script>
+<script src="../../script.js"></script>
+<script>
+    //Dummy to-do list as an array of objects
+    var testData = [
+        {
+            category: "Kitchen",
+            description: "Repair leaky sink",
+            startDate: "2016-06-10",
+            endDate: "2016-06-11",
+            completed: "False"
+        },
+        {
+            category: "Attic",
+            description: "Fix leak in roof",
+            startDate: "2016-06-07",
+            endDate: "2016-06-17",
+            completed: "False"
+        },
+        {
+            category: "Garage",
+            description: "Paint interior",
+            startDate: "2016-06-10",
+            endDate: "2016-06-11",
+            completed: "False"
+        },
+        {
+            category: "Garden",
+            description: "Paint flowers",
+            startDate: "2016-06-04",
+            endDate: "2016-06-04",
+            completed: "True"
+        },
+        {
+            category: "Garage",
+            description: "Repair door",
+            startDate: "2016-06-10",
+            endDate: "2016-06-14",
+            completed: "False"
+        }
+    ];
+
+    //Load the dummy to-do list by loading each object as a row item
+    for(var i = 0; i < testData.length; i++) {
+        loadTableRow(testData);
+    }
+
+</script>
 </body>
 </html>

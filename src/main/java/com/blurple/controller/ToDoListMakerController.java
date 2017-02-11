@@ -30,6 +30,11 @@ public class ToDoListMakerController {
 	String message = "Welcome to Springaaa MVC!";
 
 	@RequestMapping("/")
+	public ModelAndView landingPage() {
+		return new ModelAndView("index");
+	}
+
+	@RequestMapping("/tdlm")
 	public ModelAndView showMessage(
 			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
 
