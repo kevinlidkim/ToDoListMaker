@@ -50,7 +50,7 @@
 			</button>
 
 			<!-- Sign in/out -->
-			<a href="http://localhost:8080" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
+			<a href="WEB-INF/view/index.jsp" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
 			<script type="text/javascript">
                 //Sign out function
                 function signOut() {
@@ -64,7 +64,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
 

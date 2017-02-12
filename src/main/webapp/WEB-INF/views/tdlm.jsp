@@ -50,7 +50,7 @@
 			</button>
 
 			<!-- Sign in/out -->
-			<a href="WEB-INF/view/index.jsp" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
+			<a href="WEB-INF/views/index.jsp" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
 			<script type="text/javascript">
                 //Sign out function
                 function signOut() {
