@@ -81,27 +81,101 @@ function add(item) {
 function remove() {
   //get all checkedboxes
   var c_boxes = document.getElementsByClassName(
-      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
+      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select is-checked"
   );
   for (var i = 0, length = c_boxes.length; i < length; i++) {
-    // check if box is checked
-    if(c_boxes[i] != null && c_boxes[i].classList.contains('is-checked')) {
       // Deletes the checked box row from html
-      console.log("number: " + i);
       c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
       // Move counter back so the next box can be removed properly.
       i--;
-    }
   }
 }
 
 /* Move up function */
 function moveUp() {
 
+  var c_boxes = document.getElementsByClassName(
+      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
+  );
+
+  for (var i = 0, length = c_boxes.length; i < length; i++) {
+
+    if(c_boxes[i] != null && c_boxes[i].classList.contains("is-checked")){
+
+      if(i > 0 && !c_boxes[i-1].classList.contains("is-checked")) {
+        // checked row.
+        var curRowData = c_boxes[i].parentNode.parentNode;
+        // row swap with
+        var topRowData = c_boxes[i-1].parentNode.parentNode;
+
+        var curArray = [];
+        var topArray = [];
+
+        // populate array data
+        for (var k = 1; k < curRowData.childNodes.length; k++) {
+          topArray.push(topRowData.childNodes[k].innerHTML);
+          curArray.push(curRowData.childNodes[k].innerHTML);
+        }
+        // swap data fields.
+        for (var j = 1; j < curRowData.childNodes.length; j++) {
+          topRowData.childNodes[j].innerHTML = curArray[j-1];
+          curRowData.childNodes[j].innerHTML = topArray[j-1];
+        }
+
+        // move the checkboxes also
+        c_boxes[i-1].MaterialCheckbox.check();
+        c_boxes[i].MaterialCheckbox.uncheck();
+
+      }
+
+    }
+
+  }
+
 }
 
 /* Move up function */
 function moveDown() {
+
+  var c_boxes = document.getElementsByClassName(
+      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
+  );
+
+  for (var i = c_boxes.length-1; i >= 0; i--) {
+
+    if(c_boxes[i] != null && c_boxes[i].classList.contains("is-checked")){
+
+      if(i < c_boxes.length && c_boxes[i+1] != null && !c_boxes[i+1].classList.contains("is-checked")) {
+
+        // checked row.
+        var curRowData = c_boxes[i].parentNode.parentNode;
+        // row swap with
+        var botRowData = c_boxes[i+1].parentNode.parentNode;
+
+        var curArray = [];
+        var botArray = [];
+
+        // populate array data
+        for (var k = 1; k < curRowData.childNodes.length; k++) {
+          curArray.push(curRowData.childNodes[k].innerHTML);
+          botArray.push(botRowData.childNodes[k].innerHTML);
+        }
+        // swap data fields.
+        for (var j = 1; j < curRowData.childNodes.length; j++) {
+          curRowData.childNodes[j].innerHTML = botArray[j-1];
+          botRowData.childNodes[j].innerHTML = curArray[j-1];
+        }
+
+        // move the checkboxes also
+        c_boxes[i].MaterialCheckbox.uncheck();
+        c_boxes[i+1].MaterialCheckbox.check();
+        i++;
+
+      }
+
+    }
+
+  }
 
 }
 
@@ -112,6 +186,14 @@ function reset_Input() {
   document.getElementById("start_Date").value = "";
   document.getElementById("end_Date").value = "";
   document.getElementById("completed").value = "";
+}
+
+document.getElementById("upBtn").onclick = function () {
+  moveUp();
+}
+
+document.getElementById("downBtn").onclick = function () {
+  moveDown();
 }
 
 /* Triggering Add button function */
