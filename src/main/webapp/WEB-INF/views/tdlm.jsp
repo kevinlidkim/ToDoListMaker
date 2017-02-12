@@ -63,7 +63,7 @@
                     window.location = "/new";
                 };
 			</script>
-			<button id="show-dialog" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:10px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">
+			<button id="loadBtn" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:10px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">
 				Load
 			</button>
 
@@ -111,9 +111,7 @@
 
 	<div class="vertCenterLeft" style="position:relative;padding-left:120px;margin-bottom:30px;">
 
-		<%-- OLD BUTTONS --%>
-
-		<%-- <div style="position:absolute;left:25px;top:0;bottom:0;width:100px;">
+		<div style="position:absolute;left:25px;top:0;bottom:0;width:100px;">
 			<!-- Add/Delete/Move Up/Move Down Buttons -->
 			<div style="margin-top:15px;margin-bottom:25px;">
 				<button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -135,7 +133,7 @@
 					<i class="material-icons">arrow_downward</i>
 				</button>
 			</div>
-		</div> --%>
+		</div>
 
 	</form>
 
@@ -320,7 +318,7 @@
 </script>
 <script>
     var dialog = document.querySelector('dialog');
-    var showDialogButton = document.querySelector('#show-dialog');
+    var showDialogButton = document.querySelector('#loadBtn');
     if (! dialog.showModal) {
       dialogPolyfill.registerDialog(dialog);
     }
@@ -330,6 +328,6 @@
     dialog.querySelector('.close').addEventListener('click', function() {
       dialog.close();
     });
-  </script>
+</script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +15,7 @@
     <h2>THIS IS A NEW PAGE</h2>
     <h2>
       ${message} todolist
-      ${viewableLists}
+
     </h2>
   </center>
 
@@ -27,9 +28,9 @@
         window.location = "/new";
     };
 	</script>
-	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-		Load
-	</button>
+  <button id="loadBtn" type="button"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+    Load
+  </button>
 
 	<!--To Do List Name Text Field -->
 	<form action="#">
@@ -57,10 +58,10 @@
 	<button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">remove</i>
 	</button>
-	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+	<button id="upBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">arrow_upward</i>
 	</button>
-	<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+	<button id="downBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
 		<i class="material-icons">arrow_downward</i>
 	</button>
 
@@ -107,6 +108,25 @@
     Save
   </button>
 
+  <%-- Load Button Popup Modal. --%>
+
+  <dialog class="mdl-dialog">
+    <h4 class="mdl-dialog__title">List to Load</h4>
+    <div class="mdl-dialog__content">
+  		<%-- dummy list --%>
+      <ul style="list-style-type:none;padding-left:0px;">
+        <c:forEach items="${viewableLists}" var="item" varStatus="count">
+          <li><input type="radio" name="selectList" value=${count.index}>${item}</li>
+        </c:forEach>
+      </ul>
+    </div>
+    <div class="mdl-dialog__actions">
+      <button type="button" class="mdl-button">Load</button>
+      <button type="button" class="mdl-button close">Cancle</button>
+    </div>
+  </dialog>
+
+  <%-- Scripts --%>
   <script src="../../script.js"></script>
   <script>
   var emptyData = [];
@@ -115,6 +135,19 @@
   for(var i = 0; i < emptyData.length; i++) {
       loadTableRow(emptyData);
   }
+  </script>
+  <script>
+      var dialog = document.querySelector('dialog');
+      var showDialogButton = document.querySelector('#loadBtn');
+      if (! dialog.showModal) {
+        dialogPolyfill.registerDialog(dialog);
+      }
+      showDialogButton.addEventListener('click', function() {
+        dialog.showModal();
+      });
+      dialog.querySelector('.close').addEventListener('click', function() {
+        dialog.close();
+      });
   </script>
 
 </body>
