@@ -1,5 +1,6 @@
 var currentListData = [];
-var currentUser = "kev";
+var currentUser = localStorage.getItem("user");
+var email = localStorage.getItem("email");
 
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {

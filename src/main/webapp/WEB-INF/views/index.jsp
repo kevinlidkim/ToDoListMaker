@@ -28,8 +28,9 @@
 <script>
     function onSuccess(googleUser) {
         //console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-        sessionStorage.setItem("user", googleUser.getBasicProfile().getName());
-        window.location.href = "http://localhost:8080/tdlm";
+        localStorage.setItem("user", googleUser.getBasicProfile().getName());
+        localStorage.setItem("email", googleUser.getBasicProfile().getEmail());
+        window.location.href = "tdlm";
         return false;
     }
     function onFailure(error) {

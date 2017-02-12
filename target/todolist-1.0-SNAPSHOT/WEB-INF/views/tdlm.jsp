@@ -2,8 +2,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
+	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+	<script type="text/javascript">
+        function onLoad() {
+            gapi.load("auth2", function() {
+                gapi.auth2.init().then(
+                    function(){
+                        var g = gapi.auth2.getAuthInstance();
+                        if (g.isSignedIn.get() == false) {
+                            console.log("not logged in");
+                            window.location.href = "/";
+                        }
+                        else { console.log("logged in"); }
+                    },
+                    function(){ console.log("error");
+                    });
+			});
+
+        }
+	</script>
 	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
@@ -50,7 +68,7 @@
 			</button>
 
 			<!-- Sign in/out -->
-			<a href="WEB-INF/view/index.jsp" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
+			<a href="/" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
 			<script type="text/javascript">
                 //Sign out function
                 function signOut() {
@@ -60,7 +78,6 @@
                     });
                 }
 			</script>
-			<div class="mdl-navigation__link g-signin2" data-onsuccess="onSignIn" style="margin-right:20px;font-size:1.4em !important;"></div>
 
 		</div>
 	</div>
@@ -249,8 +266,9 @@
 </footer>
 <script>
     var user = document.getElementById("user");
-    user.innerHTML = sessionStorage.getItem("user");
-    console.log(sessionStorage.getItem("user") + " hi");
+    user.innerHTML = localStorage.getItem("user");
+    console.log(localStorage.getItem("user") + " sup");
+    console.log(localStorage.getItem("email") + " yo");
 </script>
 <script src="../../script.js"></script>
 <script>
