@@ -103,7 +103,7 @@ function moveUp() {
     if(c_boxes[i] != null && c_boxes[i].classList.contains("is-checked")){
 
       if(i > 0 && !c_boxes[i-1].classList.contains("is-checked")) {
-        // checked row.
+        // curr checked row.
         var curRowData = c_boxes[i].parentNode.parentNode;
         // row swap with
         var topRowData = c_boxes[i-1].parentNode.parentNode;
@@ -111,7 +111,7 @@ function moveUp() {
         var curArray = [];
         var topArray = [];
 
-        // populate array data
+        // populate array data with row data
         for (var k = 1; k < curRowData.childNodes.length; k++) {
           topArray.push(topRowData.childNodes[k].innerHTML);
           curArray.push(curRowData.childNodes[k].innerHTML);
@@ -125,13 +125,9 @@ function moveUp() {
         // move the checkboxes also
         c_boxes[i-1].MaterialCheckbox.check();
         c_boxes[i].MaterialCheckbox.uncheck();
-
       }
-
     }
-
   }
-
 }
 
 /* Move up function */
@@ -147,7 +143,7 @@ function moveDown() {
 
       if(i < c_boxes.length && c_boxes[i+1] != null && !c_boxes[i+1].classList.contains("is-checked")) {
 
-        // checked row.
+        // curr checked row.
         var curRowData = c_boxes[i].parentNode.parentNode;
         // row swap with
         var botRowData = c_boxes[i+1].parentNode.parentNode;
@@ -169,14 +165,11 @@ function moveDown() {
         // move the checkboxes also
         c_boxes[i].MaterialCheckbox.uncheck();
         c_boxes[i+1].MaterialCheckbox.check();
+
         i++;
-
       }
-
     }
-
   }
-
 }
 
 /* Resets the input boxes to empty */
