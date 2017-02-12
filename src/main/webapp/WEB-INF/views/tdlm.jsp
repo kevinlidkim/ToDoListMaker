@@ -110,7 +110,10 @@
 	</div>
 
 	<div class="vertCenterLeft" style="position:relative;padding-left:120px;margin-bottom:30px;">
-		<div style="position:absolute;left:25px;top:0;bottom:0;width:100px;">
+
+		<%-- OLD BUTTONS --%>
+
+		<%-- <div style="position:absolute;left:25px;top:0;bottom:0;width:100px;">
 			<!-- Add/Delete/Move Up/Move Down Buttons -->
 			<div style="margin-top:15px;margin-bottom:25px;">
 				<button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -132,8 +135,7 @@
 					<i class="material-icons">arrow_downward</i>
 				</button>
 			</div>
-
-		</div>
+		</div> --%>
 
 	</form>
 
@@ -167,30 +169,30 @@
 			</button>
 		</div>
 
-        <div style="width:70px;position:absolute;top:0;left:620px;padding-bottom:70px;">
-            <!-- Add/Delete/Move Up/Move Down Buttons -->
-            <div style="margin-top:15px;margin-bottom:25px;">
-                <button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">add</i>
-                </button>
-            </div>
-            <div style="margin-bottom:25px;">
-                <button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">remove</i>
-                </button>
-            </div>
-            <div style="margin-bottom:25px;">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">arrow_upward</i>
-                </button>
-            </div>
-            <div style="margin-bottom:25px;">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">arrow_downward</i>
-                </button>
-            </div>
-
+    <div style="width:70px;position:absolute;top:0;left:620px;padding-bottom:70px;">
+        <!-- Add/Delete/Move Up/Move Down Buttons -->
+        <div style="margin-top:15px;margin-bottom:25px;">
+            <button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">add</i>
+            </button>
         </div>
+        <div style="margin-bottom:25px;">
+            <button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">remove</i>
+            </button>
+        </div>
+        <div style="margin-bottom:25px;">
+            <button id="upBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">arrow_upward</i>
+            </button>
+        </div>
+        <div style="margin-bottom:25px;">
+            <button id="downBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">arrow_downward</i>
+            </button>
+        </div>
+
+    </div>
 
 		<!-- New ToDo Item to be added-->
 		<div style="display:inline-block;vertical-align:top;text-align:left; width:340px;height:100%;">

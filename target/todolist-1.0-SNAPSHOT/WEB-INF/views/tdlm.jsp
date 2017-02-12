@@ -2,26 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
 	<meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
-	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-	<script type="text/javascript">
-        function onLoad() {
-            gapi.load("auth2", function() {
-                gapi.auth2.init().then(
-                    function(){
-                        var g = gapi.auth2.getAuthInstance();
-                        if (g.isSignedIn.get() == false) {
-                            console.log("not logged in");
-                            window.location.href = "/";
-                        }
-                        else { console.log("logged in"); }
-                    },
-                    function(){ console.log("error");
-                    });
-			});
-
-        }
-	</script>
 	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
@@ -68,7 +50,7 @@
 			</button>
 
 			<!-- Sign in/out -->
-			<a href="/" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
+			<a href="WEB-INF/views/index.jsp" onclick="signOut();"><div class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:25px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">Sign Out</div></a>
 			<script type="text/javascript">
                 //Sign out function
                 function signOut() {
@@ -78,10 +60,11 @@
                     });
                 }
 			</script>
+			<div class="mdl-navigation__link g-signin2" data-onsuccess="onSignIn" style="margin-right:20px;font-size:1.4em !important;"></div>
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
 
 </div>
 
@@ -110,7 +93,7 @@
 	</div>
 
 	<div class="vertCenterLeft" style="position:relative;padding-left:120px;margin-bottom:30px;">
-		<div style="position:absolute;left:25px;top:0;bottom:0;width:100px;">
+		<%-- <div style="position:absolute;left:25px;top:0;bottom:0;width:100px;">
 			<!-- Add/Delete/Move Up/Move Down Buttons -->
 			<div style="margin-top:15px;margin-bottom:25px;">
 				<button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -133,7 +116,7 @@
 				</button>
 			</div>
 
-		</div>
+		</div> --%>
 
 	</form>
 
@@ -167,30 +150,30 @@
 			</button>
 		</div>
 
-        <div style="width:70px;position:absolute;top:0;left:620px;padding-bottom:70px;">
-            <!-- Add/Delete/Move Up/Move Down Buttons -->
-            <div style="margin-top:15px;margin-bottom:25px;">
-                <button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">add</i>
-                </button>
-            </div>
-            <div style="margin-bottom:25px;">
-                <button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">remove</i>
-                </button>
-            </div>
-            <div style="margin-bottom:25px;">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">arrow_upward</i>
-                </button>
-            </div>
-            <div style="margin-bottom:25px;">
-                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-                    <i class="material-icons">arrow_downward</i>
-                </button>
-            </div>
-
+    <div style="width:70px;position:absolute;top:0;left:620px;padding-bottom:70px;">
+        <!-- Add/Delete/Move Up/Move Down Buttons -->
+        <div style="margin-top:15px;margin-bottom:25px;">
+            <button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">add</i>
+            </button>
         </div>
+        <div style="margin-bottom:25px;">
+            <button id="removeBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">remove</i>
+            </button>
+        </div>
+        <div style="margin-bottom:25px;">
+            <button id="upBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">arrow_upward</i>
+            </button>
+        </div>
+        <div style="margin-bottom:25px;">
+            <button id="downBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+                <i class="material-icons">arrow_downward</i>
+            </button>
+        </div>
+
+    </div>
 
 		<!-- New ToDo Item to be added-->
 		<div style="display:inline-block;vertical-align:top;text-align:left; width:340px;height:100%;">
@@ -266,9 +249,8 @@
 </footer>
 <script>
     var user = document.getElementById("user");
-    user.innerHTML = localStorage.getItem("user");
-    console.log(localStorage.getItem("user") + " sup");
-    console.log(localStorage.getItem("email") + " yo");
+    user.innerHTML = sessionStorage.getItem("user");
+    console.log(sessionStorage.getItem("user") + " hi");
 </script>
 <script src="../../script.js"></script>
 <script>
