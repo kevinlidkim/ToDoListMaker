@@ -63,12 +63,20 @@ public class ToDoListMakerController {
 		boolean isPublic = "true".equals(request.getString("isPublic"));
 		String owner = request.getString("owner");
 
+
 		// check to see if we are using a currenty loaded list. if so, delete list to avoid duplicates
 		String currentList = request.getString("listId");
-		if (currentList != "") {
+		if (!currentList.equals("")) {
+
 			Long currentListId = Long.parseLong(request.getString("listId"));
+			// get the list of items and delete them all
+			List<ListItem> listOfItems = ObjectifyService.ofy().load().type(ToDoList.class).id(currentListId).now().getList();
+			for (ListItem items : listOfItems) {
+				ObjectifyService.ofy().delete().type(ListItem.class).id(items.getId()).now();
+			}
 			ObjectifyService.ofy().delete().type(ToDoList.class).id(currentListId).now();
 		}
+
 
 		// build the list
 		ToDoList toDoList = new ToDoList(listName, isPublic, owner);

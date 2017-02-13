@@ -317,11 +317,15 @@
 </script>
 <script>
 
-		//populate the load button list.
-		for(var key in ${viewableLists}) {
-			console.log(${viewableLists}[key]);
+    var lists = ${viewableLists}
+    console.log("yo lists");
+    console.log(lists);
 
-			var listName = ${viewableLists}[key].name;
+		//populate the load button list.
+		for(var key in lists) {
+			console.log(lists[key]);
+
+			var listName = lists[key].name;
 			var child = document.createElement('li');
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
 
