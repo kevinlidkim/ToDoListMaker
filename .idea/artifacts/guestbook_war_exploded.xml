@@ -9,6 +9,7 @@
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.google.appengine:appengine-api-1.0-sdk:1.9.48" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.2.4" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:18.0" />
           <element id="library" level="project" name="Maven: com.googlecode.objectify:objectify:5.1.5" />
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.0.1.RELEASE" />

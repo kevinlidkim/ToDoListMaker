@@ -243,6 +243,7 @@ function privateOrPublic() {
 document.getElementById("saveBtn").onclick = function () {
 
   console.log(currentUser);
+  var listId = "something";
 
   // Get listName from form input.
   var listName = document.getElementById("listName").value
@@ -252,7 +253,8 @@ document.getElementById("saveBtn").onclick = function () {
     list: currentListData,
     name: listName,
     owner: currentUser,
-    isPublic: isPublic
+    isPublic: isPublic,
+    listId: listId
   };
   $.ajax({
     headers: {
