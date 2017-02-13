@@ -82,7 +82,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist!</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}!</div>
 
 </div>
 
@@ -199,7 +199,7 @@
 	</div>
 </div>
 
-<!-- Testing load right now -->
+<!-- Testing load right now
 <script>
 	function loadLists() {
 			var form = document.createElement("form");
@@ -215,7 +215,8 @@
 			form.submit();
 	}
 </script>
-<button onclick="loadLists()">Load Viewable Lists</button>
+
+<button onclick="loadLists()">Load Viewable Lists</button>  -->
 
 <%-- Load Button Popup Modal. --%>
 
@@ -319,10 +320,13 @@
 
 		//populate the load button list.
 		for(var key in ${viewableLists}) {
-			console.log(${viewableLists}[key]);
+			console.log(${viewableLists}[key].id);
 
 			var listName = ${viewableLists}[key].name;
+			var id = ${viewableLists}[key].id;
+
 			var child = document.createElement('li');
+			child.setAttribute("id", id);
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
 
 			child.innerHTML = input + listName;
