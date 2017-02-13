@@ -16,7 +16,7 @@
     </div>
     <div style="z-index:1;position:relative;top:8px;">
         <div style="font-family:'Lato', sans-serif;font-size:3em;margin-bottom:25px;font-weight:600;color:white;">ToDo List Maker</div>
-        <div style="font-family:'Lato', sans-serif;font-size:2em;margin-bottom:15px;font-weight:600;color:white;">Things I Hate</div>
+        <div style="font-family:'Lato', sans-serif;font-size:2em;margin-bottom:15px;font-weight:600;color:white;">Ex. List of Things I Hate</div>
         <div style="font-family:'Lato', sans-serif;font-size:1.2em;margin-bottom:10px;font-weight:400;color:white;">1. Landing Pages</div>
         <div style="font-family:'Lato', sans-serif;font-size:1.2em;margin-bottom:10px;font-weight:400;color:white;">2. Irony</div>
         <div style="font-family:'Lato', sans-serif;font-size:1.2em;margin-bottom:25px;font-weight:400;color:white;">3. Lists</div>
