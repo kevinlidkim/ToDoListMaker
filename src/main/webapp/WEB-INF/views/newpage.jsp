@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
   <center>
@@ -68,7 +67,7 @@
   <!-- New ToDo Item to be added-->
   <br><br>
   <label for="">Category</label>
-  <input type="text" name="catagory" value="" id="catagory">
+  <input type="text" name="category" value="" id="category">
 
   <label for="">Description</label>
   <input type="text" name="desc" value="" id="desc">

@@ -81,7 +81,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
 
@@ -197,7 +197,7 @@
             <div style="position:absolute;right:0;top:0;padding:20px 20px;border: 1px solid #7289da;border-radius:10px;">
                 <div>
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
-                        <input class="mdl-textfield__input" type="text" name="catagory" value="" id="catagory" style="color:white;padding-bottom:3px;">
+                        <input class="mdl-textfield__input" type="text" name="category" value="" id="category" style="color:white;padding-bottom:3px;">
                         <label class="mdl-textfield__label" for="listName" style="">Category</label>
                     </div>
                 </div>

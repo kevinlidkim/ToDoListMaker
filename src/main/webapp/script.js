@@ -175,7 +175,7 @@ function moveDown() {
 
 /* Resets the input boxes to empty */
 function reset_Input() {
-  document.getElementById("catagory").value = "";
+  document.getElementById("category").value = "";
   document.getElementById("desc").value = "";
   document.getElementById("start_Date").value = "";
   document.getElementById("end_Date").value = "";
@@ -194,7 +194,7 @@ document.getElementById("downBtn").onclick = function () {
 document.getElementById("addBtn").onclick = function () {
 
   // Get the new item info
-  var new_catagory = document.getElementById("catagory").value;
+  var new_category = document.getElementById("category").value;
   var new_desc = document.getElementById("desc").value;
   var new_start_Date = document.getElementById("start_Date").value;
   var new_end_Date = document.getElementById("end_Date").value;
@@ -209,7 +209,7 @@ document.getElementById("addBtn").onclick = function () {
 
   // make the new item to be added
   var new_Item = {
-    category: new_catagory,
+    category: new_category,
     description: new_desc,
     startDate: new_start_Date,
     endDate: new_end_Date,
@@ -267,3 +267,30 @@ document.getElementById("saveBtn").onclick = function () {
 document.getElementById("removeBtn").onclick = function () {
   remove();
 }
+
+/* Enabling/Disabling Add Button */
+var addBtn = document.getElementById("addBtn");
+var category = document.getElementById("category");
+var desc = document.getElementById("desc");
+var startDate = document.getElementById("start_Date");
+var endDate = document.getElementById("end_Date");
+
+/* Helper function */
+function toggleAddBtn() {
+    if (category.value != "" &&desc.value != "" && startDate.value != "" && endDate.value != "") {
+        addBtn.removeAttribute("disabled");
+    }
+    else {
+        addBtn.setAttribute("disabled", true);
+    }
+}
+
+toggleAddBtn();
+category.onkeyup = function() { toggleAddBtn() };
+desc.onkeyup = function() { toggleAddBtn() };
+startDate.onkeyup = function() { toggleAddBtn() };
+endDate.onkeyup = function() { toggleAddBtn() };
+
+/* Enabling/Disabling Remove Button */
+var removeBtn = document.getElementById("removeBtn");
+removeBtn.setAttribute("disabled", true);
