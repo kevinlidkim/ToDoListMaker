@@ -268,11 +268,8 @@ document.getElementById("removeBtn").onclick = function () {
   remove();
 }
 
-/* Enabling/Disabling Buttons */
+/* Enabling/Disabling Add Button */
 var addBtn = document.getElementById("addBtn");
-var removeBtn = document.getElementById("removeBtn");
-removeBtn.setAttribute("disabled", true);
-
 var category = document.getElementById("category");
 var desc = document.getElementById("desc");
 var startDate = document.getElementById("start_Date");
@@ -287,8 +284,8 @@ function toggleAddBtn() {
         addBtn.setAttribute("disabled", true);
     }
 }
+
 toggleAddBtn();
-/* Disable/Enable Add button if fields are empty/not empty */
 category.onkeyup = function() { toggleAddBtn() };
 desc.onkeyup = function() { toggleAddBtn() };
 startDate.onkeyup = function() { toggleAddBtn() };
