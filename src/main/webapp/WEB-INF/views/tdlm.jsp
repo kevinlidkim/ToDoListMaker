@@ -242,11 +242,27 @@
   </div>
   <div class="mdl-dialog__actions">
     <button type="button" class="mdl-button">Load</button>
-    <button type="button" class="mdl-button close">Cancle</button>
+    <button type="button" class="mdl-button close">Cancel</button>
   </div>
 </dialog>
 
+	<!-- Testing load right now -->
+	<button onclick="m()">aaa</button>
+	<script>
+		function m() {
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "/loadViewableLists")
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", "email");
+            hiddenField.setAttribute("value", localStorage.getItem("email"));
 
+            form.appendChild(hiddenField);
+            document.body.appendChild(form);
+            form.submit();
+        }
+	</script>
 <footer class="mdl-mini-footer" style="">
     <div class="mdl-mini-footer__left-section" style="padding-left:30px;font-size:1.5em;">
         <div class="mdl-logo" style="margin-right:30px;position:relative;bottom:3px;">ToDoList Maker</div>

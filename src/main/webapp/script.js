@@ -290,7 +290,3 @@ category.onkeyup = function() { toggleAddBtn() };
 desc.onkeyup = function() { toggleAddBtn() };
 startDate.onkeyup = function() { toggleAddBtn() };
 endDate.onkeyup = function() { toggleAddBtn() };
-
-/* Enabling/Disabling Remove Button */
-var removeBtn = document.getElementById("removeBtn");
-removeBtn.setAttribute("disabled", true);

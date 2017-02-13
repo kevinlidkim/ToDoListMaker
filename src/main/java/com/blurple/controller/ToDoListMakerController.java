@@ -36,12 +36,20 @@ public class ToDoListMakerController {
 
 	@RequestMapping("/tdlm")
 	public ModelAndView showMessage(
-			@RequestParam(value = "name", required = false, defaultValue = "World") String name) {
-
-		ModelAndView mv = new ModelAndView("tdlm");
-		mv.addObject("message", message);
-		mv.addObject("name", name);
-		return mv;
+			@RequestParam(value = "name", required = false, defaultValue = "World") String name,
+			@RequestParam(value = "user", required = false) String user,
+			@RequestParam(value = "email", required = false) String email) {
+		if (user == null && email == null) {
+			return landingPage();
+		}
+		else {
+			ModelAndView mv = new ModelAndView("tdlm");
+			mv.addObject("message", message);
+			mv.addObject("name", name);
+			mv.addObject("user", user);
+			mv.addObject("email", email);
+			return mv;
+		}
 	}
 
 	@RequestMapping("/new")
@@ -84,15 +92,16 @@ public class ToDoListMakerController {
 		// save to datastore
 		ObjectifyService.ofy().save().entity(toDoList).now();
 
-		ModelAndView mv = new ModelAndView("newpage");
+		ModelAndView mv = new ModelAndView("tdlm");
 		return mv;
 	}
 
 	@RequestMapping("/loadViewableLists")
-	public ModelAndView loadViewableLists() {
+	public ModelAndView loadViewableLists(
+			@RequestParam(value = "email") String email) {
 		// edit this. it should take in owner email as a parameter from frontend
 
-		String ownerEmail = "kev";
+		String ownerEmail = email;
 
 		// filters not working... why???
 
