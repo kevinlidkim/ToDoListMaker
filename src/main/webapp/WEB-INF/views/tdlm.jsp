@@ -228,7 +228,7 @@
 	</div>
 	<div class="mdl-dialog__actions">
 		<button type="button" class="mdl-button">Load</button>
-		<button type="button" class="mdl-button close">Cancle</button>
+		<button type="button" class="mdl-button close">Cancel</button>
 	</div>
 </dialog>
 
