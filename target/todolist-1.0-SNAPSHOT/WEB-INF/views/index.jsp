@@ -5,7 +5,7 @@
     <title>To Do List Maker</title>
     <link rel="icon" href="../../check-mark.svg">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body style="background-color: #7289da;display:flex;display:-ms-flexbox;display:-webkit-flex;align-items:center;justify-content:center;">
 
@@ -28,10 +28,30 @@
 <script>
     function onSuccess(googleUser) {
         //console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-        localStorage.setItem("user", googleUser.getBasicProfile().getName());
-        localStorage.setItem("email", googleUser.getBasicProfile().getEmail());
-        window.location.href = "tdlm";
-        return false;
+        var user = googleUser.getBasicProfile().getName();
+        var email = googleUser.getBasicProfile().getEmail();
+        localStorage.setItem("user", user);
+        localStorage.setItem("email", email);
+        //window.location.href = "tdlm";
+        // return false;
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/tdlm");
+        var params = {user: user, email: email};
+        for(var key in params) {
+            if(params.hasOwnProperty(key)) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+        }
+        document.body.appendChild(form);
+        form.submit();
+
     }
     function onFailure(error) {
         console.log(error);
