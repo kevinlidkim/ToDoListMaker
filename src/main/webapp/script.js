@@ -243,7 +243,7 @@ function privateOrPublic() {
 document.getElementById("saveBtn").onclick = function () {
 
   console.log(currentUser);
-  var listId = "something";
+  var listId = "4644337115725824";
 
   // Get listName from form input.
   var listName = document.getElementById("listName").value

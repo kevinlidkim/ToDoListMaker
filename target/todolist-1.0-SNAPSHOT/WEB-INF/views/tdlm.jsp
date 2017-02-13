@@ -180,13 +180,13 @@
 				</div>
 				<div>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
-						<input class="mdl-textfield__input" type="text" name="start_Date" value="" id="start_Date" style="color:white;padding-bottom:3px;">
+						<input class="mdl-textfield__input" type="date" name="start_Date" value="" id="start_Date" style="color:white;padding-bottom:3px;">
 						<label class="mdl-textfield__label" for="listName" style="">Start Date</label>
 					</div>
 				</div>
 				<div>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
-						<input class="mdl-textfield__input" type="text" name="end_Date" value="" id="end_Date" style="color:white;padding-bottom:3px;">
+						<input class="mdl-textfield__input" type="date" name="end_Date" value="" id="end_Date" style="color:white;padding-bottom:3px;">
 						<label class="mdl-textfield__label" for="listName" style="">End Date</label>
 					</div>
 				</div>
