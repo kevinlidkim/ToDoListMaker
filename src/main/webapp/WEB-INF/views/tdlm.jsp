@@ -199,7 +199,7 @@
 	</div>
 </div>
 
-<!-- Testing load right now
+<!-- Testing load right now -->
 <script>
 	function loadLists() {
 			var form = document.createElement("form");
@@ -215,8 +215,7 @@
 			form.submit();
 	}
 </script>
-
-<button onclick="loadLists()">Load Viewable Lists</button>  -->
+<button onclick="loadLists()">Load Viewable Lists</button>
 
 <%-- Load Button Popup Modal. --%>
 
@@ -229,7 +228,7 @@
 	</div>
 	<div class="mdl-dialog__actions">
 		<button type="button" class="mdl-button">Load</button>
-		<button type="button" class="mdl-button close">Cancle</button>
+		<button type="button" class="mdl-button close">Cancel</button>
 	</div>
 </dialog>
 
@@ -318,12 +317,16 @@
 </script>
 <script>
 
-		//populate the load button list.
-		for(var key in ${viewableLists}) {
-			console.log(${viewableLists}[key].id);
+    var lists = ${viewableLists}
+    console.log("yo lists");
+    console.log(lists);
 
-			var listName = ${viewableLists}[key].name;
-			var id = ${viewableLists}[key].id;
+		//populate the load button list.
+		for(var key in lists) {
+			console.log(lists[key]);
+
+			var listName = lists[key].name;
+			var id = lists[key].id;
 
 			var child = document.createElement('li');
 			child.setAttribute("id", id);
