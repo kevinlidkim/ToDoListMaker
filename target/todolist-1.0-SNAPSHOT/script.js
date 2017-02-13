@@ -190,6 +190,8 @@ function reset_Input() {
 
 document.getElementById("upBtn").onclick = function () {
   moveUp();
+  console.log("Current list:");
+  console.log(currentListData);
 }
 
 document.getElementById("downBtn").onclick = function () {

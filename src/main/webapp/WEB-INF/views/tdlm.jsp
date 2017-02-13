@@ -25,8 +25,10 @@
 	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.6/dialog-polyfill.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.6/dialog-polyfill.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="icon" href="../../check-mark.svg">
 	<style>
@@ -201,7 +203,7 @@
 
 <!-- Testing load right now -->
 <script>
-	function loadLists() {
+	function loadViewableLists() {
 			var form = document.createElement("form");
 			form.setAttribute("method", "post");
 			form.setAttribute("action", "/loadViewableLists");
@@ -215,24 +217,22 @@
 			form.submit();
 	}
 </script>
-<button onclick="loadLists()">Load Viewable Lists</button>
+<button onclick="loadViewableLists()">Load Viewable Lists</button>
 
 <%-- Load Button Popup Modal. --%>
-
 <dialog class="mdl-dialog">
 	<h4 class="mdl-dialog__title">List to Load</h4>
 	<div class="mdl-dialog__content">
-		<%-- dummy list --%>
 		<ul id="loadedList" style="list-style-type:none;padding-left:0px;">
 		</ul>
 	</div>
 	<div class="mdl-dialog__actions">
-		<button type="button" class="mdl-button">Load</button>
+		<button type="button" class="mdl-button" onclick="loadSelectedList()">Load</button>
 		<button type="button" class="mdl-button close">Cancle</button>
 	</div>
 </dialog>
 
-<footer class="mdl-mini-footer" style="position:absolute;left:0;right:0;bottom:0;width:100%;">
+<footer class="mdl-mini-footer" style="position:absolute;left:0;right:0;bottom:0;width:100%;display:none">
 	<div class="mdl-mini-footer__left-section" style="padding-left:30px;font-size:1.6em;">
 		<div class="mdl-logo" style="margin-right:30px;position:relative;bottom:3px;">ToDoList Maker</div>
 		<ul class="mdl-mini-footer__link-list">
@@ -298,8 +298,8 @@
     ];
 
     //Load the dummy to-do list by loading each object as a row item
-    for(var i = 0; i < emptyData.length; i++) {
-        loadTableRow(emptyData);
+    for(var i = 0; i < testData.length; i++) {
+        loadTableRow(testData);
     }
 </script>
 <script>
