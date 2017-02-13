@@ -116,7 +116,7 @@
     <h4 class="mdl-dialog__title">List to Load</h4>
     <div class="mdl-dialog__content">
   		<%-- dummy list --%>
-      <ul id="loadedList" style="list-style-type:none;padding-left:0px;">
+      <ul style="list-style-type:none;padding-left:0px;">
 
         <script>
           for(var key in ${viewableLists}) {
@@ -131,15 +131,6 @@
           }
         </script>
 
-        <script>
-          // var json = JSON.parse(${viewableLists});
-          // console.log(${viewableLists});
-        </script>
-
-
-        <%-- <script>
-          console.log(${viewableLists});
-        </script> --%>
       </ul>
     </div>
     <div class="mdl-dialog__actions">

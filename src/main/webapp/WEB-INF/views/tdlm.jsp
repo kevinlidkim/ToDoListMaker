@@ -60,7 +60,8 @@
 			</button>
 			<script type="text/javascript">
                 document.getElementById("createBtn").onclick = function () {
-                    window.location = "/new";
+									// window.location = "/new";
+              		window.location = "/tdlm";
                 };
 			</script>
 			<button id="loadBtn" type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" style="margin-right:10px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">
@@ -200,41 +201,39 @@
 	</div>
 </div>
 
+<!-- Testing load right now -->
+<script>
+	function loadLists() {
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", "/loadViewableLists");
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "email");
+			hiddenField.setAttribute("value", localStorage.getItem("email"));
+
+			form.appendChild(hiddenField);
+			document.body.appendChild(form);
+			form.submit();
+	}
+</script>
+<button onclick="loadLists()">Load Viewable Lists</button>
+
 <%-- Load Button Popup Modal. --%>
 
 <dialog class="mdl-dialog">
 	<h4 class="mdl-dialog__title">List to Load</h4>
 	<div class="mdl-dialog__content">
 		<%-- dummy list --%>
-		<ul style="list-style-type:none;padding-left:0px;">
-			<li><input type="radio" name="selectList" value="1">List One</li>
-			<li><input type="radio" name="selectList" value="2">Second List</li>
-			<li><input type="radio" name="selectList" value="3">List The Third</li>
+		<ul id="loadedList" style="list-style-type:none;padding-left:0px;">
 		</ul>
 	</div>
 	<div class="mdl-dialog__actions">
 		<button type="button" class="mdl-button">Load</button>
-		<button type="button" class="mdl-button close">Cancel</button>
+		<button type="button" class="mdl-button close">Cancle</button>
 	</div>
 </dialog>
 
-<!-- Testing load right now -->
-<button onclick="m()">Load Viewable Lists</button>
-<script>
-    function m() {
-        var form = document.createElement("form");
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "/loadViewableLists");
-        var hiddenField = document.createElement("input");
-        hiddenField.setAttribute("type", "hidden");
-        hiddenField.setAttribute("name", "email");
-        hiddenField.setAttribute("value", localStorage.getItem("email"));
-
-        form.appendChild(hiddenField);
-        document.body.appendChild(form);
-        form.submit();
-    }
-</script>
 <footer class="mdl-mini-footer" style="position:absolute;left:0;right:0;bottom:0;width:100%;">
 	<div class="mdl-mini-footer__left-section" style="padding-left:30px;font-size:1.6em;">
 		<div class="mdl-logo" style="margin-right:30px;position:relative;bottom:3px;">ToDoList Maker</div>
@@ -261,6 +260,7 @@
 <script src="../../script.js"></script>
 <script>
     //Dummy to-do list as an array of objects
+		var emptyData = [];
     var testData = [
         {
             category: "Kitchen",
@@ -300,8 +300,8 @@
     ];
 
     //Load the dummy to-do list by loading each object as a row item
-    for(var i = 0; i < testData.length; i++) {
-        loadTableRow(testData);
+    for(var i = 0; i < emptyData.length; i++) {
+        loadTableRow(emptyData);
     }
 </script>
 <script>
@@ -316,6 +316,20 @@
     dialog.querySelector('.close').addEventListener('click', function() {
         dialog.close();
     });
+</script>
+<script>
+
+		//populate the load button list.
+		for(var key in ${viewableLists}) {
+			console.log(${viewableLists}[key]);
+
+			var listName = ${viewableLists}[key].name;
+			var child = document.createElement('li');
+			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
+
+			child.innerHTML = input + listName;
+			document.getElementById("loadedList").appendChild(child);
+		}
 </script>
 </body>
 </html>

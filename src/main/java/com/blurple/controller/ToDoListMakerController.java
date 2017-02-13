@@ -54,15 +54,6 @@ public class ToDoListMakerController {
 		}
 	}
 
-	@RequestMapping("/new")
-	public ModelAndView newPageAdded() {
-
-		ModelAndView mv = new ModelAndView("newpage");
-		mv.addObject("message", "DUHH");
-		mv.addObject("name", "YOOOO");
-		return mv;
-	}
-
 	@RequestMapping("/createList")
 	public ModelAndView createList(@RequestBody String input) throws Exception {
 
@@ -123,11 +114,18 @@ public class ToDoListMakerController {
 			}
 		}
 
-		ModelAndView mv = new ModelAndView("newpage");
-
 		// Turn it to json object before sending to frontEnd
 		String viewableLists_json = new Gson().toJson(viewableLists);
 
+		// if(viewableLists.size() == 0) {
+		// 	System.out.print("VIEWABLE LIST IS: Empty");
+		// 	viewableLists_json = new Gson().toJson("");
+		// } else {
+		// 	System.out.print("VIEWABLE LIST IS: FULL");
+		// 	viewableLists_json = new Gson().toJson(viewableLists);
+		// }
+
+		ModelAndView mv = new ModelAndView("tdlm");
 		mv.addObject("viewableLists", viewableLists_json);
 		return mv;
 	}
@@ -142,7 +140,7 @@ public class ToDoListMakerController {
 
 		ToDoList selectedList = ObjectifyService.ofy().load().type(ToDoList.class).id(listId).now();
 
-		ModelAndView mv = new ModelAndView("newpage");
+		ModelAndView mv = new ModelAndView("tdlm");
 		mv.addObject("selectedList", selectedList);
 		return mv;
 
