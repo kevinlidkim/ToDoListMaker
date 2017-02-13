@@ -38,7 +38,6 @@ public class ToDoListMakerController {
 
 	@RequestMapping("/tdlm")
 	public ModelAndView showMessage(
-			@RequestParam(value = "name", required = false, defaultValue = "World") String name,
 			@RequestParam(value = "user", required = false) String user,
 			@RequestParam(value = "email", required = false) String email) {
 		if (user == null && email == null) {
@@ -46,8 +45,6 @@ public class ToDoListMakerController {
 		}
 		else {
 			ModelAndView mv = new ModelAndView("tdlm");
-			mv.addObject("message", message);
-			mv.addObject("name", name);
 			mv.addObject("user", user);
 			mv.addObject("email", email);
 			return mv;
@@ -58,8 +55,6 @@ public class ToDoListMakerController {
 	public ModelAndView newPageAdded() {
 
 		ModelAndView mv = new ModelAndView("newpage");
-		mv.addObject("message", "DUHH");
-		mv.addObject("name", "YOOOO");
 		return mv;
 	}
 
@@ -74,6 +69,13 @@ public class ToDoListMakerController {
 		String listName = request.getString("name");
 		boolean isPublic = "true".equals(request.getString("isPublic"));
 		String owner = request.getString("owner");
+
+		// check to see if we are using a currenty loaded list. if so, delete list to avoid duplicates
+		String currentList = request.getString("listId");
+		if (currentList != "") {
+			Long currentListId = Long.parseLong(request.getString("listId"));
+			ObjectifyService.ofy().delete().type(ToDoList.class).id(currentListId).now();
+		}
 
 		// build the list
 		ToDoList toDoList = new ToDoList(listName, isPublic, owner);
@@ -101,14 +103,8 @@ public class ToDoListMakerController {
 	@RequestMapping("/loadViewableLists")
 	public ModelAndView loadViewableLists(
 			@RequestParam(value = "email") String email) {
-		// edit this. it should take in owner email as a parameter from frontend
 
 		String ownerEmail = email;
-
-		// filters not working... why???
-
-		// List<ToDoList> publicLists = ObjectifyService.ofy().load().type(ToDoList.class).filter("isPublic ==", true).list();
-		// List<ToDoList> ownerLists = ObjectifyService.ofy().load().type(ToDoList.class).filter("owner ==", ownerEmail).list();
 
 		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
 
@@ -134,16 +130,37 @@ public class ToDoListMakerController {
 
 	@RequestMapping("/loadSelectedList")
 	public ModelAndView loadSelectedList() {
-		// edit this. it should take in the selected list id as a parameter from frontend
+		// edit this. it should take in the selected list id as a parameter from frontend AND email
 
 		/* need to retrieve id as a string because it is too long to be an integer. */
 		String idString = "4644337115725824";
 		Long listId = Long.parseLong(idString);
+		String ownerEmail = "kev";
 
 		ToDoList selectedList = ObjectifyService.ofy().load().type(ToDoList.class).id(listId).now();
 
+		// get all viewable lists again
+		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
+
+		// only get the lists that are public or by owner
+		List<ToDoList> viewableLists = new ArrayList<ToDoList>();
+
+		for (ToDoList list : allLists) {
+			if (list.isPublic()) {
+				viewableLists.add(list);
+			} else if (list.getOwner().equals(ownerEmail)) {
+				viewableLists.add(list);
+			}
+		}
+
 		ModelAndView mv = new ModelAndView("newpage");
 		mv.addObject("selectedList", selectedList);
+
+		// Turn it to json object before sending to frontEnd
+		String viewableLists_json = new Gson().toJson(viewableLists);
+
+		mv.addObject("viewableLists", viewableLists_json);
+		
 		return mv;
 
 	}
