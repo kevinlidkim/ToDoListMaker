@@ -25,6 +25,8 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
 
+import com.google.gson.Gson;
+
 @Controller
 public class ToDoListMakerController {
 	String message = "Welcome to ToDoList Maker! ";
@@ -113,7 +115,11 @@ public class ToDoListMakerController {
 		}
 
 		ModelAndView mv = new ModelAndView("newpage");
-		mv.addObject("viewableLists", viewableLists);
+
+		// Turn it to json object before sending to frontEnd
+		String viewableLists_json = new Gson().toJson(viewableLists);
+
+		mv.addObject("viewableLists", viewableLists_json);
 		return mv;
 	}
 

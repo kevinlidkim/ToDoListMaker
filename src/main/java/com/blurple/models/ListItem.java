@@ -33,7 +33,7 @@ public class ListItem {
   public boolean completed;
 
   public ListItem() {
-    
+
   }
 
   public ListItem(String list, String category, String description, Date startDate, Date endDate, boolean completed) {
@@ -47,7 +47,8 @@ public class ListItem {
     this.startDate = startDate;
     this.endDate = endDate;
     this.completed = completed;
-  }
+
+   }
 
   public Long getId() {
     return id;

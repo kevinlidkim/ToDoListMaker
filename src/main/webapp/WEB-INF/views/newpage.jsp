@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +14,8 @@
     <h2>THIS IS A NEW PAGE</h2>
     <h2>
       ${message} ${name}
+
+      <%-- ${viewableLists} --%>
 
     </h2>
   </center>
@@ -114,10 +115,30 @@
     <h4 class="mdl-dialog__title">List to Load</h4>
     <div class="mdl-dialog__content">
   		<%-- dummy list --%>
-      <ul style="list-style-type:none;padding-left:0px;">
-        <c:forEach items="${viewableLists}" var="item" varStatus="count">
-          <li><input type="radio" name="selectList" value=${count.index}>${item}</li>
-        </c:forEach>
+      <ul id="loadedList" style="list-style-type:none;padding-left:0px;">
+
+        <script>
+          for(var key in ${viewableLists}) {
+            console.log(${viewableLists}[key]);
+
+            var listName = ${viewableLists}[key].name;
+            var child = document.createElement('li');
+            var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
+
+            child.innerHTML = input + listName;
+            document.getElementById("loadedList").appendChild(child);
+          }
+        </script>
+
+        <script>
+          // var json = JSON.parse(${viewableLists});
+          // console.log(${viewableLists});
+        </script>
+
+
+        <%-- <script>
+          console.log(${viewableLists});
+        </script> --%>
       </ul>
     </div>
     <div class="mdl-dialog__actions">
@@ -128,7 +149,9 @@
 
   <%-- Scripts --%>
   <script src="../../script.js"></script>
+
   <script>
+
   var emptyData = [];
 
   //Load Table with empty data.

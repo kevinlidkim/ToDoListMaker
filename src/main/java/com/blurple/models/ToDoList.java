@@ -33,6 +33,7 @@ public class ToDoList {
     this.isPublic = isPublic;
     this.owner = owner;
     list = new ArrayList<ListItem>();
+
   }
 
   public void addItem(ListItem li) {

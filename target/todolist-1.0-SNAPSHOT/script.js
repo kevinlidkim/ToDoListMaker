@@ -85,10 +85,14 @@ function remove() {
       "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select is-checked"
   );
   for (var i = 0, length = c_boxes.length; i < length; i++) {
-      // Deletes the checked box row from html
-      c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
-      // Move counter back so the next box can be removed properly.
-      i--;
+      //check for null
+      if(c_boxes[i] != null) {
+        // Deletes the checked box row from html
+        c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
+        // Move counter back so the next box can be removed properly.
+        i--;
+      }
+
   }
 }
 
@@ -140,8 +144,10 @@ function moveDown() {
 
   for (var i = c_boxes.length-1; i >= 0; i--) {
 
+    // Check if current box is checked.
     if(c_boxes[i] != null && c_boxes[i].classList.contains("is-checked")){
 
+      // Make sure next box is not checked.
       if(i < c_boxes.length && c_boxes[i+1] != null && !c_boxes[i+1].classList.contains("is-checked")) {
 
         // curr checked row.
@@ -238,10 +244,13 @@ document.getElementById("saveBtn").onclick = function () {
 
   console.log(currentUser);
 
+  // Get listName from form input.
+  var listName = document.getElementById("listName").value
+
   var isPublic = privateOrPublic();
   var dataObj = {
     list: currentListData,
-    name: "LIST NAME",
+    name: listName,
     owner: currentUser,
     isPublic: isPublic
   };
