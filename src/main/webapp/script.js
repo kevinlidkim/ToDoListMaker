@@ -1,6 +1,21 @@
 var currentListData = [];
 var currentUser = localStorage.getItem("user");
 var email = localStorage.getItem("email");
+var cBoxCounter = 0;
+
+/* Disable Save Button if list is empty */
+var saveBtn = document.getElementById("saveBtn");
+saveBtn.disabled = true;
+/*Disable table buttons first */
+var addBtn = document.getElementById("addBtn");
+var removeBtn = document.getElementById("removeBtn");
+var upBtn = document.getElementById("upBtn");
+var downBtn = document.getElementById("downBtn");
+addBtn.disabled = true;
+removeBtn.disabled = true;
+upBtn.disabled = true;
+downBtn.disabled = true;
+
 
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
@@ -31,10 +46,30 @@ function addCheckBox(tableRow) {
     var cBoxInput = document.createElement("input");
     cBoxInput.className = "mdl-checkbox__input";
     cBoxInput.setAttribute("type", "checkbox");
+    cBoxInput.onchange = function() {
+        if (cBoxInput.checked) {  cBoxCounter++; }
+        else { cBoxCounter--;}
+
+        if (cBoxCounter == 1) {
+            removeBtn.disabled = false;
+            upBtn.disabled = false;
+            downBtn.disabled = false;
+        }
+        else if (cBoxCounter > 1) {
+            upBtn.disabled = true;
+            downBtn.disabled = true;
+        }
+        else {
+            removeBtn.disabled = true;
+            upBtn.disabled = true;
+            downBtn.disabled = true;
+        }
+    }
 
     cBoxLabel.appendChild(cBoxInput);
     checkBox.appendChild(cBoxLabel);
     tableRow.appendChild(checkBox);
+
 
     //Return label element, which can be updated when making a new row item so that it looks like the others
     return cBoxLabel;
@@ -76,6 +111,9 @@ function add(item) {
   }
   currentListData.push(item);
   document.getElementById("tableBody").appendChild(newTableRow);
+  // Enable save button now that it has at least 1 item
+  saveBtn.removeAttribute("disabled");
+
 }
 
 /* Remove function*/
@@ -224,9 +262,10 @@ document.getElementById("addBtn").onclick = function () {
     completed: new_completed
   }
 
-  //add new item and reset the inputs
+  //add new item and reset the inputs, also disable add again until new inputs
   add(new_Item);
   reset_Input();
+  addBtn.disabled = true;
 }
 
 /* Check to see whether list to be saved is private or public */
@@ -242,10 +281,11 @@ function privateOrPublic() {
 }
 
 /* Add event handler to save button */
-document.getElementById("saveBtn").onclick = function () {
+saveBtn.onclick = function () {
 
   console.log(currentUser);
-  var listId = "something";
+  // var listId = "4644337115725824";
+  var listId = "";
 
   // Get listName from form input.
   var listName = document.getElementById("listName").value
@@ -277,12 +317,9 @@ document.getElementById("saveBtn").onclick = function () {
 };
 
 /* Triggering remove button function*/
-document.getElementById("removeBtn").onclick = function () {
-  remove();
-}
+removeBtn.onclick = function () { remove(); }
 
 /* Enabling/Disabling Add Button */
-var addBtn = document.getElementById("addBtn");
 var category = document.getElementById("category");
 var desc = document.getElementById("desc");
 var startDate = document.getElementById("start_Date");
@@ -291,14 +328,13 @@ var endDate = document.getElementById("end_Date");
 /* Helper function */
 function toggleAddBtn() {
     if (category.value != "" &&desc.value != "" && startDate.value != "" && endDate.value != "") {
-        addBtn.removeAttribute("disabled");
+        addBtn.disabled = false;
     }
     else {
-        addBtn.setAttribute("disabled", true);
+        addBtn.disabled = true;
     }
 }
 
-toggleAddBtn();
 category.onkeyup = function() { toggleAddBtn() };
 desc.onkeyup = function() { toggleAddBtn() };
 startDate.onkeyup = function() { toggleAddBtn() };

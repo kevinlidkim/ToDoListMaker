@@ -42,7 +42,7 @@
 		.mdl-radio__label { color:white; }
 		.mdl-textfield__label, .mdl-checkbox__tick-outline { color: white; }
 		.mdl-textfield.is_focused .mdl-textfield__input { border-bottom: 1px solid #7289DA !important; }
-		.mdl-textfield--floating-label.is-focused .mdl-textfield__label { color: #7289DA !important; }
+		.mdl-textfield--floating-label.is-focused .mdl-textfield__label,.mdl-textfield--floating-label.is-dirty .mdl-textfield__label { color: #7289DA !important; }
 		.mdl-textfield__label:after, .mdl-checkbox.is-checked .mdl-checkbox__tick-outline, .mdl-checkbox__ripple-container .mdl-ripple { background-color: #7289DA; }
 		.mdl-button--colored { background-color:#7289da;color:white; }
 	</style>
@@ -53,7 +53,7 @@
 <div style="position:relative;text-align:center;height:250px;color:white;background-color:#7289DA;overflow:hidden;width:100%;">
 	<img src="../../pattern.png" width="100%" style="position: absolute;z-index:1;top:0;bottom:0;left:0;right:0;opacity:0.5;"/>
 	<div style="height:60px;padding-top:20px;position:relative;z-index:2;">
-		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;"><span style="margin-right:10px;">${message}</span> <div id="user" style="display:inline-block;vertical-align:top;"></div></div>
+		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;"><span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>!</div>
 
 		<div class="vertCenterLeft" style="position:absolute;right:15px;width:600px;justify-content:flex-end;">
 			<!-- Create/Load Buttons -->
@@ -84,7 +84,8 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
+
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist!</div>
 
 </div>
 
@@ -97,7 +98,7 @@
 		</div>
 
 		<!-- Public/Private Radio Buttons -->
-		<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="public" style="margin-left:125px;">
+		<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="public" style="margin-left:55px;">
 			<input checked class="mdl-radio__button" id="public" name="ppRadio" type="radio" value="on">
 			<span class="mdl-radio__label">Public</span>
 		</label>
@@ -140,7 +141,7 @@
 			</button>
 		</div>
 
-		<div style="width:70px;position:absolute;top:0;left:615px;padding-bottom:70px;">
+		<div style="width:70px;position:absolute;top:0;left:550px;padding-bottom:70px;">
 			<!-- Add/Delete/Move Up/Move Down Buttons -->
 			<div style="margin-top:15px;margin-bottom:25px;">
 				<button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -182,13 +183,13 @@
 				</div>
 				<div>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
-						<input class="mdl-textfield__input" type="text" name="start_Date" value="" id="start_Date" style="color:white;padding-bottom:3px;">
+						<input class="mdl-textfield__input" type="date" name="start_Date" value="" id="start_Date" style="color:white;padding-bottom:3px;">
 						<label class="mdl-textfield__label" for="listName" style="">Start Date</label>
 					</div>
 				</div>
 				<div>
 					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
-						<input class="mdl-textfield__input" type="text" name="end_Date" value="" id="end_Date" style="color:white;padding-bottom:3px;">
+						<input class="mdl-textfield__input" type="date" name="end_Date" value="" id="end_Date" style="color:white;padding-bottom:3px;">
 						<label class="mdl-textfield__label" for="listName" style="">End Date</label>
 					</div>
 				</div>
@@ -317,11 +318,15 @@
 </script>
 <script>
 
-		//populate the load button list.
-		for(var key in ${viewableLists}) {
-			console.log(${viewableLists}[key]);
+    var lists = ${viewableLists}
+    console.log("yo lists");
+    console.log(lists);
 
-			var listName = ${viewableLists}[key].name;
+		//populate the load button list.
+		for(var key in lists) {
+			console.log(lists[key]);
+
+			var listName = lists[key].name;
 			var child = document.createElement('li');
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
 

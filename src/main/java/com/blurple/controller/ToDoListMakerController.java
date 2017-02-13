@@ -47,6 +47,22 @@ public class ToDoListMakerController {
 			ModelAndView mv = new ModelAndView("tdlm");
 			mv.addObject("user", user);
 			mv.addObject("email", email);
+			// Send viewable list so load dialog shows the list right away
+			List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
+
+			// only get the lists that are public or by owner
+			List<ToDoList> viewableLists = new ArrayList<ToDoList>();
+
+			for (ToDoList list : allLists) {
+				if (list.isPublic()) {
+					viewableLists.add(list);
+				} else if (list.getOwner().equals(email)) {
+					viewableLists.add(list);
+				}
+			}
+			// Turn it to json object before sending to frontEnd
+			String viewableLists_json = new Gson().toJson(viewableLists);
+			mv.addObject("viewableLists", viewableLists_json);
 			return mv;
 		}
 	}
@@ -63,12 +79,20 @@ public class ToDoListMakerController {
 		boolean isPublic = "true".equals(request.getString("isPublic"));
 		String owner = request.getString("owner");
 
+
 		// check to see if we are using a currenty loaded list. if so, delete list to avoid duplicates
 		String currentList = request.getString("listId");
-		if (currentList != "") {
+		if (!currentList.equals("")) {
+
 			Long currentListId = Long.parseLong(request.getString("listId"));
+			// get the list of items and delete them all
+			List<ListItem> listOfItems = ObjectifyService.ofy().load().type(ToDoList.class).id(currentListId).now().getList();
+			for (ListItem items : listOfItems) {
+				ObjectifyService.ofy().delete().type(ListItem.class).id(items.getId()).now();
+			}
 			ObjectifyService.ofy().delete().type(ToDoList.class).id(currentListId).now();
 		}
+
 
 		// build the list
 		ToDoList toDoList = new ToDoList(listName, isPublic, owner);
@@ -129,13 +153,17 @@ public class ToDoListMakerController {
 	}
 
 	@RequestMapping("/loadSelectedList")
-	public ModelAndView loadSelectedList() {
+	public ModelAndView loadSelectedList(
+			@RequestParam(value = "id") String id,
+			@RequestParam(value = "email") String email) {
 		// edit this. it should take in the selected list id as a parameter from frontend AND email
+		String idString = id;
 
 		/* need to retrieve id as a string because it is too long to be an integer. */
-		String idString = "4644337115725824";
+		//String idString = "4644337115725824";
 		Long listId = Long.parseLong(idString);
-		String ownerEmail = "kev";
+		//String ownerEmail = "kev";
+		String ownerEmail = email;
 
 		ToDoList selectedList = ObjectifyService.ofy().load().type(ToDoList.class).id(listId).now();
 
