@@ -52,6 +52,7 @@ public class ToDoListMakerController {
 
 			// only get the lists that are public or by owner
 			List<ToDoList> viewableLists = new ArrayList<ToDoList>();
+			ToDoList selectedList = new ToDoList();
 
 			for (ToDoList list : allLists) {
 				if (list.isPublic()) {
@@ -62,7 +63,9 @@ public class ToDoListMakerController {
 			}
 			// Turn it to json object before sending to frontEnd
 			String viewableLists_json = new Gson().toJson(viewableLists);
+			String selectedList_json = new Gson().toJson(selectedList);
 			mv.addObject("viewableLists", viewableLists_json);
+			mv.addObject("selectedList", selectedList_json);
 			return mv;
 		}
 	}
@@ -124,6 +127,7 @@ public class ToDoListMakerController {
 		String ownerEmail = email;
 
 		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
+		ToDoList selectedList = new ToDoList();
 
 		// only get the lists that are public or by owner
 		List<ToDoList> viewableLists = new ArrayList<ToDoList>();
@@ -137,18 +141,12 @@ public class ToDoListMakerController {
 		}
 
 		// Turn it to json object before sending to frontEnd
+		String selectedList_json = new Gson().toJson(selectedList);
 		String viewableLists_json = new Gson().toJson(viewableLists);
-
-		// if(viewableLists.size() == 0) {
-		// 	System.out.print("VIEWABLE LIST IS: Empty");
-		// 	viewableLists_json = new Gson().toJson("");
-		// } else {
-		// 	System.out.print("VIEWABLE LIST IS: FULL");
-		// 	viewableLists_json = new Gson().toJson(viewableLists);
-		// }
 
 		ModelAndView mv = new ModelAndView("tdlm");
 		mv.addObject("viewableLists", viewableLists_json);
+		mv.addObject("selectedList", selectedList_json);
 		return mv;
 	}
 
@@ -182,11 +180,11 @@ public class ToDoListMakerController {
 			}
 		}
 
-		mv.addObject("selectedList", selectedList);
-
 		// Turn it to json object before sending to frontEnd
+		String selectedList_json = new Gson().toJson(selectedList);
 		String viewableLists_json = new Gson().toJson(viewableLists);
 
+		mv.addObject("selectedList", selectedList_json);
 		mv.addObject("viewableLists", viewableLists_json);
 
 		return mv;

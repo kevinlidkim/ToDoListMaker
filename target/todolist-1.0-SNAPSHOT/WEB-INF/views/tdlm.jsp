@@ -4,7 +4,24 @@
 <head>
 	<meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
 	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+	<script type="text/javascript">
+        function onLoad() {
+            gapi.load("auth2", function() {
+                gapi.auth2.init().then(
+                    function(){
+                        var g = gapi.auth2.getAuthInstance();
+                        if (g.isSignedIn.get() == false) {
+                            console.log("not logged in");
+                            window.location.href = "/";
+                        }
+                        else { console.log("logged in"); }
+                    },
+                    function(){ console.log("error");
+                    });
+            });
 
+        }
+	</script>
 	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
@@ -45,10 +62,7 @@
 <div style="position:relative;text-align:center;height:250px;color:white;background-color:#7289DA;overflow:hidden;width:100%;">
 	<img src="../../pattern.png" width="100%" style="position: absolute;z-index:1;top:0;bottom:0;left:0;right:0;opacity:0.5;"/>
 	<div style="height:60px;padding-top:20px;position:relative;z-index:2;">
-		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;">
-			<span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>! <div id="email" style="display:inline-block;vertical-align:top;"></div>
-		</div>
-
+		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;"><span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>!</div>
 
 		<div class="vertCenterLeft" style="position:absolute;right:5px;width:600px;justify-content:flex-end;">
 			<!-- Create/Load Buttons -->
@@ -79,6 +93,7 @@
 
 		</div>
 	</div>
+
 	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
@@ -211,6 +226,30 @@
 			document.body.appendChild(form);
 			form.submit();
 	}
+
+	function loadSelectedList() {
+				var form = document.createElement("form");
+				var lists = ${viewableLists};
+				var pos = $('input[name="selectList"]:checked').val();
+
+				form.setAttribute("method", "post");
+				form.setAttribute("action", "/loadSelectedList");
+				var hiddenField = document.createElement("input");
+				var hiddenField2 = document.createElement("input");
+
+				hiddenField.setAttribute("type", "hidden");
+				hiddenField.setAttribute("name", "id");
+				hiddenField.setAttribute("value", lists[pos].id);
+
+				hiddenField2.setAttribute("type", "hidden");
+				hiddenField2.setAttribute("name", "email");
+				hiddenField2.setAttribute("value", localStorage.getItem("email"));
+
+				form.appendChild(hiddenField);
+				form.appendChild(hiddenField2);
+				document.body.appendChild(form);
+				form.submit();
+		}
 </script>
 <button onclick="loadViewableLists()" style="display:none;">Load Viewable Lists</button>
 
@@ -222,12 +261,16 @@
 		</ul>
 	</div>
 	<div class="mdl-dialog__actions">
-		<button type="button" onclick="loadSelectedList()"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">Load</button>
-		<button type="button" class="close mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">Cancel</button>
+		<button id="loadSelectedListBtn" type="button" class="mdl-button" onclick=loadSelectedList()>Load</button>
+		<button type="button" class="mdl-button close">Cancle</button>
 	</div>
 </dialog>
 
-<footer class="mdl-mini-footer" style="">
+<script>
+	$("#loadSelectedListBtn").click(loadSelectedList);
+</script>
+
+<footer class="mdl-mini-footer" style="position:absolute;left:0;right:0;bottom:0;width:100%;display:none">
 	<div class="mdl-mini-footer__left-section" style="padding-left:30px;font-size:1.6em;">
 		<div class="mdl-logo" style="margin-right:30px;position:relative;bottom:3px;">ToDoList Maker</div>
 		<ul class="mdl-mini-footer__link-list">
@@ -246,78 +289,33 @@
 </footer>
 <script>
     var user = document.getElementById("user");
-    var email = document.getElementById("email");
-    //user.innerHTML = localStorage.getItem("user");
+    user.innerHTML = localStorage.getItem("user");
     console.log(localStorage.getItem("user") + " sup");
     console.log(localStorage.getItem("email") + " yo");
-
-    function onLoad() {
-        gapi.load("auth2", function() {
-            gapi.auth2.init().then(
-                function(){
-                    var g = gapi.auth2.getAuthInstance();
-                    if (g.isSignedIn.get() == false) {
-                        console.log("not logged in");
-                        window.location.href = "/";
-                    }
-                    else {
-                        user.innerHTML = g.getBasicProfile().getName();
-                        email.innerHTML = g.getBasicProfile().getEmail();
-                        console.log(g.getBasicProfile().getName());
-                        console.log("logged in");
-                    }
-                },
-                function(){ console.log("error");
-                });
-        });
-
-    }
 </script>
+
 <script src="../../script.js"></script>
 <script>
     //Dummy to-do list as an array of objects
-		var emptyData = [];
-    var testData = [
-        {
-            category: "Kitchen",
-            description: "Repair leaky sink",
-            startDate: "2016-06-10",
-            endDate: "2016-06-11",
-            completed: "False"
-        },
-        {
-            category: "Attic",
-            description: "Fix leak in roof",
-            startDate: "2016-06-07",
-            endDate: "2016-06-17",
-            completed: "False"
-        },
-        {
-            category: "Garage",
-            description: "Paint interior",
-            startDate: "2016-06-10",
-            endDate: "2016-06-11",
-            completed: "False"
-        },
-        {
-            category: "Garden",
-            description: "Paint flowers",
-            startDate: "2016-06-04",
-            endDate: "2016-06-04",
-            completed: "True"
-        },
-        {
-            category: "Garage",
-            description: "Repair door",
-            startDate: "2016-06-10",
-            endDate: "2016-06-14",
-            completed: "False"
-        }
-    ];
+		var data = [];
+
+		var selectedList = ${selectedList};
+
+		if(selectedList != null) {
+			data = selectedList.list;
+		}
+
+		console.log("SLECETED LIST:");
+		console.log(data);
+
+		for(var i = 0; i < data.length; i++) {
+			delete data[i].id;
+			delete data[i].theList;
+		}
 
     //Load the dummy to-do list by loading each object as a row item
-    for(var i = 0; i < testData.length; i++) {
-        loadTableRow(testData);
+    for(var i = 0; i < data.length; i++) {
+        loadTableRow(data);
     }
 </script>
 <script>
@@ -334,16 +332,17 @@
     });
 </script>
 <script>
-
-    var lists = ${viewableLists}
-    console.log("yo lists");
-    console.log(lists);
+    var lists = ${viewableLists};
+    // console.log("yo lists");
+    // console.log(lists);
 
 		//populate the load button list.
 		for(var key in lists) {
 			console.log(lists[key]);
 
 			var listName = lists[key].name;
+			var id = lists[key].id;
+
 			var child = document.createElement('li');
 			child.setAttribute("id", id);
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
