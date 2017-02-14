@@ -241,6 +241,7 @@
 				form.submit();
 		}
 </script>
+<input type="hidden" id="currentListId" listId="${currentListId}">
 
 <%-- Load Button Popup Modal. --%>
 <dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">

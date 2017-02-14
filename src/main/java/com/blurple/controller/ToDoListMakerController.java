@@ -119,9 +119,10 @@ public class ToDoListMakerController {
 
 		// save to datastore
 		ObjectifyService.ofy().save().entity(toDoList).now();
-		//add todoList.getId to frontend so we know current list to edit
 
 		ModelAndView mv = new ModelAndView("tdlm");
+		//add todoList.getId to frontend so we know current list to edit
+		mv.addObject("currentListId", toDoList.getId());
 		return mv;
 	}
 
@@ -197,6 +198,7 @@ public class ToDoListMakerController {
 		mv.addObject("selectedList", selectedList_json);
 		mv.addObject("viewableLists", viewableLists_json);
 		mv.addObject("currentListName", selectedList.getName());
+		mv.addObject("currentListId", selectedList.getId());
 
 		return mv;
 
