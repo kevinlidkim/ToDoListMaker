@@ -27,7 +27,16 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.6/dialog-polyfill.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!-- cdn for modernizr, if you haven't included it already -->
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+	<!-- polyfiller file to detect and load polyfills -->
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+	<script>
+        webshims.setOptions('waitReady', false);
+        webshims.setOptions('forms-ext', {types: 'date'});
+        webshims.polyfill('forms forms-ext');
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.6/dialog-polyfill.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="icon" href="../../check-mark.svg">
@@ -39,7 +48,7 @@
 		.mdl-radio__outer-circle { border: 2px solid #262626; }
 		.mdl-radio.is-checked .mdl-radio__outer-circle, .mdl-checkbox.is-checked .mdl-checkbox__box-outline { border: 2px solid #7289DA !important; }
 		.mdl-radio__inner-circle, .mdl-ripple, .mdl-button { background: #7289DA !important; }
-		.mdl-radio__label { color:white; }
+		.mdl-radio__label, mdl-textfield__input { color:white !important; }
 		.mdl-textfield__label, .mdl-checkbox__tick-outline { color: white; }
 		.mdl-textfield.is_focused .mdl-textfield__input { border-bottom: 1px solid #7289DA !important; }
 		.mdl-textfield--floating-label.is-focused .mdl-textfield__label,.mdl-textfield--floating-label.is-dirty .mdl-textfield__label { color: #7289DA !important; }
@@ -338,7 +347,9 @@
 </script>
 <script>
 	setTimeout(function(){$('.date').each(function(){$(this).addClass('is-focused')})}, 1000);
-	$(document).on('mouseleave','.date',function(){$(this).removeClass('is-invalid');$(this).addClass('is-focused');});
+	$(document).on('mouseover','body',function(){$('.date').each(function(){$(this).addClass('is-focused');$(this).removeClass('is-invalid');})});
+	$("#start_Date").datepicker({dateFormat: 'mm-dd-yyyy'});
+	$("#end_Date").datepicker({dateFormat: 'mm-dd-yyyy'})
 </script>
 </body>
 </html>
