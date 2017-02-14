@@ -94,7 +94,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
 
@@ -237,6 +237,7 @@
 				form.submit();
 		}
 </script>
+<input type="hidden" id="currentListId" listId="${currentListId}">
 
 <%-- Load Button Popup Modal. --%>
 <dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">

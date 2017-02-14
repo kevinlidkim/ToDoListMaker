@@ -46,6 +46,10 @@ public class ToDoList {
     list.remove(li);
   }
 
+  public void removeAll() {
+    list.clear();
+  }
+
   public String getOwner() {
     return owner;
   }

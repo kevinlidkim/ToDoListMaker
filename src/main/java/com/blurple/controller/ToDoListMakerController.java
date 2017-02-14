@@ -89,20 +89,36 @@ public class ToDoListMakerController {
 
 		// check to see if we are using a currenty loaded list. if so, delete list to avoid duplicates
 		String currentList = request.getString("listId");
-		if (!currentList.equals("")) {
+		System.out.println(currentList);
+//		if (!currentList.equals("")) {
+//
+//			Long currentListId = Long.parseLong(request.getString("listId"));
+//			// get the list of items and delete them all
+//			List<ListItem> listOfItems = ObjectifyService.ofy().load().type(ToDoList.class).id(currentListId).now().getList();
+//			for (ListItem items : listOfItems) {
+//				ObjectifyService.ofy().delete().type(ListItem.class).id(items.getId()).now();
+//			}
+//			//ObjectifyService.ofy().delete().type(ToDoList.class).id(currentListId).now();
+//		}
 
+		ToDoList toDoList;
+
+		// build the list
+		if (currentList.equals("")) {
+			toDoList = new ToDoList(listName, isPublic, owner);
+		} else {
 			Long currentListId = Long.parseLong(request.getString("listId"));
-			// get the list of items and delete them all
-			List<ListItem> listOfItems = ObjectifyService.ofy().load().type(ToDoList.class).id(currentListId).now().getList();
+			toDoList = ObjectifyService.ofy().load().type(ToDoList.class).id(currentListId).now();
+			List<ListItem> listOfItems = toDoList.getList();
 			for (ListItem items : listOfItems) {
+				//System.out.println("hi");
+//				toDoList.removeItem(items);
 				ObjectifyService.ofy().delete().type(ListItem.class).id(items.getId()).now();
 			}
-			ObjectifyService.ofy().delete().type(ToDoList.class).id(currentListId).now();
+			toDoList.removeAll();
 		}
 
 
-		// build the list
-		ToDoList toDoList = new ToDoList(listName, isPublic, owner);
 
 		for (int i = 0; i < jArr.length(); i++) {
 			// build a list item for each item in the list
@@ -115,6 +131,7 @@ public class ToDoListMakerController {
 			ListItem listItem = new ListItem(null, category, description, startDate, endDate, completed);
 			toDoList.addItem(listItem);
 			ObjectifyService.ofy().save().entity(listItem).now();
+			System.out.println("we are adding " + category);
 		}
 
 		// save to datastore
@@ -173,7 +190,9 @@ public class ToDoListMakerController {
 		String ownerEmail = email;
 
 		ToDoList selectedList = ObjectifyService.ofy().load().type(ToDoList.class).id(listId).now();
-
+		System.out.println(listId);
+		System.out.println(email);
+		System.out.println(selectedList);
 		ModelAndView mv = new ModelAndView("tdlm");
 		// get all viewable lists again
 		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
