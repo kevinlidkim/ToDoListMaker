@@ -16,7 +16,6 @@ removeBtn.disabled = true;
 upBtn.disabled = true;
 downBtn.disabled = true;
 
-
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -113,6 +112,7 @@ function add(item) {
       newTableRow.appendChild(rowData);
   }
   currentListData.push(item);
+  console.log(item);
   document.getElementById("tableBody").appendChild(newTableRow);
   // Enable save button now that it has at least 1 item
   saveBtn.disabled = false;
@@ -142,6 +142,7 @@ function remove() {
   saveBtn.disabled = false;
   //check counter should? be reset to zero
     cBoxCounter = 0;
+
 }
 
 /* Move up function */
@@ -178,6 +179,11 @@ function moveUp() {
         // move the checkboxes also
         c_boxes[i-1].MaterialCheckbox.check();
         c_boxes[i].MaterialCheckbox.uncheck();
+
+        var temp = currentListData[i];
+        currentListData[i] = currentListData[i-1];
+        currentListData[i-1] = temp;
+        console.log(currentListData);
       }
     }
   }
@@ -224,6 +230,11 @@ function moveDown() {
         c_boxes[i+1].MaterialCheckbox.check();
 
         i++;
+
+        var temp = currentListData[i-1];
+        currentListData[i-1] = currentListData[i];
+        currentListData[i] = temp;
+        console.log(currentListData);
       }
     }
   }
@@ -353,3 +364,22 @@ category.oninput = function() { toggleAddBtn() };
 desc.oninput = function() { toggleAddBtn() };
 startDate.oninput = function() { toggleAddBtn() };
 endDate.oninput = function() { toggleAddBtn() };
+
+//change arrow display
+$("th.sort").click(function() {
+
+  if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
+
+    $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
+    $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
+
+    $(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
+
+  } else {
+
+    $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
+    $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
+
+    $(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
+  }
+});

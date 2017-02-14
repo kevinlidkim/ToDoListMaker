@@ -34,7 +34,7 @@
 	<!-- polyfiller file to detect and load polyfills -->
 	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
 	<%-- sorting library to sort table --%>
-	<script src="http://listjs.com/assets/javascripts/list.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
 	<script>
         webshims.setOptions('waitReady', false);
         webshims.setOptions('forms-ext', {types: 'date'});
@@ -126,27 +126,25 @@
 
 		<!-- Table -->
 		<div style="display:inline-block;vertical-align:top;margin-right:120px;width:590px;min-height:300px;">
-			<div id="listTable">
-				<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-					<thead>
-					<tr>
-						<th>
-							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
-								<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
-							</label>
-						</th>
-						<th class="mdl-data-table__cell--non-numeric sort" data-sort="category">Category</th>
-						<th class="mdl-data-table__cell--non-numeric sort" data-sort="description">Description</th>
-						<th class="mdl-data-table__cell--non-numeric sort" data-sort="startDate">Start Date</th>
-						<th class="mdl-data-table__cell--non-numeric sort" data-sort="endDate">End Date</th>
-						<th class="mdl-data-table__cell--non-numeric">Completed</th>
-					</tr>
-					</thead>
-					<tbody id="tableBody" class="list">
+			<table id="listTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+				<thead>
+				<tr>
+					<th>
+						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
+							<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
+						</label>
+					</th>
+					<th class="mdl-data-table__cell--non-numeric">Category</th>
+					<th class="mdl-data-table__cell--non-numeric">Description</th>
+					<th class="mdl-data-table__cell--non-numeric">Start Date</th>
+					<th class="mdl-data-table__cell--non-numeric">End Date</th>
+					<th class="mdl-data-table__cell--non-numeric">Completed</th>
+				</tr>
+				</thead>
+				<tbody id="tableBody">
 
-					</tbody>
-				</table>
-			</div>
+				</tbody>
+			</table>
 
 			<!-- Save Button -->
 			<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
@@ -347,29 +345,8 @@
 </script>
 <%-- SORTING THE TABLE --%>
 <script>
-	var options = {
-	  valueNames: [ 'category', 'description', 'startDate', 'endDate']
-	};
-
-	// Init list
-	var listTable = new List('listTable', options);
-
-	//change arrow display
-	$("th.sort").click(function() {
-		if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
-
-			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
-			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
-
-			$(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
-
-		} else {
-
-			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
-			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
-
-			$(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
-		}
+	$(function(){
+		$('#keywords').tablesorter();
 	});
 </script>
 <script>
