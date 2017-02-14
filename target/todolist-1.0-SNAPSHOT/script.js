@@ -27,7 +27,7 @@ function loadTableRow(data) {
     for(key in data[i]) {
         var tableData = document.createElement("td");
         tableData.innerHTML = data[i][key];
-        tableData.className = "mdl-data-table__cell--non-numeric";
+        tableData.className = "mdl-data-table__cell--non-numeric " + key;
         tableRow.appendChild(tableData);
     }
     //Append the row to the table
@@ -49,8 +49,6 @@ function addCheckBox(tableRow) {
     cBoxInput.onchange = function() {
         //first re-enable buttons if they were disabled from before
         //removeBtn.disabled = false;
-
-
 
         if (cBoxInput.checked) {  cBoxCounter++; }
         else { cBoxCounter--;}

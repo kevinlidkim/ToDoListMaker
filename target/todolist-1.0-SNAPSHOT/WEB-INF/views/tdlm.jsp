@@ -32,6 +32,8 @@
 	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
 	<!-- polyfiller file to detect and load polyfills -->
 	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+	<%-- sorting library to sort table --%>
+	<script src="http://listjs.com/assets/javascripts/list.min.js"></script>
 	<script>
         webshims.setOptions('waitReady', false);
         webshims.setOptions('forms-ext', {types: 'date'});
@@ -93,8 +95,7 @@
 
 		</div>
 	</div>
-
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
 
 </div>
 
@@ -124,25 +125,27 @@
 
 		<!-- Table -->
 		<div style="display:inline-block;vertical-align:top;margin-right:120px;width:590px;min-height:300px;">
-			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-				<thead>
-				<tr>
-					<th>
-						<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
-							<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
-						</label>
-					</th>
-					<th class="mdl-data-table__cell--non-numeric">Category</th>
-					<th class="mdl-data-table__cell--non-numeric">Description</th>
-					<th class="mdl-data-table__cell--non-numeric">Start Date</th>
-					<th class="mdl-data-table__cell--non-numeric">End Date</th>
-					<th class="mdl-data-table__cell--non-numeric">Completed</th>
-				</tr>
-				</thead>
-				<tbody id="tableBody">
+			<div id="listTable">
+				<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+					<thead>
+					<tr>
+						<th>
+							<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select" for="table-header">
+								<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
+							</label>
+						</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="category">Category</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="description">Description</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="startDate">Start Date</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="endDate">End Date</th>
+						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending">Completed</th>
+					</tr>
+					</thead>
+					<tbody id="tableBody" class="list">
 
-				</tbody>
-			</table>
+					</tbody>
+				</table>
+			</div>
 
 			<!-- Save Button -->
 			<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
@@ -296,26 +299,28 @@
 
 <script src="../../script.js"></script>
 <script>
-    //Dummy to-do list as an array of objects
-		var data = [];
-
+    //check if there is a list selected
 		var selectedList = ${selectedList};
+		var data = [];
 
 		if(selectedList != null) {
 			data = selectedList.list;
 		}
 
-		console.log("SLECETED LIST:");
-		console.log(data);
-
+		//remove unwanted data fields.
 		for(var i = 0; i < data.length; i++) {
 			delete data[i].id;
 			delete data[i].theList;
 		}
 
-    //Load the dummy to-do list by loading each object as a row item
-    for(var i = 0; i < data.length; i++) {
-        loadTableRow(data);
+		currentListData = data;
+
+		console.log("current LIST:");
+		console.log(currentListData);
+
+    //Load the current list by loading each object as a row item
+    for(var i = 0; i < currentListData.length; i++) {
+        loadTableRow(currentListData);
     }
 </script>
 <script>
@@ -350,6 +355,24 @@
 			child.innerHTML = input + listName;
 			document.getElementById("loadedList").appendChild(child);
 		}
+</script>
+<%-- SORTING THE TABLE --%>
+<script>
+	var options = {
+	  valueNames: [ 'category', 'description', 'startDate', 'endDate']
+	};
+
+	// Init list
+	var listTable = new List('listTable', options);
+
+	$("th.sort").click(function() {
+		console.log(this);
+		if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
+			$(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
+		} else {
+			$(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
+		}
+	});
 </script>
 <script>
 	setTimeout(function(){$('.date').each(function(){$(this).addClass('is-focused')})}, 1000);
