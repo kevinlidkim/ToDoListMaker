@@ -11,12 +11,13 @@
                     function(){
                         var g = gapi.auth2.getAuthInstance();
                         if (g.isSignedIn.get() == false) {
-                            console.log("not logged in");
+                            // console.log("not logged in");
                             window.location.href = "/";
                         }
-                        else { console.log("logged in"); }
+                        else { // console.log("logged in"); 
+                      }
                     },
-                    function(){ console.log("error");
+                    function(){ // console.log("error");
                     });
             });
 
@@ -93,7 +94,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
 
 </div>
 
@@ -212,6 +213,20 @@
 
 <!-- Testing load right now -->
 <script>
+	function loadViewableLists() {
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", "/loadViewableLists");
+			var hiddenField = document.createElement("input");
+			hiddenField.setAttribute("type", "hidden");
+			hiddenField.setAttribute("name", "email");
+			hiddenField.setAttribute("value", localStorage.getItem("email"));
+
+			form.appendChild(hiddenField);
+			document.body.appendChild(form);
+			form.submit();
+	}
+
 	function loadSelectedList() {
 				var form = document.createElement("form");
 				var lists = ${viewableLists};
@@ -236,6 +251,7 @@
 				form.submit();
 		}
 </script>
+<button onclick="loadViewableLists()" style="display:none;">Load Viewable Lists</button>
 
 <%-- Load Button Popup Modal. --%>
 <dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">
@@ -274,11 +290,57 @@
 <script>
     var user = document.getElementById("user");
     user.innerHTML = localStorage.getItem("user");
-    console.log(localStorage.getItem("user") + " sup");
-    console.log(localStorage.getItem("email") + " yo");
+    // console.log(localStorage.getItem("user") + " sup");
+    // console.log(localStorage.getItem("email") + " yo");
 </script>
 
 <script src="../../script.js"></script>
+<script>
+//     //Dummy to-do list as an array of objects
+// 		var emptyData = [];
+//     var testData = [
+//         {
+//             category: "Kitchen",
+//             description: "Repair leaky sink",
+//             startDate: "2016-06-10",
+//             endDate: "2016-06-11",
+//             completed: "False"
+//         },
+//         {
+//             category: "Attic",
+//             description: "Fix leak in roof",
+//             startDate: "2016-06-07",
+//             endDate: "2016-06-17",
+//             completed: "False"
+//         },
+//         {
+//             category: "Garage",
+//             description: "Paint interior",
+//             startDate: "2016-06-10",
+//             endDate: "2016-06-11",
+//             completed: "False"
+//         },
+//         {
+//             category: "Garden",
+//             description: "Paint flowers",
+//             startDate: "2016-06-04",
+//             endDate: "2016-06-04",
+//             completed: "True"
+//         },
+//         {
+//             category: "Garage",
+//             description: "Repair door",
+//             startDate: "2016-06-10",
+//             endDate: "2016-06-14",
+//             completed: "False"
+//         }
+//     ];
+
+//     //Load the dummy to-do list by loading each object as a row item
+//     for(var i = 0; i < testData.length; i++) {
+//         loadTableRow(testData);
+//     }
+// </script>
 <script>
     //Dummy to-do list as an array of objects
 		var data = [];
@@ -316,16 +378,17 @@
     });
 </script>
 <script>
+
     var lists = ${viewableLists};
     // console.log("yo lists");
     // console.log(lists);
 
-		//populate the load button list.
+		// populate the load button list.
 		for(var key in lists) {
-			console.log(lists[key]);
+			// console.log(lists[key]);
 
 			var listName = lists[key].name;
-            var id = lists[key].id;
+			var id = lists[key].id;
 
 			var child = document.createElement('li');
 			child.setAttribute("id", id);

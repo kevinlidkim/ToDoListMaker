@@ -11,12 +11,13 @@
                     function(){
                         var g = gapi.auth2.getAuthInstance();
                         if (g.isSignedIn.get() == false) {
-                            console.log("not logged in");
+                            // console.log("not logged in");
                             window.location.href = "/";
                         }
-                        else { console.log("logged in"); }
+                        else { // console.log("logged in"); 
+                      }
                     },
-                    function(){ console.log("error");
+                    function(){ // console.log("error");
                     });
             });
 
@@ -246,7 +247,7 @@
 	</div>
 	<div class="mdl-dialog__actions">
 		<button id="loadSelectedListBtn" type="button" class="mdl-button" onclick=loadSelectedList()>Load</button>
-		<button type="button" class="mdl-button close">Cancle</button>
+		<button type="button" class="mdl-button close">Cancel</button>
 	</div>
 </dialog>
 
@@ -274,11 +275,57 @@
 <script>
     var user = document.getElementById("user");
     user.innerHTML = localStorage.getItem("user");
-    console.log(localStorage.getItem("user") + " sup");
-    console.log(localStorage.getItem("email") + " yo");
+    // console.log(localStorage.getItem("user") + " sup");
+    // console.log(localStorage.getItem("email") + " yo");
 </script>
 
 <script src="../../script.js"></script>
+<script>
+//     //Dummy to-do list as an array of objects
+// 		var emptyData = [];
+//     var testData = [
+//         {
+//             category: "Kitchen",
+//             description: "Repair leaky sink",
+//             startDate: "2016-06-10",
+//             endDate: "2016-06-11",
+//             completed: "False"
+//         },
+//         {
+//             category: "Attic",
+//             description: "Fix leak in roof",
+//             startDate: "2016-06-07",
+//             endDate: "2016-06-17",
+//             completed: "False"
+//         },
+//         {
+//             category: "Garage",
+//             description: "Paint interior",
+//             startDate: "2016-06-10",
+//             endDate: "2016-06-11",
+//             completed: "False"
+//         },
+//         {
+//             category: "Garden",
+//             description: "Paint flowers",
+//             startDate: "2016-06-04",
+//             endDate: "2016-06-04",
+//             completed: "True"
+//         },
+//         {
+//             category: "Garage",
+//             description: "Repair door",
+//             startDate: "2016-06-10",
+//             endDate: "2016-06-14",
+//             completed: "False"
+//         }
+//     ];
+
+//     //Load the dummy to-do list by loading each object as a row item
+//     for(var i = 0; i < testData.length; i++) {
+//         loadTableRow(testData);
+//     }
+// </script>
 <script>
     //Dummy to-do list as an array of objects
 		var data = [];
@@ -316,13 +363,14 @@
     });
 </script>
 <script>
+
     var lists = ${viewableLists};
     // console.log("yo lists");
     // console.log(lists);
 
-		//populate the load button list.
+		// populate the load button list.
 		for(var key in lists) {
-			console.log(lists[key]);
+			// console.log(lists[key]);
 
 			var listName = lists[key].name;
             var id = lists[key].id;
