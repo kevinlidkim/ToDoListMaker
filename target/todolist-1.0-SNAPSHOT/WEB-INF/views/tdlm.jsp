@@ -93,7 +93,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
 
@@ -326,7 +326,7 @@
 </script>
 <script>
 
-    var lists = ${viewableLists}
+    var lists = ${viewableLists};
     console.log("yo lists");
     console.log(lists);
 
@@ -335,10 +335,8 @@
 			console.log(lists[key]);
 
 			var listName = lists[key].name;
-			var id = lists[key].id;
-
 			var child = document.createElement('li');
-			child.setAttribute("id", id);
+			child.setAttribute("id", lists[key].id);
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
 
 			child.innerHTML = input + listName;

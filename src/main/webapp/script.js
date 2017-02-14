@@ -47,9 +47,14 @@ function addCheckBox(tableRow) {
     cBoxInput.className = "mdl-checkbox__input";
     cBoxInput.setAttribute("type", "checkbox");
     cBoxInput.onchange = function() {
+        //first re-enable buttons if they were disabled from before
+        //removeBtn.disabled = false;
+
+
+
         if (cBoxInput.checked) {  cBoxCounter++; }
         else { cBoxCounter--;}
-
+        console.log(cBoxCounter);
         if (cBoxCounter == 1) {
             removeBtn.disabled = false;
             upBtn.disabled = false;
@@ -130,8 +135,11 @@ function remove() {
         // Move counter back so the next box can be removed properly.
         i--;
       }
-
   }
+  //disable button again after removal
+   removeBtn.disabled = true;
+  //check counter should? be reset to zero
+    cBoxCounter = 0;
 }
 
 /* Move up function */
@@ -335,7 +343,7 @@ function toggleAddBtn() {
     }
 }
 
-category.onkeyup = function() { toggleAddBtn() };
-desc.onkeyup = function() { toggleAddBtn() };
-startDate.onkeyup = function() { toggleAddBtn() };
-endDate.onkeyup = function() { toggleAddBtn() };
+category.oninput = function() { toggleAddBtn() };
+desc.oninput = function() { toggleAddBtn() };
+startDate.oninput = function() { toggleAddBtn() };
+endDate.oninput = function() { toggleAddBtn() };
