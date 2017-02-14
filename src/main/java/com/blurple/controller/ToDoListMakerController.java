@@ -26,6 +26,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 import com.googlecode.objectify.ObjectifyService;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @Controller
 public class ToDoListMakerController {
@@ -61,9 +62,12 @@ public class ToDoListMakerController {
 					viewableLists.add(list);
 				}
 			}
+
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
 			// Turn it to json object before sending to frontEnd
-			String viewableLists_json = new Gson().toJson(viewableLists);
-			String selectedList_json = new Gson().toJson(selectedList);
+			String viewableLists_json = gson.toJson(viewableLists);
+			String selectedList_json = gson.toJson(selectedList);
 			mv.addObject("viewableLists", viewableLists_json);
 			mv.addObject("selectedList", selectedList_json);
 			return mv;
@@ -140,9 +144,11 @@ public class ToDoListMakerController {
 			}
 		}
 
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
 		// Turn it to json object before sending to frontEnd
-		String selectedList_json = new Gson().toJson(selectedList);
-		String viewableLists_json = new Gson().toJson(viewableLists);
+		String selectedList_json = gson.toJson(selectedList);
+		String viewableLists_json = gson.toJson(viewableLists);
 
 		ModelAndView mv = new ModelAndView("tdlm");
 		mv.addObject("viewableLists", viewableLists_json);
@@ -180,9 +186,11 @@ public class ToDoListMakerController {
 			}
 		}
 
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
 		// Turn it to json object before sending to frontEnd
-		String selectedList_json = new Gson().toJson(selectedList);
-		String viewableLists_json = new Gson().toJson(viewableLists);
+		String selectedList_json = gson.toJson(selectedList);
+		String viewableLists_json = gson.toJson(viewableLists);
 
 		mv.addObject("selectedList", selectedList_json);
 		mv.addObject("viewableLists", viewableLists_json);

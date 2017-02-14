@@ -217,20 +217,6 @@
 
 <!-- Testing load right now -->
 <script>
-	function loadViewableLists() {
-			var form = document.createElement("form");
-			form.setAttribute("method", "post");
-			form.setAttribute("action", "/loadViewableLists");
-			var hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "email");
-			hiddenField.setAttribute("value", localStorage.getItem("email"));
-
-			form.appendChild(hiddenField);
-			document.body.appendChild(form);
-			form.submit();
-	}
-
 	function loadSelectedList() {
 				var form = document.createElement("form");
 				var lists = ${viewableLists};
@@ -255,7 +241,6 @@
 				form.submit();
 		}
 </script>
-<button onclick="loadViewableLists()" style="display:none;">Load Viewable Lists</button>
 
 <%-- Load Button Popup Modal. --%>
 <dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">
@@ -266,7 +251,7 @@
 	</div>
 	<div class="mdl-dialog__actions">
 		<button id="loadSelectedListBtn" type="button" class="mdl-button" onclick=loadSelectedList()>Load</button>
-		<button type="button" class="mdl-button close">Cancle</button>
+		<button type="button" class="mdl-button close">Cancel</button>
 	</div>
 </dialog>
 
@@ -347,7 +332,7 @@
 			// console.log(lists[key]);
 
 			var listName = lists[key].name;
-			var id = lists[key].id;
+            var id = lists[key].id;
 
 			var child = document.createElement('li');
 			child.setAttribute("id", id);
@@ -366,8 +351,8 @@
 	// Init list
 	var listTable = new List('listTable', options);
 
+	//change arrow display
 	$("th.sort").click(function() {
-		console.log(this);
 		if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
 			$(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
 		} else {
