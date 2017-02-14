@@ -262,7 +262,7 @@
 	</div>
 	<div class="mdl-dialog__actions">
 		<button id="loadSelectedListBtn" type="button" class="mdl-button" onclick=loadSelectedList()>Load</button>
-		<button type="button" class="mdl-button close">Cancle</button>
+		<button type="button" class="mdl-button close">Cancel</button>
 	</div>
 </dialog>
 
@@ -295,8 +295,7 @@
 </script>
 
 <script src="../../script.js"></script>
-<<<<<<< HEAD
-// <script>
+<script>
 //     //Dummy to-do list as an array of objects
 // 		var emptyData = [];
 //     var testData = [
@@ -342,7 +341,6 @@
 //         loadTableRow(testData);
 //     }
 // </script>
-=======
 <script>
     //Dummy to-do list as an array of objects
 		var data = [];
@@ -366,7 +364,6 @@
         loadTableRow(data);
     }
 </script>
->>>>>>> f41e9a8a00ee16eb3302fc8fa04443d9b96abf89
 <script>
     var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('#loadBtn');
@@ -381,12 +378,8 @@
     });
 </script>
 <script>
-<<<<<<< HEAD
 
-    var lists = ${viewableLists}
-=======
     var lists = ${viewableLists};
->>>>>>> f41e9a8a00ee16eb3302fc8fa04443d9b96abf89
     // console.log("yo lists");
     // console.log(lists);
 
