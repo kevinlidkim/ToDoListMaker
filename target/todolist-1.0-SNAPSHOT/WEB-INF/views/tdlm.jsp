@@ -11,12 +11,13 @@
                     function(){
                         var g = gapi.auth2.getAuthInstance();
                         if (g.isSignedIn.get() == false) {
-                            console.log("not logged in");
+                            // console.log("not logged in");
                             window.location.href = "/";
                         }
-                        else { console.log("logged in"); }
+                        else { // console.log("logged in");
+                      }
                     },
-                    function(){ console.log("error");
+                    function(){ // console.log("error");
                     });
             });
 
@@ -293,13 +294,12 @@
 <script>
     var user = document.getElementById("user");
     user.innerHTML = localStorage.getItem("user");
-    console.log(localStorage.getItem("user") + " sup");
-    console.log(localStorage.getItem("email") + " yo");
+    // console.log(localStorage.getItem("user") + " sup");
+    // console.log(localStorage.getItem("email") + " yo");
 </script>
 
 <script src="../../script.js"></script>
 <script>
-    //check if there is a list selected
 		var selectedList = ${selectedList};
 		var data = [];
 
@@ -337,13 +337,14 @@
     });
 </script>
 <script>
+
     var lists = ${viewableLists};
     // console.log("yo lists");
     // console.log(lists);
 
-		//populate the load button list.
+		// populate the load button list.
 		for(var key in lists) {
-			console.log(lists[key]);
+			// console.log(lists[key]);
 
 			var listName = lists[key].name;
 			var id = lists[key].id;

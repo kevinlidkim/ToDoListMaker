@@ -134,8 +134,10 @@ function remove() {
         i--;
       }
   }
-  //disable button again after removal
-   removeBtn.disabled = true;
+  //disable buttons again after removal
+  removeBtn.disabled = true;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
   //check counter should? be reset to zero
     cBoxCounter = 0;
 }
@@ -234,8 +236,8 @@ function reset_Input() {
 
 document.getElementById("upBtn").onclick = function () {
   moveUp();
-  console.log("Current list:");
-  console.log(currentListData);
+  // console.log("Current list:");
+  // console.log(currentListData);
 }
 
 document.getElementById("downBtn").onclick = function () {
@@ -291,7 +293,7 @@ function privateOrPublic() {
 /* Add event handler to save button */
 saveBtn.onclick = function () {
 
-  console.log(currentUser);
+  // console.log(currentUser);
   // var listId = "4644337115725824";
   var listId = "";
 
@@ -315,10 +317,10 @@ saveBtn.onclick = function () {
     url: "/createList",
     data: JSON.stringify(dataObj),
     success: function(response) {
-       console.log(response);
+       // console.log(response);
     },
     error: function(err) {
-       console.log(err);
+       // console.log(err);
     }
   });
 
