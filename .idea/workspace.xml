@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93df5d9b-e49e-48f6-a2bf-bf3450e9405d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/appengine-generated/local_db.bin" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/appengine-generated/local_db.bin" />
+    <list default="true" id="93df5d9b-e49e-48f6-a2bf-bf3450e9405d" name="Default" comment="currently selected list name is loaded in text field">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/controller/ToDoListMakerController.class" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/controller/ToDoListMakerController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/models/ToDoList.class" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/models/ToDoList.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java" afterPath="$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/views/tdlm.jsp" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/views/tdlm.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/script.js" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/script.js" />
     </list>
     <list id="4e75fa3c-59af-4d4e-87fb-d4862f5410d8" name="Revert: " comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,11 +29,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ToDoListMakerController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ToDoListMakerController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="198" column="64" lean-forward="false" selection-start-line="198" selection-start-column="64" selection-end-line="198" selection-end-column="64" />
+            <state relative-caret-position="395">
+              <caret line="123" column="51" lean-forward="true" selection-start-line="123" selection-start-column="51" selection-end-line="123" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1235#1236#0" expanded="true" />
@@ -50,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tdlm.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tdlm.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="106" column="98" lean-forward="false" selection-start-line="106" selection-start-column="98" selection-end-line="106" selection-end-column="98" />
+            <state relative-caret-position="-429">
+              <caret line="126" column="18" lean-forward="false" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -111,25 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <marker date="1487047614115" expanded="true" signature="3048:3086" ph="{...}" />
-                <marker date="1487047614115" expanded="true" signature="3115:3398" ph="{...}" />
-                <marker date="1487047614115" expanded="true" signature="3159:3390" ph="{&quot;scope&quot;: 'profile email'...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="122">
+              <caret line="301" column="16" lean-forward="false" selection-start-line="301" selection-start-column="16" selection-end-line="301" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -159,7 +141,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add</find>
       <find>list name</find>
       <find>listname</find>
       <find>action=&quot;#&quot;</find>
@@ -187,8 +168,9 @@
       <find>remove</find>
       <find>loadsel</find>
       <find>to do list name</find>
-      <find>savebtn</find>
       <find>${</find>
+      <find>table</find>
+      <find>savebtn</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Stanley Chen\ToDoListMaker\src</dir>
@@ -211,10 +193,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/blurple/models/ListItem.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newpage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/script.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/script.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" />
       </list>
     </option>
   </component>
@@ -912,11 +894,18 @@
       <option name="project" value="LOCAL" />
       <updated>1487039784429</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="currently selected list name is loaded in text field">
+      <created>1487050748033</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1487050748033</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82093000" />
+    <option name="totallyTimeSpent" value="82684000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -941,8 +930,8 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28783384" sideWeight="0.49707174" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25816023" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28783384" sideWeight="0.49707174" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25816023" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.238653" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -968,7 +957,8 @@
     <MESSAGE value="/tdlm redirects to landing page if not logged in, proper sigin/signout" />
     <MESSAGE value="Enabled/Disabled Add button if fields are empty/not empty" />
     <MESSAGE value="Fixed minor button bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor button bugs" />
+    <MESSAGE value="currently selected list name is loaded in text field" />
+    <option name="LAST_COMMIT_MESSAGE" value="currently selected list name is loaded in text field" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1674,33 +1664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="26" lean-forward="false" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="198" column="64" lean-forward="false" selection-start-line="198" selection-start-column="64" selection-end-line="198" selection-end-column="64" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1235#1236#0" expanded="true" />
-            <element signature="e#1274#1275#0" expanded="true" />
-            <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#4916#4926#0" expanded="true" />
-            <element signature="e#6397#6407#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="106" column="98" lean-forward="false" selection-start-line="106" selection-start-column="98" selection-end-line="106" selection-end-column="98" />
+        <state relative-caret-position="-429">
+          <caret line="126" column="18" lean-forward="false" selection-start-line="126" selection-start-column="13" selection-end-line="126" selection-end-column="18" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1752,6 +1719,29 @@
             <element signature="n#style#0;n#span#0;n#li#1;n#ul#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#li#2;n#ul#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#li#3;n#ul#0;n#div#1;n#footer#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="301" column="16" lean-forward="false" selection-start-line="301" selection-start-column="16" selection-end-line="301" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="123" column="51" lean-forward="true" selection-start-line="123" selection-start-column="51" selection-end-line="123" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1235#1236#0" expanded="true" />
+            <element signature="e#1274#1275#0" expanded="true" />
+            <element signature="e#1912#1922#0" expanded="true" />
+            <element signature="e#4916#4926#0" expanded="true" />
+            <element signature="e#6397#6407#0" expanded="true" />
           </folding>
         </state>
       </provider>
