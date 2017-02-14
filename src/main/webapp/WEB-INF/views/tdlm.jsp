@@ -27,7 +27,16 @@
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.6/dialog-polyfill.min.css">
 	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<!-- cdn for modernizr, if you haven't included it already -->
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+	<!-- polyfiller file to detect and load polyfills -->
+	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+	<script>
+        webshims.setOptions('waitReady', false);
+        webshims.setOptions('forms-ext', {types: 'date'});
+        webshims.polyfill('forms forms-ext');
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/dialog-polyfill/0.4.6/dialog-polyfill.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link rel="icon" href="../../check-mark.svg">
@@ -39,7 +48,7 @@
 		.mdl-radio__outer-circle { border: 2px solid #262626; }
 		.mdl-radio.is-checked .mdl-radio__outer-circle, .mdl-checkbox.is-checked .mdl-checkbox__box-outline { border: 2px solid #7289DA !important; }
 		.mdl-radio__inner-circle, .mdl-ripple, .mdl-button { background: #7289DA !important; }
-		.mdl-radio__label { color:white; }
+		.mdl-radio__label, mdl-textfield__input { color:white !important; }
 		.mdl-textfield__label, .mdl-checkbox__tick-outline { color: white; }
 		.mdl-textfield.is_focused .mdl-textfield__input { border-bottom: 1px solid #7289DA !important; }
 		.mdl-textfield--floating-label.is-focused .mdl-textfield__label,.mdl-textfield--floating-label.is-dirty .mdl-textfield__label { color: #7289DA !important; }
@@ -48,14 +57,14 @@
 	</style>
 
 </head>
-<body style="position:relative;background-color: #363636;text-align:center;min-width:1300px;padding-bottom:100px;width:100vw;">
+<body style="background-color: #363636;text-align:center;min-width:1300px;height:100%;width:100vw;overflow-x:hidden;">
 
 <div style="position:relative;text-align:center;height:250px;color:white;background-color:#7289DA;overflow:hidden;width:100%;">
 	<img src="../../pattern.png" width="100%" style="position: absolute;z-index:1;top:0;bottom:0;left:0;right:0;opacity:0.5;"/>
 	<div style="height:60px;padding-top:20px;position:relative;z-index:2;">
 		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;"><span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>!</div>
 
-		<div class="vertCenterLeft" style="position:absolute;right:15px;width:600px;justify-content:flex-end;">
+		<div class="vertCenterLeft" style="position:absolute;right:5px;width:600px;justify-content:flex-end;">
 			<!-- Create/Load Buttons -->
 			<button class="mdl-button mdl-js-button mdl-js-ripple-effect textDecAuto" id="createBtn" style="margin-right:10px;color:white;text-transform:capitalize;font-family: 'Lato', sans-serif;font-size:1.6em;">
 				Create
@@ -84,11 +93,11 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}!</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
 
-<div style="margin: 0 auto;display:inline-block;padding-top:25px;padding-bottom:20px;">
+<div style="margin: 0 auto;display:inline-block;padding-top:35px;padding-bottom:30px;">
 	<div class="vertCenterLeft" style="">
 		<!--To Do List Name Text Field -->
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
@@ -97,7 +106,7 @@
 		</div>
 
 		<!-- Public/Private Radio Buttons -->
-		<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="public" style="margin-left:55px;">
+		<label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="public" style="margin-left:125px;">
 			<input checked class="mdl-radio__button" id="public" name="ppRadio" type="radio" value="on">
 			<span class="mdl-radio__label">Public</span>
 		</label>
@@ -110,10 +119,10 @@
 
 	</div>
 
-	<div class="vertCenterLeft" style="position:relative;margin-bottom:30px;">
+	<div class="vertCenterLeft" style="position:relative;margin-bottom:30px;min-height:360px;">
 
 		<!-- Table -->
-		<div style="display:inline-block;vertical-align:top;margin-right:120px;">
+		<div style="display:inline-block;vertical-align:top;margin-right:120px;width:590px;min-height:300px;">
 			<table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 				<thead>
 				<tr>
@@ -140,7 +149,7 @@
 			</button>
 		</div>
 
-		<div style="width:70px;position:absolute;top:0;left:550px;padding-bottom:70px;">
+		<div style="width:70px;position:absolute;top:0;left:615px;padding-bottom:70px;">
 			<!-- Add/Delete/Move Up/Move Down Buttons -->
 			<div style="margin-top:15px;margin-bottom:25px;">
 				<button id="addBtn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
@@ -181,13 +190,13 @@
 					</div>
 				</div>
 				<div>
-					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label date" style="font-size:1.3em;margin-right:10px;">
 						<input class="mdl-textfield__input" type="date" name="start_Date" value="" id="start_Date" style="color:white;padding-bottom:3px;">
 						<label class="mdl-textfield__label" for="listName" style="">Start Date</label>
 					</div>
 				</div>
 				<div>
-					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
+					<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label date" style="font-size:1.3em;margin-right:10px;">
 						<input class="mdl-textfield__input" type="date" name="end_Date" value="" id="end_Date" style="color:white;padding-bottom:3px;">
 						<label class="mdl-textfield__label" for="listName" style="">End Date</label>
 					</div>
@@ -241,13 +250,13 @@
 				form.submit();
 		}
 </script>
-<button onclick="loadViewableLists()">Load Viewable Lists</button>
+<button onclick="loadViewableLists()" style="display:none;">Load Viewable Lists</button>
 
 <%-- Load Button Popup Modal. --%>
-<dialog class="mdl-dialog">
-	<h4 class="mdl-dialog__title">List to Load</h4>
+<dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">
+	<h4 class="mdl-dialog__title" style="font-family:'Lato', sans-serif;font-weight:600;">List to Load</h4>
 	<div class="mdl-dialog__content">
-		<ul id="loadedList" style="list-style-type:none;padding-left:0px;">
+		<ul id="loadedList" style="list-style-type:none;padding-left:0;text-align:left;color:#262626;">
 		</ul>
 	</div>
 	<div class="mdl-dialog__actions">
@@ -340,6 +349,12 @@
 			child.innerHTML = input + listName;
 			document.getElementById("loadedList").appendChild(child);
 		}
+</script>
+<script>
+	setTimeout(function(){$('.date').each(function(){$(this).addClass('is-focused')})}, 1000);
+	$(document).on('mouseover','body',function(){$('.date').each(function(){$(this).addClass('is-focused');$(this).removeClass('is-invalid');})});
+	$("#start_Date").datepicker({dateFormat: 'mm-dd-yyyy'});
+	$("#end_Date").datepicker({dateFormat: 'mm-dd-yyyy'})
 </script>
 </body>
 </html>
