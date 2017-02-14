@@ -16,6 +16,16 @@ removeBtn.disabled = true;
 upBtn.disabled = true;
 downBtn.disabled = true;
 
+var categoryHeader = $("th.category");
+var descriptionHeader = $("th.description");
+var startDateHeader = $("th.startDate");
+var endDateHeader = $("th.endDate");
+
+var categoryHits = 0;
+var descriptionHits = 0;
+var startDateHits = 0;
+var endDateHits = 0;
+
 /* Helper function which creates and adds a row item to the table */
 function loadTableRow(data) {
     //Create the row element for each object in array and add a checkbox to it
@@ -26,9 +36,11 @@ function loadTableRow(data) {
     for(key in data[i]) {
         var tableData = document.createElement("td");
         tableData.innerHTML = data[i][key];
-        tableData.className = "mdl-data-table__cell--non-numeric " + key;
+        tableData.className = "mdl-data-table__cell--non-numeric ";
         tableRow.appendChild(tableData);
     }
+    // console.log("loading...");
+    // console.log(data[i][key]);
     //Append the row to the table
     document.getElementById("tableBody").appendChild(tableRow);
 }
@@ -51,7 +63,7 @@ function addCheckBox(tableRow) {
 
         if (cBoxInput.checked) {  cBoxCounter++; }
         else { cBoxCounter--;}
-        console.log(cBoxCounter);
+        // console.log(cBoxCounter);
         if (cBoxCounter == 1) {
             removeBtn.disabled = false;
             upBtn.disabled = false;
@@ -112,12 +124,10 @@ function add(item) {
       newTableRow.appendChild(rowData);
   }
   currentListData.push(item);
-  console.log(item);
   document.getElementById("tableBody").appendChild(newTableRow);
   // Enable save button now that it has at least 1 item
   saveBtn.disabled = false;
 
-  $('#listTable').trigger("update")
 }
 
 /* Remove function*/
@@ -142,9 +152,16 @@ function remove() {
   //enable save button
   saveBtn.disabled = false;
   //check counter should? be reset to zero
-    cBoxCounter = 0;
+  cBoxCounter = 0;
 
-  $('#listTable').trigger("update")
+  // array.splice(start, deleteCount)
+  if(currentListData.length > 1) {
+    currentListData.splice(i, 1);
+  } else {
+    currentListData.pop();
+  }
+  // console.log(currentListData);
+
 }
 
 /* Move up function */
@@ -186,7 +203,6 @@ function moveUp() {
         var temp = currentListData[i];
         currentListData[i] = currentListData[i-1];
         currentListData[i-1] = temp;
-        console.log(currentListData);
       }
     }
   }
@@ -238,7 +254,6 @@ function moveDown() {
         var temp = currentListData[i-1];
         currentListData[i-1] = currentListData[i];
         currentListData[i] = temp;
-        console.log(currentListData);
       }
     }
   }
@@ -368,23 +383,257 @@ category.oninput = function() { toggleAddBtn() };
 desc.oninput = function() { toggleAddBtn() };
 startDate.oninput = function() { toggleAddBtn() };
 endDate.oninput = function() { toggleAddBtn() };
+function clearTable() { document.getElementById("tableBody").innerHTML = ""; }
+function clearcurrenListData() {currentListData = [];}
+function removeAllSortingIcons() {
+  $("th").removeClass('mdl-data-table__header--sorted-ascending')
+  $("th").removeClass('mdl-data-table__header--sorted-descending')
+}
 
-//change arrow display
-// $("th.sort").click(function() {
-//   console.log("APPLE PIE");
-// 
-//   if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
-//
-//     $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
-//     $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
-//
-//     $(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
-//
-//   } else {
-//
-//     $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
-//     $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
-//
-//     $(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
-//   }
-// });
+function compareCategoryASC(a,b) {
+  if (a.category < b.category)
+    return -1;
+  if (a.category > b.category)
+    return 1;
+  return  0;
+}
+
+function compareCategoryDESC(a,b) {
+  if (b.category < a.category)
+    return -1;
+  if (b.category > a.category)
+    return 1;
+  return 0;
+}
+
+function compareDescriptionASC(a,b) {
+  if (a.description < b.description)
+    return -1;
+  if (a.description > b.description)
+    return 1;
+  return  0;
+}
+
+function compareDescriptionDESC(a,b) {
+  if (b.description < a.description)
+    return -1;
+  if (b.description > a.description)
+    return 1;
+  return 0;
+}
+
+function compareStartDateASC(a,b) {
+  if (a.startDate < b.startDate)
+    return -1;
+  if (a.startDate > b.startDate)
+    return 1;
+  return  0;
+}
+
+function compareStartDateDESC(a,b) {
+  if (b.startDate < a.startDate)
+    return -1;
+  if (b.startDate > a.startDate)
+    return 1;
+  return 0;
+}
+
+function compareEndDateASC(a,b) {
+  if (a.endDate < b.endDate)
+    return -1;
+  if (a.endDate > b.endDate)
+    return 1;
+  return  0;
+}
+
+function compareEndDateDESC(a,b) {
+  if (b.endDate < a.endDate)
+    return -1;
+  if (b.endDate > a.endDate)
+    return 1;
+  return 0;
+}
+
+categoryHeader.click(function() {
+
+  removeAllSortingIcons();
+
+  if(categoryHits % 2 != 0) {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareCategoryASC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    categoryHeader.addClass('mdl-data-table__header--sorted-ascending');
+
+  } else {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareCategoryDESC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    categoryHeader.addClass('mdl-data-table__header--sorted-descending');
+
+  }
+  categoryHits++;
+});
+descriptionHeader.click(function() {
+
+  removeAllSortingIcons();
+
+  if(descriptionHits % 2 != 0) {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareDescriptionASC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    descriptionHeader.addClass('mdl-data-table__header--sorted-ascending');
+
+
+  } else {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareDescriptionDESC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    descriptionHeader.addClass('mdl-data-table__header--sorted-descending');
+
+  }
+  descriptionHits++;
+});
+startDateHeader.click(function() {
+
+  removeAllSortingIcons();
+
+  if(startDateHits % 2 != 0) {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareStartDateASC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    startDateHeader.addClass('mdl-data-table__header--sorted-ascending');
+
+
+  } else {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareStartDateDESC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    startDateHeader.addClass('mdl-data-table__header--sorted-descending');
+
+  }
+  startDateHits++;
+});
+endDateHeader.click(function() {
+
+  removeAllSortingIcons();
+
+  if(endDateHits % 2 != 0) {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareEndDateASC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    endDateHeader.addClass('mdl-data-table__header--sorted-ascending');
+
+
+  } else {
+
+    var tempList = currentListData;
+    var listSize = tempList.length;
+
+    //sort
+    currentListData.sort(compareEndDateDESC);
+
+    //clear table and arraylist cuz they gonna be repopulated.
+    clearTable();
+    clearcurrenListData();
+
+    for(var i = 0; i < listSize; i++) {
+      //re-add all the items in the correct order
+      add(tempList[i]);
+    }
+
+    endDateHeader.addClass('mdl-data-table__header--sorted-descending');
+
+  }
+  endDateHits++;
+});

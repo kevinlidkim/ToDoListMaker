@@ -33,8 +33,6 @@
 	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
 	<!-- polyfiller file to detect and load polyfills -->
 	<script src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
-	<%-- sorting library to sort table --%>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
 	<script>
         webshims.setOptions('waitReady', false);
         webshims.setOptions('forms-ext', {types: 'date'});
@@ -134,10 +132,10 @@
 							<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
 						</label>
 					</th>
-					<th class="mdl-data-table__cell--non-numeric sort">Category</th>
-					<th class="mdl-data-table__cell--non-numeric sort">Description</th>
-					<th class="mdl-data-table__cell--non-numeric sort">Start Date</th>
-					<th class="mdl-data-table__cell--non-numeric sort">End Date</th>
+					<th class="mdl-data-table__cell--non-numeric category">Category</th>
+					<th class="mdl-data-table__cell--non-numeric description">Description</th>
+					<th class="mdl-data-table__cell--non-numeric startDate">Start Date</th>
+					<th class="mdl-data-table__cell--non-numeric endDate">End Date</th>
 					<th class="mdl-data-table__cell--non-numeric">Completed</th>
 				</tr>
 				</thead>
@@ -307,7 +305,10 @@
         loadTableRow(currentListData);
     }
 
-		$('#listName').val(selectedListName);
+		// set listname
+		if(selectedListName != null){
+			$('#listName').val(selectedListName);
+		}
 </script>
 <script>
     var dialog = document.querySelector('dialog');
@@ -342,10 +343,6 @@
 			child.innerHTML = input + listName;
 			document.getElementById("loadedList").appendChild(child);
 		}
-</script>
-<%-- SORTING THE TABLE --%>
-<script>
-	$('#listTable').tablesorter();
 </script>
 <script>
 	setTimeout(function(){$('.date').each(function(){$(this).addClass('is-focused')})}, 1000);
