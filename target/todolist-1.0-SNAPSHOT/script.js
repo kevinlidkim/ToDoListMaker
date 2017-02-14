@@ -63,7 +63,7 @@ function addCheckBox(tableRow) {
 
         if (cBoxInput.checked) {  cBoxCounter++; }
         else { cBoxCounter--;}
-        console.log(cBoxCounter);
+        // console.log(cBoxCounter);
         if (cBoxCounter == 1) {
             removeBtn.disabled = false;
             upBtn.disabled = false;
@@ -160,7 +160,7 @@ function remove() {
   } else {
     currentListData.pop();
   }
-  console.log(currentListData);
+  // console.log(currentListData);
 
 }
 
@@ -203,7 +203,6 @@ function moveUp() {
         var temp = currentListData[i];
         currentListData[i] = currentListData[i-1];
         currentListData[i-1] = temp;
-        console.log(currentListData);
       }
     }
   }
@@ -255,7 +254,6 @@ function moveDown() {
         var temp = currentListData[i-1];
         currentListData[i-1] = currentListData[i];
         currentListData[i] = temp;
-        console.log(currentListData);
       }
     }
   }
@@ -500,8 +498,11 @@ categoryHeader.click(function() {
 
   }
   categoryHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
-
 descriptionHeader.click(function() {
 
   removeAllSortingIcons();
@@ -547,8 +548,11 @@ descriptionHeader.click(function() {
 
   }
   descriptionHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
-
 startDateHeader.click(function() {
 
   removeAllSortingIcons();
@@ -594,8 +598,11 @@ startDateHeader.click(function() {
 
   }
   startDateHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
-
 endDateHeader.click(function() {
 
   removeAllSortingIcons();
@@ -641,4 +648,8 @@ endDateHeader.click(function() {
 
   }
   endDateHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });

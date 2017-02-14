@@ -498,6 +498,10 @@ categoryHeader.click(function() {
 
   }
   categoryHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
 descriptionHeader.click(function() {
 
@@ -544,6 +548,10 @@ descriptionHeader.click(function() {
 
   }
   descriptionHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
 startDateHeader.click(function() {
 
@@ -590,6 +598,10 @@ startDateHeader.click(function() {
 
   }
   startDateHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
 endDateHeader.click(function() {
 
@@ -636,4 +648,8 @@ endDateHeader.click(function() {
 
   }
   endDateHits++;
+  cBoxCounter = 0;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  removeBtn.disabled = true;
 });
