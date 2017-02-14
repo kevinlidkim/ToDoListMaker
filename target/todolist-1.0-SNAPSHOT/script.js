@@ -297,7 +297,7 @@ function privateOrPublic() {
 /* Add event handler to save button */
 saveBtn.onclick = function () {
 
-  console.log("saving..." + currentUser);
+  // console.log(currentUser);
   // var listId = "4644337115725824";
   var listId = "";
 

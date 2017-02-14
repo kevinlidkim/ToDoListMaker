@@ -96,7 +96,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
 
@@ -104,7 +104,7 @@
 	<div class="vertCenterLeft" style="">
 		<!--To Do List Name Text Field -->
 		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="font-size:1.3em;margin-right:10px;">
-			<input class="mdl-textfield__input" type="text" id="listName" style="color:white;padding-bottom:3px;">
+			<input class="mdl-textfield__input" type="text" id="listName" value="${currentListName}" style="color:white;padding-bottom:3px;">
 			<label class="mdl-textfield__label" for="listName" style="">To Do List Name</label>
 		</div>
 

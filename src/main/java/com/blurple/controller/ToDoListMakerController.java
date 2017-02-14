@@ -119,6 +119,7 @@ public class ToDoListMakerController {
 
 		// save to datastore
 		ObjectifyService.ofy().save().entity(toDoList).now();
+		//add todoList.getId to frontend so we know current list to edit
 
 		ModelAndView mv = new ModelAndView("tdlm");
 		return mv;
@@ -135,6 +136,7 @@ public class ToDoListMakerController {
 
 		// only get the lists that are public or by owner
 		List<ToDoList> viewableLists = new ArrayList<ToDoList>();
+
 
 		for (ToDoList list : allLists) {
 			if (list.isPublic()) {
@@ -194,6 +196,7 @@ public class ToDoListMakerController {
 
 		mv.addObject("selectedList", selectedList_json);
 		mv.addObject("viewableLists", viewableLists_json);
+		mv.addObject("currentListName", selectedList.getName());
 
 		return mv;
 

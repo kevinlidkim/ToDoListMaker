@@ -36,6 +36,8 @@ public class ToDoList {
 
   }
 
+  public String getName() { return name; }
+
   public void addItem(ListItem li) {
     list.add(li);
   }
