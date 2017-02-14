@@ -226,6 +226,30 @@
 			document.body.appendChild(form);
 			form.submit();
 	}
+
+	function loadSelectedList() {
+				var form = document.createElement("form");
+				var lists = ${viewableLists};
+				var pos = $('input[name="selectList"]:checked').val();
+
+				form.setAttribute("method", "post");
+				form.setAttribute("action", "/loadSelectedList");
+				var hiddenField = document.createElement("input");
+				var hiddenField2 = document.createElement("input");
+
+				hiddenField.setAttribute("type", "hidden");
+				hiddenField.setAttribute("name", "id");
+				hiddenField.setAttribute("value", lists[pos].id);
+
+				hiddenField2.setAttribute("type", "hidden");
+				hiddenField2.setAttribute("name", "email");
+				hiddenField2.setAttribute("value", localStorage.getItem("email"));
+
+				form.appendChild(hiddenField);
+				form.appendChild(hiddenField2);
+				document.body.appendChild(form);
+				form.submit();
+		}
 </script>
 <button onclick="loadViewableLists()" style="display:none;">Load Viewable Lists</button>
 
@@ -237,12 +261,16 @@
 		</ul>
 	</div>
 	<div class="mdl-dialog__actions">
-		<button type="button" onclick="loadSelectedList()"  class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">Load</button>
-		<button type="button" class="close mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">Cancel</button>
+		<button id="loadSelectedListBtn" type="button" class="mdl-button" onclick=loadSelectedList()>Load</button>
+		<button type="button" class="mdl-button close">Cancle</button>
 	</div>
 </dialog>
 
-<footer class="mdl-mini-footer" style="">
+<script>
+	$("#loadSelectedListBtn").click(loadSelectedList);
+</script>
+
+<footer class="mdl-mini-footer" style="position:absolute;left:0;right:0;bottom:0;width:100%;display:none">
 	<div class="mdl-mini-footer__left-section" style="padding-left:30px;font-size:1.6em;">
 		<div class="mdl-logo" style="margin-right:30px;position:relative;bottom:3px;">ToDoList Maker</div>
 		<ul class="mdl-mini-footer__link-list">
@@ -265,7 +293,9 @@
     // console.log(localStorage.getItem("user") + " sup");
     // console.log(localStorage.getItem("email") + " yo");
 </script>
+
 <script src="../../script.js"></script>
+<<<<<<< HEAD
 // <script>
 //     //Dummy to-do list as an array of objects
 // 		var emptyData = [];
@@ -312,6 +342,31 @@
 //         loadTableRow(testData);
 //     }
 // </script>
+=======
+<script>
+    //Dummy to-do list as an array of objects
+		var data = [];
+
+		var selectedList = ${selectedList};
+
+		if(selectedList != null) {
+			data = selectedList.list;
+		}
+
+		console.log("SLECETED LIST:");
+		console.log(data);
+
+		for(var i = 0; i < data.length; i++) {
+			delete data[i].id;
+			delete data[i].theList;
+		}
+
+    //Load the dummy to-do list by loading each object as a row item
+    for(var i = 0; i < data.length; i++) {
+        loadTableRow(data);
+    }
+</script>
+>>>>>>> f41e9a8a00ee16eb3302fc8fa04443d9b96abf89
 <script>
     var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('#loadBtn');
@@ -326,8 +381,12 @@
     });
 </script>
 <script>
+<<<<<<< HEAD
 
     var lists = ${viewableLists}
+=======
+    var lists = ${viewableLists};
+>>>>>>> f41e9a8a00ee16eb3302fc8fa04443d9b96abf89
     // console.log("yo lists");
     // console.log(lists);
 
