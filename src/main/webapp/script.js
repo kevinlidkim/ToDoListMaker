@@ -117,7 +117,7 @@ function add(item) {
   currentListData.push(item);
   document.getElementById("tableBody").appendChild(newTableRow);
   // Enable save button now that it has at least 1 item
-  saveBtn.removeAttribute("disabled");
+  saveBtn.disabled = false;
 
 }
 
@@ -140,6 +140,8 @@ function remove() {
   removeBtn.disabled = true;
   upBtn.disabled = true;
   downBtn.disabled = true;
+  //enable save button
+  saveBtn.disabled = false;
   //check counter should? be reset to zero
     cBoxCounter = 0;
 }
@@ -181,6 +183,8 @@ function moveUp() {
       }
     }
   }
+  //enable save button
+  saveBtn.disabled = false;
 }
 
 /* Move up function */
@@ -225,6 +229,8 @@ function moveDown() {
       }
     }
   }
+  //enable save button
+  saveBtn.disabled = false;
 }
 
 /* Resets the input boxes to empty */

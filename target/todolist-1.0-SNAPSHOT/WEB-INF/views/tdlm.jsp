@@ -93,7 +93,6 @@
 
 		</div>
 	</div>
-
 	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
 
 </div>
@@ -213,20 +212,6 @@
 
 <!-- Testing load right now -->
 <script>
-	function loadViewableLists() {
-			var form = document.createElement("form");
-			form.setAttribute("method", "post");
-			form.setAttribute("action", "/loadViewableLists");
-			var hiddenField = document.createElement("input");
-			hiddenField.setAttribute("type", "hidden");
-			hiddenField.setAttribute("name", "email");
-			hiddenField.setAttribute("value", localStorage.getItem("email"));
-
-			form.appendChild(hiddenField);
-			document.body.appendChild(form);
-			form.submit();
-	}
-
 	function loadSelectedList() {
 				var form = document.createElement("form");
 				var lists = ${viewableLists};
@@ -251,7 +236,6 @@
 				form.submit();
 		}
 </script>
-<button onclick="loadViewableLists()" style="display:none;">Load Viewable Lists</button>
 
 <%-- Load Button Popup Modal. --%>
 <dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">
@@ -341,7 +325,7 @@
 			console.log(lists[key]);
 
 			var listName = lists[key].name;
-			var id = lists[key].id;
+            var id = lists[key].id;
 
 			var child = document.createElement('li');
 			child.setAttribute("id", id);
