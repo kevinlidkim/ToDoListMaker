@@ -135,11 +135,11 @@
 								<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
 							</label>
 						</th>
-						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="category">Category</th>
-						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="description">Description</th>
-						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="startDate">Start Date</th>
-						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending sort" data-sort="endDate">End Date</th>
-						<th class="mdl-data-table__cell--non-numeric mdl-data-table__header--sorted-ascending">Completed</th>
+						<th class="mdl-data-table__cell--non-numeric sort" data-sort="category">Category</th>
+						<th class="mdl-data-table__cell--non-numeric sort" data-sort="description">Description</th>
+						<th class="mdl-data-table__cell--non-numeric sort" data-sort="startDate">Start Date</th>
+						<th class="mdl-data-table__cell--non-numeric sort" data-sort="endDate">End Date</th>
+						<th class="mdl-data-table__cell--non-numeric">Completed</th>
 					</tr>
 					</thead>
 					<tbody id="tableBody" class="list">
@@ -357,9 +357,18 @@
 	//change arrow display
 	$("th.sort").click(function() {
 		if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
-			$(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
+
+			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
+			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
+
+			$(this).addClass('mdl-data-table__header--sorted-descending');
+
 		} else {
-			$(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
+
+			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
+			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
+
+			$(this).addClass('mdl-data-table__header--sorted-ascending');
 		}
 	});
 </script>
