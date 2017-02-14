@@ -271,10 +271,12 @@ function reset_Input() {
 }
 
 document.getElementById("upBtn").onclick = function () {
+  removeAllSortingIcons();
   moveUp();
 }
 
 document.getElementById("downBtn").onclick = function () {
+  removeAllSortingIcons();
   moveDown();
 }
 
@@ -306,6 +308,7 @@ document.getElementById("addBtn").onclick = function () {
 
   //add new item and reset the inputs, also disable add again until new inputs
   add(new_Item);
+  removeAllSortingIcons();
   reset_Input();
   addBtn.disabled = true;
 }
