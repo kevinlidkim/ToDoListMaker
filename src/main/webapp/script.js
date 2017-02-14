@@ -117,6 +117,7 @@ function add(item) {
   // Enable save button now that it has at least 1 item
   saveBtn.disabled = false;
 
+  $('#listTable').trigger("update")
 }
 
 /* Remove function*/
@@ -143,6 +144,7 @@ function remove() {
   //check counter should? be reset to zero
     cBoxCounter = 0;
 
+  $('#listTable').trigger("update")
 }
 
 /* Move up function */
@@ -368,20 +370,21 @@ startDate.oninput = function() { toggleAddBtn() };
 endDate.oninput = function() { toggleAddBtn() };
 
 //change arrow display
-$("th.sort").click(function() {
-
-  if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
-
-    $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
-    $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
-
-    $(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
-
-  } else {
-
-    $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
-    $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
-
-    $(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
-  }
-});
+// $("th.sort").click(function() {
+//   console.log("APPLE PIE");
+// 
+//   if(this.classList.contains('mdl-data-table__header--sorted-ascending')) {
+//
+//     $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
+//     $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
+//
+//     $(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
+//
+//   } else {
+//
+//     $("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
+//     $("th.sort").removeClass('mdl-data-table__header--sorted-descending')
+//
+//     $(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
+//   }
+// });

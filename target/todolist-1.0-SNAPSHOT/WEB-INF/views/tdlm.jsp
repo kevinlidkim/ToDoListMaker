@@ -126,7 +126,7 @@
 
 		<!-- Table -->
 		<div style="display:inline-block;vertical-align:top;margin-right:120px;width:590px;min-height:300px;">
-			<table id="listTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+			<table id="listTable" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp tablesorter">
 				<thead>
 				<tr>
 					<th>
@@ -134,10 +134,10 @@
 							<input type="checkbox" id="table-header" class="mdl-checkbox__input" />
 						</label>
 					</th>
-					<th class="mdl-data-table__cell--non-numeric">Category</th>
-					<th class="mdl-data-table__cell--non-numeric">Description</th>
-					<th class="mdl-data-table__cell--non-numeric">Start Date</th>
-					<th class="mdl-data-table__cell--non-numeric">End Date</th>
+					<th class="mdl-data-table__cell--non-numeric sort">Category</th>
+					<th class="mdl-data-table__cell--non-numeric sort">Description</th>
+					<th class="mdl-data-table__cell--non-numeric sort">Start Date</th>
+					<th class="mdl-data-table__cell--non-numeric sort">End Date</th>
 					<th class="mdl-data-table__cell--non-numeric">Completed</th>
 				</tr>
 				</thead>
@@ -345,9 +345,7 @@
 </script>
 <%-- SORTING THE TABLE --%>
 <script>
-	$(function(){
-		$('#keywords').tablesorter();
-	});
+	$('#listTable').tablesorter();
 </script>
 <script>
 	setTimeout(function(){$('.date').each(function(){$(this).addClass('is-focused')})}, 1000);
