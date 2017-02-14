@@ -286,6 +286,7 @@
 <script src="../../script.js"></script>
 <script>
 		var selectedList = ${selectedList};
+		var selectedListName = selectedList.name;
 		var data = [];
 
 		if(selectedList != null) {
@@ -307,6 +308,8 @@
     for(var i = 0; i < currentListData.length; i++) {
         loadTableRow(currentListData);
     }
+
+		$('#listName').val(selectedListName);
 </script>
 <script>
     var dialog = document.querySelector('dialog');
