@@ -361,14 +361,14 @@
 			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
 			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
 
-			$(this).addClass('mdl-data-table__header--sorted-descending');
+			$(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
 
 		} else {
 
 			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
 			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
 
-			$(this).addClass('mdl-data-table__header--sorted-ascending');
+			$(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
 		}
 	});
 </script>

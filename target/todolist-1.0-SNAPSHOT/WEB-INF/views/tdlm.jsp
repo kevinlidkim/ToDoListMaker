@@ -96,7 +96,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
 
 </div>
 
@@ -361,14 +361,14 @@
 			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
 			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
 
-			$(this).addClass('mdl-data-table__header--sorted-descending');
+			$(this).removeClass('mdl-data-table__header--sorted-ascending').addClass('mdl-data-table__header--sorted-descending');
 
 		} else {
 
 			$("th.sort").removeClass('mdl-data-table__header--sorted-ascending')
 			$("th.sort").removeClass('mdl-data-table__header--sorted-descending')
 
-			$(this).addClass('mdl-data-table__header--sorted-ascending');
+			$(this).removeClass('mdl-data-table__header--sorted-descending').addClass('mdl-data-table__header--sorted-ascending');
 		}
 	});
 </script>
