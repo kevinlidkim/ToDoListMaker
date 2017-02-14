@@ -4,24 +4,7 @@
 <head>
 	<meta name="google-signin-client_id" content="874074052748-hsjcp5bhstjnp8osn72ktpgaq16kk1ia.apps.googleusercontent.com">
 	<script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-	<script type="text/javascript">
-        function onLoad() {
-            gapi.load("auth2", function() {
-                gapi.auth2.init().then(
-                    function(){
-                        var g = gapi.auth2.getAuthInstance();
-                        if (g.isSignedIn.get() == false) {
-                            console.log("not logged in");
-                            window.location.href = "/";
-                        }
-                        else { console.log("logged in"); }
-                    },
-                    function(){ console.log("error");
-                    });
-            });
 
-        }
-	</script>
 	<title>To Do List Maker</title>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-deep_purple.min.css">
@@ -62,7 +45,10 @@
 <div style="position:relative;text-align:center;height:250px;color:white;background-color:#7289DA;overflow:hidden;width:100%;">
 	<img src="../../pattern.png" width="100%" style="position: absolute;z-index:1;top:0;bottom:0;left:0;right:0;opacity:0.5;"/>
 	<div style="height:60px;padding-top:20px;position:relative;z-index:2;">
-		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;"><span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>!</div>
+		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;">
+			<span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>! <div id="email" style="display:inline-block;vertical-align:top;"></div>
+		</div>
+
 
 		<div class="vertCenterLeft" style="position:absolute;right:5px;width:600px;justify-content:flex-end;">
 			<!-- Create/Load Buttons -->
@@ -260,9 +246,32 @@
 </footer>
 <script>
     var user = document.getElementById("user");
-    user.innerHTML = localStorage.getItem("user");
+    var email = document.getElementById("email");
+    //user.innerHTML = localStorage.getItem("user");
     console.log(localStorage.getItem("user") + " sup");
     console.log(localStorage.getItem("email") + " yo");
+
+    function onLoad() {
+        gapi.load("auth2", function() {
+            gapi.auth2.init().then(
+                function(){
+                    var g = gapi.auth2.getAuthInstance();
+                    if (g.isSignedIn.get() == false) {
+                        console.log("not logged in");
+                        window.location.href = "/";
+                    }
+                    else {
+                        user.innerHTML = g.getBasicProfile().getName();
+                        email.innerHTML = g.getBasicProfile().getEmail();
+                        console.log(g.getBasicProfile().getName());
+                        console.log("logged in");
+                    }
+                },
+                function(){ console.log("error");
+                });
+        });
+
+    }
 </script>
 <script src="../../script.js"></script>
 <script>
@@ -326,7 +335,7 @@
 </script>
 <script>
 
-    var lists = ${viewableLists};
+    var lists = ${viewableLists}
     console.log("yo lists");
     console.log(lists);
 
@@ -336,7 +345,7 @@
 
 			var listName = lists[key].name;
 			var child = document.createElement('li');
-			child.setAttribute("id", lists[key].id);
+			child.setAttribute("id", id);
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
 
 			child.innerHTML = input + listName;

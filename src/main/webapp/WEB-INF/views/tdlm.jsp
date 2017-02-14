@@ -335,8 +335,6 @@
 			console.log(lists[key]);
 
 			var listName = lists[key].name;
-			var id = lists[key].id;
-
 			var child = document.createElement('li');
 			child.setAttribute("id", id);
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';

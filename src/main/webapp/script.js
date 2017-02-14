@@ -136,8 +136,10 @@ function remove() {
         i--;
       }
   }
-  //disable button again after removal
-   removeBtn.disabled = true;
+  //disable buttons again after removal
+  removeBtn.disabled = true;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
   //check counter should? be reset to zero
     cBoxCounter = 0;
 }
