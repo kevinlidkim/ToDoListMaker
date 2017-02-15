@@ -58,7 +58,6 @@ function addCheckBox(tableRow) {
     cBoxInput.className = "mdl-checkbox__input";
     cBoxInput.setAttribute("type", "checkbox");
     cBoxInput.onchange = function() {
-        console.log("how many checked");
         if (cBoxInput.checked) {  cBoxCounter++; }
         else { cBoxCounter--;}
         // console.log(cBoxCounter);
@@ -148,7 +147,6 @@ function remove() {
         // array.splice(start, deleteCount)
         if(currentListData.length > 1) {
           // console.log("REMOVING: ");
-          console.log(currentListData.splice(i, 1));
         } else {
           currentListData.pop();
         }
@@ -341,7 +339,7 @@ saveBtn.onclick = function () {
 
   // console.log(currentUser);
   // var listId = "4644337115725824";
-  var listId = document.getElementById("currentListId").getAttribute("listId");
+  var listId = document.getElementById("currentList").getAttribute("listId");
 
   // Get listName from form input.
   var listName = document.getElementById("listName").value;
@@ -366,7 +364,7 @@ saveBtn.onclick = function () {
     url: "/createList",
     data: JSON.stringify(dataObj),
     success: function(response) {
-        console.log(response);
+        //console.log(response);
     },
     error: function(err) {
        // console.log(err);
@@ -669,12 +667,56 @@ endDateHeader.click(function() {
   removeBtn.disabled = true;
 });
 
+//allow list name and public/private change only if table is not empty
 var listName = document.getElementById("listName");
+var public = document.getElementById("public");
+var private = document.getElementById("private");
 listName.oninput = function() {
   if (currentListData.length != 0) {
     saveBtn.disabled = false;
   }
   else {
     saveBtn.disabled = true;
+  }
+}
+public.onclick = function() {
+  if (currentListData.length != 0) {
+    saveBtn.disabled = false;
+  }
+  else {
+    saveBtn.disabled = true;
+  }
+}
+private.onclick = function() {
+  if (currentListData.length != 0) {
+    saveBtn.disabled = false;
+  }
+  else {
+    saveBtn.disabled = true;
+  }
+}
+
+
+/* Disable all buttons if list is not yours */
+var listOwner = document.getElementById("currentList").getAttribute("owner");
+if (listOwner != "" && listOwner != email) {
+  addBtn.disabled = true;
+  removeBtn.disabled = true;
+  upBtn.disabled = true;
+  downBtn.disabled = true;
+  saveBtn.disabled = true;
+  document.getElementById("listName").disabled = true;
+  document.getElementById("category").disabled = true;
+  document.getElementById("desc").disabled = true;
+  document.getElementById("start_Date").disabled = true;
+  document.getElementById("end_Date").disabled = true;
+  document.getElementById("completed").disabled = true;
+  document.getElementById("public").disabled = true;
+  document.getElementById("private").disabled = true;
+  var boxes = document.getElementsByClassName(
+    "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
+  );
+  for (var i = 0, length = boxes.length; i < length; i++) {
+    boxes[i].MaterialCheckbox.disable();
   }
 }

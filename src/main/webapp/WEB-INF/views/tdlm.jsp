@@ -63,7 +63,11 @@
 <div style="position:relative;text-align:center;height:250px;color:white;background-color:#7289DA;overflow:hidden;width:100%;">
 	<img src="../../pattern.png" width="100%" style="position: absolute;z-index:1;top:0;bottom:0;left:0;right:0;opacity:0.5;"/>
 	<div style="height:60px;padding-top:20px;position:relative;z-index:2;">
-		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;"><span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>!</div>
+		<div class="vertCenterLeft" style="position:absolute;left:35px;font-weight:600;font-size:1.6em;margin-top:5px;">
+			<span style="margin-right:10px;">Welcome, </span> <div id="user" style="display:inline-block;vertical-align:top;"></div>!
+			<br>
+			<div id="email" style="display:inline-block;vertical-align:top;"></div>
+		</div>
 
 		<div class="vertCenterLeft" style="position:absolute;right:5px;width:600px;justify-content:flex-end;">
 			<!-- Create/Load Buttons -->
@@ -87,7 +91,7 @@
                 function signOut() {
                     var auth2 = gapi.auth2.getAuthInstance();
                     auth2.signOut().then(function() {
-                        console.log('User signed out');
+                        //console.log('User signed out');
                     });
                 }
 			</script>
@@ -118,11 +122,11 @@
 		<script>
 			var isPublic = ${isPublic};
 			if (isPublic) {
-			    console.log(isPublic)
+			    //console.log(isPublic)
                 $("#public").prop("checked", true);
 			}
 			else {
-                console.log(isPublic)
+                //console.log(isPublic)
 				$("#private").prop("checked", true);
 			}
 		</script>
@@ -156,9 +160,27 @@
 			</table>
 
 			<!-- Save Button -->
-			<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;">
+			<button id="saveBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" style="float:right;color:white;text-transform:capitalize;margin-top:20px;" type="button">
 				Save
 			</button>
+			<div id="savedSnackbar" class="mdl-js-snackbar mdl-snackbar">
+				<div class="mdl-snackbar__text"></div>
+				<button type="button" class="mdl-snackbar__action"></button>
+			</div>
+			<script>
+              (function() {
+                'use strict';
+                var snackbarContainer = document.querySelector('#savedSnackbar');
+                var showToastButton = document.querySelector('#saveBtn');
+                showToastButton.addEventListener('click', function() {
+                  'use strict';
+                  var data = {message: 'Saved'};
+                  snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                });
+              }());
+			</script>
+
+
 		</div>
 
 		<div style="width:70px;position:absolute;top:0;left:615px;padding-bottom:70px;">
@@ -248,7 +270,7 @@
 				form.submit();
 		}
 </script>
-<input type="hidden" id="currentListId" listId="${currentListId}">
+<input type="hidden" id="currentList" listId="${currentListId}" owner="${currentListOwner}">
 
 <%-- Load Button Popup Modal. --%>
 <dialog class="mdl-dialog" style="background-color:#99aab5;text-align:left;border-radius:10px;">
@@ -287,6 +309,8 @@
 <script>
     var user = document.getElementById("user");
     user.innerHTML = localStorage.getItem("user");
+    var email = document.getElementById("email");
+    email.innerHTML = localStorage.getItem("email");
     // console.log(localStorage.getItem("user") + " sup");
     // console.log(localStorage.getItem("email") + " yo");
 </script>
@@ -309,8 +333,8 @@
 
 		currentListData = data;
 
-		console.log("current LIST:");
-		console.log(currentListData);
+		//console.log("current LIST:");
+		//console.log(currentListData);
 
     //Load the current list by loading each object as a row item
     for(var i = 0; i < currentListData.length; i++) {
@@ -347,12 +371,13 @@
 
 			var listName = lists[key].name;
             var id = lists[key].id;
+            var owner = lists[key].owner;
 
 			var child = document.createElement('li');
 			child.setAttribute("id", id);
 			var input = '<input type=\"radio\" name=\"selectList\" value=\"' + key + '\">';
 
-			child.innerHTML = input + listName;
+			child.innerHTML = input + listName + " (" + owner + ")";
 			document.getElementById("loadedList").appendChild(child);
 		}
 </script>

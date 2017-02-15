@@ -237,6 +237,7 @@ public class ToDoListMakerController {
 		mv.addObject("currentListName", selectedList.getName());
 		mv.addObject("currentListId", selectedList.getId());
 		mv.addObject("isPublic", selectedList.isPublic());
+		mv.addObject("currentListOwner", selectedList.getOwner());
 
 		return mv;
 
