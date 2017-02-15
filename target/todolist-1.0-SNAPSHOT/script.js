@@ -58,9 +58,7 @@ function addCheckBox(tableRow) {
     cBoxInput.className = "mdl-checkbox__input";
     cBoxInput.setAttribute("type", "checkbox");
     cBoxInput.onchange = function() {
-        //first re-enable buttons if they were disabled from before
-        //removeBtn.disabled = false;
-
+        console.log("how many checked");
         if (cBoxInput.checked) {  cBoxCounter++; }
         else { cBoxCounter--;}
         // console.log(cBoxCounter);
@@ -100,10 +98,14 @@ var headerCheckHandler = function(event) {
   if (event.target.checked) {
       for (var i = 0, length = boxes.length; i < length; i++) {
           boxes[i].MaterialCheckbox.check();
+          cBoxCounter++;
+          removeBtn.disabled = false;
       }
   } else {
       for (var i = 0, length = boxes.length; i < length; i++) {
           boxes[i].MaterialCheckbox.uncheck();
+          cBoxCounter--;
+          removeBtn.disabled = true;
       }
   }
 };
@@ -139,11 +141,13 @@ function remove() {
   for (var i = 0, length = c_boxes.length; i < length; i++) {
       //check for null
       if(c_boxes[i] != null) {
+        console.log("removing index " + i);
         // Deletes the checked box row from html
         c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
         // Move counter back so the next box can be removed properly.
         i--;
       }
+
   }
   //disable buttons again after removal
   removeBtn.disabled = true;
@@ -332,16 +336,19 @@ saveBtn.onclick = function () {
 
   // console.log(currentUser);
   // var listId = "4644337115725824";
-  var listId = "";
+  var listId = document.getElementById("currentListId").getAttribute("listId");
 
   // Get listName from form input.
-  var listName = document.getElementById("listName").value
+  var listName = document.getElementById("listName").value;
+  if (listName.length == 0) {
+      listName = "Blank";
+  }
 
   var isPublic = privateOrPublic();
   var dataObj = {
     list: currentListData,
     name: listName,
-    owner: currentUser,
+    owner: email,
     isPublic: isPublic,
     listId: listId
   };
@@ -354,7 +361,7 @@ saveBtn.onclick = function () {
     url: "/createList",
     data: JSON.stringify(dataObj),
     success: function(response) {
-       // console.log(response);
+        console.log(response);
     },
     error: function(err) {
        // console.log(err);

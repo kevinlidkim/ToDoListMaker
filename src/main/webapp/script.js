@@ -141,11 +141,13 @@ function remove() {
   for (var i = 0, length = c_boxes.length; i < length; i++) {
       //check for null
       if(c_boxes[i] != null) {
+        console.log("removing index " + i);
         // Deletes the checked box row from html
         c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
         // Move counter back so the next box can be removed properly.
         i--;
       }
+
   }
   //disable buttons again after removal
   removeBtn.disabled = true;
@@ -346,7 +348,7 @@ saveBtn.onclick = function () {
   var dataObj = {
     list: currentListData,
     name: listName,
-    owner: currentUser,
+    owner: email,
     isPublic: isPublic,
     listId: listId
   };

@@ -38,6 +38,8 @@ public class ToDoList {
 
   public String getName() { return name; }
 
+  public void setName(String name) { this.name = name; }
+
   public void addItem(ListItem li) {
     list.add(li);
   }
@@ -57,6 +59,10 @@ public class ToDoList {
   public boolean isPublic() {
     return isPublic;
   }
+
+  public void setPublic() { isPublic = true; }
+
+  public void setPrivate() { isPublic = false; }
 
   public Long getId() {
     return id;

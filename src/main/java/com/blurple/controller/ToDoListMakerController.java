@@ -56,11 +56,16 @@ public class ToDoListMakerController {
 			ToDoList selectedList = new ToDoList();
 
 			for (ToDoList list : allLists) {
+				System.out.println(email);
+				System.out.println(list.getOwner());
 				if (list.isPublic()) {
+					System.out.println(list.getName());
 					viewableLists.add(list);
 				} else if (list.getOwner().equals(email)) {
 					viewableLists.add(list);
+					System.out.println("should be here");
 				}
+				System.out.println("------");
 			}
 
 			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
@@ -70,6 +75,7 @@ public class ToDoListMakerController {
 			String selectedList_json = gson.toJson(selectedList);
 			mv.addObject("viewableLists", viewableLists_json);
 			mv.addObject("selectedList", selectedList_json);
+			mv.addObject("isPublic", selectedList.isPublic());
 			return mv;
 		}
 	}
@@ -90,6 +96,7 @@ public class ToDoListMakerController {
 		// check to see if we are using a currenty loaded list. if so, delete list to avoid duplicates
 		String currentList = request.getString("listId");
 		System.out.println(currentList);
+		System.out.println(listName);
 //		if (!currentList.equals("")) {
 //
 //			Long currentListId = Long.parseLong(request.getString("listId"));
@@ -105,6 +112,7 @@ public class ToDoListMakerController {
 
 		// build the list
 		if (currentList.equals("")) {
+			System.out.println(isPublic);
 			toDoList = new ToDoList(listName, isPublic, owner);
 		} else {
 			Long currentListId = Long.parseLong(request.getString("listId"));
@@ -116,6 +124,13 @@ public class ToDoListMakerController {
 				ObjectifyService.ofy().delete().type(ListItem.class).id(items.getId()).now();
 			}
 			toDoList.removeAll();
+
+			toDoList.setName(listName);
+			if (isPublic) {
+				toDoList.setPublic();
+			} else {
+				toDoList.setPrivate();
+			}
 		}
 
 
@@ -157,10 +172,13 @@ public class ToDoListMakerController {
 
 
 		for (ToDoList list : allLists) {
+			System.out.println(ownerEmail);
+			System.out.println(list.getOwner());
 			if (list.isPublic()) {
 				viewableLists.add(list);
 			} else if (list.getOwner().equals(ownerEmail)) {
 				viewableLists.add(list);
+				System.out.println("should be here");
 			}
 		}
 
@@ -218,6 +236,7 @@ public class ToDoListMakerController {
 		mv.addObject("viewableLists", viewableLists_json);
 		mv.addObject("currentListName", selectedList.getName());
 		mv.addObject("currentListId", selectedList.getId());
+		mv.addObject("isPublic", selectedList.isPublic());
 
 		return mv;
 
