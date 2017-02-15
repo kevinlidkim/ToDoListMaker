@@ -94,7 +94,7 @@
 
 		</div>
 	</div>
-	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">${name}</div>
+	<div style="font-size:4em;font-weight:600;text-align:center;margin-top:80px;position:relative;z-index:2;">todolist</div>
 
 </div>
 
@@ -115,6 +115,17 @@
 			<input class="mdl-radio__button" id="private" name="ppRadio" type="radio" value="off">
 			<span class="mdl-radio__label">Private</span>
 		</label>
+		<script>
+			var isPublic = ${isPublic};
+			if (isPublic) {
+			    console.log(isPublic)
+                $("#public").prop("checked", true);
+			}
+			else {
+                console.log(isPublic)
+				$("#private").prop("checked", true);
+			}
+		</script>
 
 		<div style="margin-left:125px; color:white;font-size:1.5em;">New ToDo Item To Be Added</div>
 

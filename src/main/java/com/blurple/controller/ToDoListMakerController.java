@@ -56,14 +56,14 @@ public class ToDoListMakerController {
 			ToDoList selectedList = new ToDoList();
 
 			for (ToDoList list : allLists) {
-				System.out.println(email);
-				System.out.println(list.getOwner());
+				System.out.println("your email: " + email);
+				System.out.println("owner email: " + list.getOwner());
 				if (list.isPublic()) {
-					System.out.println(list.getName());
+					System.out.println(list.getName() + " is public");
 					viewableLists.add(list);
 				} else if (list.getOwner().equals(email)) {
 					viewableLists.add(list);
-					System.out.println("should be here");
+					System.out.println("you are the owner of this list");
 				}
 				System.out.println("------");
 			}
@@ -158,41 +158,41 @@ public class ToDoListMakerController {
 		return mv;
 	}
 
-	@RequestMapping("/loadViewableLists")
-	public ModelAndView loadViewableLists(
-			@RequestParam(value = "email") String email) {
-
-		String ownerEmail = email;
-
-		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
-		ToDoList selectedList = new ToDoList();
-
-		// only get the lists that are public or by owner
-		List<ToDoList> viewableLists = new ArrayList<ToDoList>();
-
-
-		for (ToDoList list : allLists) {
-			System.out.println(ownerEmail);
-			System.out.println(list.getOwner());
-			if (list.isPublic()) {
-				viewableLists.add(list);
-			} else if (list.getOwner().equals(ownerEmail)) {
-				viewableLists.add(list);
-				System.out.println("should be here");
-			}
-		}
-
-		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-
-		// Turn it to json object before sending to frontEnd
-		String selectedList_json = gson.toJson(selectedList);
-		String viewableLists_json = gson.toJson(viewableLists);
-
-		ModelAndView mv = new ModelAndView("tdlm");
-		mv.addObject("viewableLists", viewableLists_json);
-		mv.addObject("selectedList", selectedList_json);
-		return mv;
-	}
+//	@RequestMapping("/loadViewableLists")
+//	public ModelAndView loadViewableLists(
+//			@RequestParam(value = "email") String email) {
+//
+//		String ownerEmail = email;
+//
+//		List<ToDoList> allLists = ObjectifyService.ofy().load().type(ToDoList.class).list();
+//		ToDoList selectedList = new ToDoList();
+//
+//		// only get the lists that are public or by owner
+//		List<ToDoList> viewableLists = new ArrayList<ToDoList>();
+//
+//
+//		for (ToDoList list : allLists) {
+//			System.out.println(ownerEmail);
+//			System.out.println(list.getOwner());
+//			if (list.isPublic()) {
+//				viewableLists.add(list);
+//			} else if (list.getOwner().equals(ownerEmail)) {
+//				viewableLists.add(list);
+//				System.out.println("should be here");
+//			}
+//		}
+//
+//		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+//
+//		// Turn it to json object before sending to frontEnd
+//		String selectedList_json = gson.toJson(selectedList);
+//		String viewableLists_json = gson.toJson(viewableLists);
+//
+//		ModelAndView mv = new ModelAndView("tdlm");
+//		mv.addObject("viewableLists", viewableLists_json);
+//		mv.addObject("selectedList", selectedList_json);
+//		return mv;
+//	}
 
 	@RequestMapping("/loadSelectedList")
 	public ModelAndView loadSelectedList(

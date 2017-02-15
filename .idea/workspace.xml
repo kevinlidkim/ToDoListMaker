@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="93df5d9b-e49e-48f6-a2bf-bf3450e9405d" name="Default" comment="fixed public/private, default is now private">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/appengine-generated/local_db.bin" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/models/ToDoList.class" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/models/ToDoList.class" />
+    <list default="true" id="93df5d9b-e49e-48f6-a2bf-bf3450e9405d" name="Default" comment="fixed save button">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/controller/ToDoListMakerController.class" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/classes/com/blurple/controller/ToDoListMakerController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" afterPath="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java" afterPath="$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/script.js" afterPath="$PROJECT_DIR$/src/main/webapp/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/appengine-generated/datastore-indexes-auto.xml" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/appengine-generated/datastore-indexes-auto.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/script.js" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/views/tdlm.jsp" afterPath="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/views/tdlm.jsp" />
     </list>
     <list id="4e75fa3c-59af-4d4e-87fb-d4862f5410d8" name="Revert: " comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,16 +31,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ToDoListMakerController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ToDoListMakerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="77" column="12" lean-forward="false" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+            <state relative-caret-position="811">
+              <caret line="97" column="40" lean-forward="true" selection-start-line="97" selection-start-column="40" selection-end-line="97" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1912#1922#0" expanded="true" />
-                <element signature="e#5997#6007#0" expanded="true" />
-                <element signature="e#7689#7699#0" expanded="true" />
+                <element signature="e#7825#7835#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,8 +48,8 @@
       <file leaf-file-name="tdlm.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="118" column="39" lean-forward="true" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
+            <state relative-caret-position="143">
+              <caret line="102" column="27" lean-forward="false" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="27" />
               <folding>
                 <marker date="1487120007350" expanded="true" signature="16326:16335" ph="..." />
               </folding>
@@ -62,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
-              <caret line="351" column="12" lean-forward="false" selection-start-line="351" selection-start-column="6" selection-end-line="351" selection-end-column="12" />
+            <state relative-caret-position="142">
+              <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -75,7 +70,7 @@
       <file leaf-file-name="ToDoList.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="850">
               <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="e#1006#1007#0" expanded="true" />
@@ -108,12 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>to do list name</find>
-      <find>table</find>
-      <find>hidden</find>
-      <find>display</find>
-      <find>save</find>
-      <find>loadbtn</find>
       <find>loadselectedlist</find>
       <find>currentList</find>
       <find>json</find>
@@ -124,20 +113,26 @@
       <find>saveB</find>
       <find>load</find>
       <find>${viewab</find>
-      <find>listname</find>
       <find>To do list name</find>
       <find>savebtn</find>
       <find>master</find>
       <find>local</find>
-      <find>remove</find>
       <find>loadviewable</find>
       <find>System.out.</find>
       <find>currentuser</find>
       <find>loadviewa</find>
       <find>/crea</find>
-      <find>public</find>
       <find>jquery</find>
       <find>${</find>
+      <find>public</find>
+      <find>remove</find>
+      <find>currenListData</find>
+      <find>listname</find>
+      <find>onin</find>
+      <find>System</find>
+      <find>remove(</find>
+      <find>to do list name</find>
+      <find>System.out.print</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Stanley Chen\ToDoListMaker\src</dir>
@@ -162,8 +157,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
         <option value="$PROJECT_DIR$/target/todolist-1.0-SNAPSHOT/WEB-INF/appengine-generated/datastore-indexes-auto.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/script.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/script.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java" />
       </list>
     </option>
@@ -193,6 +188,89 @@
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="784" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Android &gt; Lint &gt; Correctness</id>
+          </State>
+          <State>
+            <id>Android Lint for Kotlin</id>
+          </State>
+          <State>
+            <id>Code style issuesJava</id>
+          </State>
+          <State>
+            <id>Cucumber</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>GeneralJavaScript</id>
+          </State>
+          <State>
+            <id>Hibernate Issues</id>
+          </State>
+          <State>
+            <id>ImportsJava</id>
+          </State>
+          <State>
+            <id>Inheritance issuesJava</id>
+          </State>
+          <State>
+            <id>JBoss Seam issues</id>
+          </State>
+          <State>
+            <id>JPA issues</id>
+          </State>
+          <State>
+            <id>JUnit issuesJava</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Javadoc issuesJava</id>
+          </State>
+          <State>
+            <id>Logging issuesJava</id>
+          </State>
+          <State>
+            <id>Probable bugsJava</id>
+          </State>
+          <State>
+            <id>RELAX NG</id>
+          </State>
+          <State>
+            <id>Resource management issuesJava</id>
+          </State>
+          <State>
+            <id>SQL</id>
+          </State>
+          <State>
+            <id>Serialization issuesJava</id>
+          </State>
+          <State>
+            <id>Threading issuesJava</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+          <State>
+            <id>XSLT</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -444,6 +522,7 @@
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
   </component>
   <component name="RunManager" selected="Google AppEngine Dev Server.AppEngine Dev 1.9.48">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -940,7 +1019,7 @@
       <workItem from="1487037229014" duration="8550000" />
       <workItem from="1487046289232" duration="487000" />
       <workItem from="1487046798092" duration="787000" />
-      <workItem from="1487112025587" duration="8102000" />
+      <workItem from="1487112025587" duration="11623000" />
     </task>
     <task id="LOCAL-00001" summary="changed sign out redirect">
       <created>1486875675653</created>
@@ -998,19 +1077,26 @@
       <option name="project" value="LOCAL" />
       <updated>1487116348182</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fixed public/private, default is now private">
+      <created>1487120193271</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1487120193271</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="105514000" />
+    <option name="totallyTimeSpent" value="109035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23738873" sideWeight="0.50292826" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2833828" sideWeight="0.51756954" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32718894" sideWeight="0.4969743" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1022,13 +1108,13 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23738873" sideWeight="0.49707174" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23738873" sideWeight="0.49707174" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.49394855" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25671643" sideWeight="0.4941263" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2833828" sideWeight="0.48535872" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2833828" sideWeight="0.48243046" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.49394855" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32872504" sideWeight="0.49092284" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23792094" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1058,7 +1144,8 @@
     <MESSAGE value="fixed master checkbox, error with remove then saving, editing a list then refreshing" />
     <MESSAGE value="fixed most of saving and refreshing" />
     <MESSAGE value="fixed public/private, default is now private" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed public/private, default is now private" />
+    <MESSAGE value="fixed save button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed save button" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1130,8 +1217,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#5997#6007#0" expanded="true" />
-            <element signature="e#7689#7699#0" expanded="true" />
+            <element signature="e#7825#7835#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1174,8 +1260,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#5997#6007#0" expanded="true" />
-            <element signature="e#7689#7699#0" expanded="true" />
+            <element signature="e#7825#7835#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1218,8 +1303,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#5997#6007#0" expanded="true" />
-            <element signature="e#7689#7699#0" expanded="true" />
+            <element signature="e#7825#7835#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1284,8 +1368,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#5997#6007#0" expanded="true" />
-            <element signature="e#7689#7699#0" expanded="true" />
+            <element signature="e#7825#7835#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1349,8 +1432,7 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#5997#6007#0" expanded="true" />
-            <element signature="e#7689#7699#0" expanded="true" />
+            <element signature="e#7825#7835#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1448,17 +1530,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="351" column="12" lean-forward="false" selection-start-line="351" selection-start-column="6" selection-end-line="351" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/models/ToDoList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="850">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="e#1006#1007#0" expanded="true" />
@@ -1471,8 +1545,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/tdlm.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="118" column="39" lean-forward="true" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="39" />
+        <state relative-caret-position="143">
+          <caret line="102" column="27" lean-forward="false" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="27" />
           <folding>
             <marker date="1487120007350" expanded="true" signature="16326:16335" ph="..." />
           </folding>
@@ -1481,14 +1555,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/blurple/controller/ToDoListMakerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="77" column="12" lean-forward="false" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
+        <state relative-caret-position="811">
+          <caret line="97" column="40" lean-forward="true" selection-start-line="97" selection-start-column="40" selection-end-line="97" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1912#1922#0" expanded="true" />
-            <element signature="e#5997#6007#0" expanded="true" />
-            <element signature="e#7689#7699#0" expanded="true" />
+            <element signature="e#7825#7835#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="154" column="0" lean-forward="false" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -141,7 +141,6 @@ function remove() {
   for (var i = 0, length = c_boxes.length; i < length; i++) {
       //check for null
       if(c_boxes[i] != null) {
-        console.log("removing index " + i);
         // Deletes the checked box row from html
         c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
         // Move counter back so the next box can be removed properly.
@@ -153,8 +152,13 @@ function remove() {
   removeBtn.disabled = true;
   upBtn.disabled = true;
   downBtn.disabled = true;
-  //enable save button
-  saveBtn.disabled = false;
+  //enable save button if theres still stuff in the list
+  if (currentListData.length == 0) {
+    saveBtn.disabled = true;
+  }
+  else {
+    saveBtn.disabled = false;
+  }
   //check counter should? be reset to zero
   cBoxCounter = 0;
 
@@ -663,3 +667,13 @@ endDateHeader.click(function() {
   downBtn.disabled = true;
   removeBtn.disabled = true;
 });
+
+var listName = document.getElementById("listName");
+listName.oninput = function() {
+  if (currentListData.length != 0) {
+    saveBtn.disabled = false;
+  }
+  else {
+    saveBtn.disabled = true;
+  }
+}
