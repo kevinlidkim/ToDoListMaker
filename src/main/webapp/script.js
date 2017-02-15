@@ -136,14 +136,23 @@ function add(item) {
 function remove() {
   //get all checkedboxes
   var c_boxes = document.getElementsByClassName(
-      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select is-checked"
+      "boxes mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-data-table__select"
   );
   for (var i = 0, length = c_boxes.length; i < length; i++) {
       //check for null
-      if(c_boxes[i] != null) {
+      if(c_boxes[i] != null && c_boxes[i].classList.contains("is-checked")) {
         // Deletes the checked box row from html
         c_boxes[i].parentNode.parentNode.parentNode.removeChild(c_boxes[i].parentNode.parentNode);
         // Move counter back so the next box can be removed properly.
+
+        // array.splice(start, deleteCount)
+        if(currentListData.length > 1) {
+          // console.log("REMOVING: ");
+          console.log(currentListData.splice(i, 1));
+        } else {
+          currentListData.pop();
+        }
+
         i--;
       }
 
@@ -161,14 +170,6 @@ function remove() {
   }
   //check counter should? be reset to zero
   cBoxCounter = 0;
-
-  // array.splice(start, deleteCount)
-  if(currentListData.length > 1) {
-    currentListData.splice(i, 1);
-  } else {
-    currentListData.pop();
-  }
-  // console.log(currentListData);
 
 }
 
